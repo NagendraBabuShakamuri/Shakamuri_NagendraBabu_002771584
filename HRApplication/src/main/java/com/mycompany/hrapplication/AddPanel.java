@@ -10,6 +10,7 @@ package com.mycompany.hrapplication;
  */
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.*;
 //import org.jdatepicker.impl.JDatePanelImpl;
@@ -158,6 +159,9 @@ public class AddPanel extends JPanel{
           @Override
           public void actionPerformed(ActionEvent e) {
             JFileChooser fc = new JFileChooser();
+            fc.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("images", "JPEG", "PNG", "JPG");
+            fc.addChoosableFileFilter(filter);
             int i = fc.showOpenDialog(null);
             if (i == JFileChooser.APPROVE_OPTION) {
               File f = fc.getSelectedFile();
@@ -182,37 +186,6 @@ public class AddPanel extends JPanel{
         submit = new JButton("Submit");
         submit.setFont(new Font("Arial", Font.PLAIN,20));
         submit.setBounds(220, 690, 150, 25);
-//        GridBagConstraints cons = new GridBagConstraints();
-//        cons.gridx = 0;
-//        cons.gridy = 0;
-//        gb.setConstraints(nameLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 1;
-//        gb.setConstraints(employeeIdLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 2;
-//        gb.setConstraints(ageLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 3;
-//        gb.setConstraints(genderLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 4;
-//        gb.setConstraints(startDateLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 5;
-//        gb.setConstraints(levelLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 6;
-//        gb.setConstraints(teamInfoLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 7;
-//        gb.setConstraints(positionTitleLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 8;
-//        gb.setConstraints(contactInfoLabel, cons);
-//        cons.gridx = 0;
-//        cons.gridy = 9;
-//        gb.setConstraints(photoLabel, cons);
         add(titleLabel);
         add(nameLabel);
         add(nameField);
