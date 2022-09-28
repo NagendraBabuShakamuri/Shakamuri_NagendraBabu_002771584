@@ -13,9 +13,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.*;
-//import org.jdatepicker.impl.JDatePanelImpl;
-//import org.jdatepicker.impl.JDatePickerImpl;
-//import org.jdatepicker.impl.SqlDateModel;
+import java.util.regex.*;
 public class AddPanel extends JPanel{
     private String fileName;
     private JLabel titleLabel;
@@ -44,7 +42,7 @@ public class AddPanel extends JPanel{
     private JTextField photoPath;
     private JButton fileButton;
     private JButton submit;
-    AddPanel(){
+    AddPanel(Container contentPane){
 //        GridBagLayout gb = new GridBagLayout();
         setLayout(null);
         titleLabel = new JLabel("Add a New Employee");
@@ -186,6 +184,75 @@ public class AddPanel extends JPanel{
         submit = new JButton("Submit");
         submit.setFont(new Font("Arial", Font.PLAIN,20));
         submit.setBounds(220, 690, 150, 25);
+        submit.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String name = nameField.getText().trim();
+                String id = idField.getText().trim();
+                int age = (int)ageField.getSelectedItem();
+                String gender = "";
+                if(male.isSelected())
+                    gender = "Male";
+                else if(female.isSelected())
+                    gender = "Female";
+                String startDate = startDateField.getText().trim();
+                String level = levelField.getSelectedItem().toString();
+                String teamInfo = teamInfoField.getText().trim();
+                String positionTitle = positionTitleField.getText().trim();
+                String mobileNumber = mobileNumberField.getText().trim();
+                String email = emailField.getText().trim();
+                String photo = photoPath.getText();
+                boolean allFieldsFilled = false;
+                if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(name).matches() && !name.equals("")){
+                    System.out.println("Name is valid.");
+                    if(Pattern.compile("^[1-9]\\d*$").matcher(id).matches()){
+                        System.out.println("Id is valid.");
+                        if(Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(startDate).matches()){
+                            System.out.println("Start date is valid.");
+                            if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(positionTitle).matches() && !positionTitle.equals("")){
+                                System.out.println("Position title is valid.");
+                                if(Pattern.compile("\\+\\d(-\\d{3}){2}-\\d{4}").matcher(mobileNumber).matches()){
+                                    System.out.println("Mobile Number is valid.");
+                                    if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches()){
+                                        System.out.println("Email is valid.");
+                                        if(!photo.equals( "")){
+                                            System.out.println("Photo is uploaded.");
+                                            allFieldsFilled = true;
+                                        }
+                                        else{
+                                            JOptionPane.showMessageDialog(contentPane, "Please add an Employee photo.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                        }
+                                    }
+                                    else{
+                                        JOptionPane.showMessageDialog(contentPane, "Email should be in the following format i.e.\nA-Z characters allowed\na-z characters allowed\n0-9 numbers allowed\nAdditionally email may contain only dot(.), dash(-) and underscore(_)\nRest all characters are not allowed", "Alert", JOptionPane.WARNING_MESSAGE);
+                                    }
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(contentPane, "Mobile Number should be in +X-XXX-XXX-XXXX.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(contentPane, "Position title is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(contentPane, "Start date should be in YYYY-MM-DD format.", "Alert", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(contentPane, "Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(contentPane, "Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+                System.out.println(name + " " + id + " " + age + " " + gender + " " + startDate + " " + level + " " + teamInfo + " " + positionTitle
+                + " " + mobileNumber + " " + email + " " + photo);
+                if(allFieldsFilled)
+                    transferData(name, Integer.parseInt(id), age, gender, startDate, level, teamInfo, positionTitle, mobileNumber, email, photo);
+            }
+        });
+        
         add(titleLabel);
         add(nameLabel);
         add(nameField);
@@ -212,5 +279,8 @@ public class AddPanel extends JPanel{
         add(photoPath);
         add(fileButton);
         add(submit);
+    }
+    public void transferData(String name, int id, int age, String gender, String startDate, String level, String teamInfo, String positionTitle, String mobileNumber, String email, String photo){
+        
     }
 }
