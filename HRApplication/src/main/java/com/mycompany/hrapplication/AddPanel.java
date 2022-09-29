@@ -14,6 +14,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.*;
 import java.util.regex.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 public class AddPanel extends JPanel{
     private String fileName;
     private JLabel titleLabel;
@@ -42,8 +46,7 @@ public class AddPanel extends JPanel{
     private JTextField photoPath;
     private JButton fileButton;
     private JButton submit;
-    AddPanel(Container contentPane){
-//        GridBagLayout gb = new GridBagLayout();
+    AddPanel(JFrame frame){
         setLayout(null);
         titleLabel = new JLabel("Add a New Employee");
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD,30));
@@ -165,7 +168,7 @@ public class AddPanel extends JPanel{
               File f = fc.getSelectedFile();
               try {
                  fileName = f.toString();
-                 System.out.println(fileName);
+//                 System.out.println(fileName);
                  photoPath.setText(fileName);
               } catch (Exception ex) {
                  System.out.println("problem accessing file " + f.getAbsolutePath());
@@ -204,52 +207,56 @@ public class AddPanel extends JPanel{
                 String photo = photoPath.getText();
                 boolean allFieldsFilled = false;
                 if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(name).matches() && !name.equals("")){
-                    System.out.println("Name is valid.");
+//                    System.out.println("Name is valid.");
                     if(Pattern.compile("^[1-9]\\d*$").matcher(id).matches()){
-                        System.out.println("Id is valid.");
+//                        System.out.println("Id is valid.");
                         if(Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(startDate).matches()){
-                            System.out.println("Start date is valid.");
+//                            System.out.println("Start date is valid.");
                             if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(positionTitle).matches() && !positionTitle.equals("")){
-                                System.out.println("Position title is valid.");
+//                                System.out.println("Position title is valid.");
                                 if(Pattern.compile("\\+\\d(-\\d{3}){2}-\\d{4}").matcher(mobileNumber).matches()){
-                                    System.out.println("Mobile Number is valid.");
+//                                    System.out.println("Mobile Number is valid.");
                                     if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches()){
-                                        System.out.println("Email is valid.");
+//                                        System.out.println("Email is valid.");
                                         if(!photo.equals( "")){
-                                            System.out.println("Photo is uploaded.");
+//                                            System.out.println("Photo is uploaded.");
                                             allFieldsFilled = true;
                                         }
                                         else{
-                                            JOptionPane.showMessageDialog(contentPane, "Please add an Employee photo.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                            JOptionPane.showMessageDialog(frame, "Please add an Employee photo.", "Alert", JOptionPane.WARNING_MESSAGE);
                                         }
                                     }
                                     else{
-                                        JOptionPane.showMessageDialog(contentPane, "Email should be in the following format i.e.\nA-Z characters allowed\na-z characters allowed\n0-9 numbers allowed\nAdditionally email may contain only dot(.), dash(-) and underscore(_)\nRest all characters are not allowed", "Alert", JOptionPane.WARNING_MESSAGE);
+                                        JOptionPane.showMessageDialog(frame, "Email should be in the following format i.e.\nA-Z characters allowed\na-z characters allowed\n0-9 numbers allowed\nAdditionally email may contain only dot(.), dash(-) and underscore(_)\nRest all characters are not allowed", "Alert", JOptionPane.WARNING_MESSAGE);
                                     }
                                 }
                                 else{
-                                    JOptionPane.showMessageDialog(contentPane, "Mobile Number should be in +X-XXX-XXX-XXXX.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(frame, "Mobile Number should be in +X-XXX-XXX-XXXX.", "Alert", JOptionPane.WARNING_MESSAGE);
                                 }
                             }
                             else{
-                                JOptionPane.showMessageDialog(contentPane, "Position title is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(frame, "Position title is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
                             }
                         }
                         else{
-                            JOptionPane.showMessageDialog(contentPane, "Start date should be in YYYY-MM-DD format.", "Alert", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(frame, "Start date should be in YYYY-MM-DD format.", "Alert", JOptionPane.WARNING_MESSAGE);
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(contentPane, "Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(frame, "Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(contentPane, "Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
                 }
                 System.out.println(name + " " + id + " " + age + " " + gender + " " + startDate + " " + level + " " + teamInfo + " " + positionTitle
                 + " " + mobileNumber + " " + email + " " + photo);
-                if(allFieldsFilled)
-                    transferData(name, Integer.parseInt(id), age, gender, startDate, level, teamInfo, positionTitle, mobileNumber, email, photo);
+                if(allFieldsFilled){
+                    int addDialog = JOptionPane.showConfirmDialog(frame,"Are you sure?", null, JOptionPane.YES_NO_OPTION);  
+                    if(addDialog == JOptionPane.YES_OPTION){
+                        transferData(name, Integer.parseInt(id), age, gender, startDate, level, teamInfo, positionTitle, mobileNumber, email, photo); 
+                    }  
+                }
             }
         });
         
@@ -281,6 +288,35 @@ public class AddPanel extends JPanel{
         add(submit);
     }
     public void transferData(String name, int id, int age, String gender, String startDate, String level, String teamInfo, String positionTitle, String mobileNumber, String email, String photo){
-        
+        JSONParser parser = new JSONParser();
+        try(FileReader reader = new FileReader("./src/main/java/com/mycompany/hrapplication/database.json")){
+            JSONObject databaseJson = (JSONObject) parser.parse(reader);
+            JSONArray employees = (JSONArray)databaseJson.get("Employees");
+            JSONObject employee = new JSONObject();
+            employee.put("name", name);
+            employee.put("id", id);
+            employee.put("gender", gender);
+            employee.put("start_date", startDate);
+            employee.put("level", level);
+            employee.put("team_info", teamInfo);
+            employee.put("position_title", positionTitle);
+            employee.put("mobile_number", mobileNumber);
+            employee.put("email", email);
+            employee.put("photo", photo);
+            employees.add(employee);
+            System.out.println(databaseJson);
+            reader.close();
+            try(FileWriter writer = new FileWriter("./src/main/java/com/mycompany/hrapplication/database.json", false)){
+                writer.write(databaseJson.toJSONString());
+                writer.flush();
+                writer.close();
+            }
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        catch(ParseException ex){
+            ex.printStackTrace();
+        }
     }
 }

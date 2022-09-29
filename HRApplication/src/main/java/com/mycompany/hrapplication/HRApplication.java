@@ -17,7 +17,7 @@ public class HRApplication {
         Container contentPane = window.getContentPane();
         JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
         tabPane.addTab("Home", new HomePanel());
-        AddPanel ap = new AddPanel(contentPane);
+        AddPanel ap = new AddPanel(window);
         tabPane.addTab("Add", ap);
         tabPane.addTab("Search", new SearchPanel());
         tabPane.addTab("Update", new UpdatePanel());
