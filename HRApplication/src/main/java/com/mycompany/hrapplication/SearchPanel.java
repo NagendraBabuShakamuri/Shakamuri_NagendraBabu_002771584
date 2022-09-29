@@ -16,5 +16,6 @@ public class SearchPanel extends JPanel{
      */
     SearchPanel(){
         
+        
     }
 }

@@ -21,7 +21,8 @@ public class HRApplication {
         tabPane.addTab("Add", ap);
         tabPane.addTab("Search", new SearchPanel());
         tabPane.addTab("Update", new UpdatePanel());
-        tabPane.addTab("Delete", new DeletePanel());
+        DeletePanel dp = new DeletePanel(window);
+        tabPane.addTab("Delete", dp);
         contentPane.add(tabPane);
     }
     public static void main(String args[]) {
