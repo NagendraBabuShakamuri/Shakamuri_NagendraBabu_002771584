@@ -14,6 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.*;
 import java.util.regex.*;
+import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -252,10 +253,8 @@ public class AddPanel extends JPanel{
                 System.out.println(name + " " + id + " " + age + " " + gender + " " + startDate + " " + level + " " + teamInfo + " " + positionTitle
                 + " " + mobileNumber + " " + email + " " + photo);
                 if(allFieldsFilled){
-                    int addDialog = JOptionPane.showConfirmDialog(frame,"Are you sure?", null, JOptionPane.YES_NO_OPTION);  
-                    if(addDialog == JOptionPane.YES_OPTION){
-                        transferData(name, Integer.parseInt(id), age, gender, startDate, level, teamInfo, positionTitle, mobileNumber, email, photo); 
-                    }  
+                    transferData(name, Integer.parseInt(id), age, gender, startDate, level, teamInfo, positionTitle, mobileNumber, email, photo, frame); 
+                      
                 }
             }
         });
@@ -287,30 +286,37 @@ public class AddPanel extends JPanel{
         add(fileButton);
         add(submit);
     }
-    public void transferData(String name, int id, int age, String gender, String startDate, String level, String teamInfo, String positionTitle, String mobileNumber, String email, String photo){
+    public void transferData(String name, int id, int age, String gender, String startDate, String level, String teamInfo, String positionTitle, String mobileNumber, String email, String photo, JFrame frame){
         JSONParser parser = new JSONParser();
         try(FileReader reader = new FileReader("./src/main/java/com/mycompany/hrapplication/database.json")){
             JSONObject databaseJson = (JSONObject) parser.parse(reader);
             JSONArray employees = (JSONArray)databaseJson.get("Employees");
-            JSONObject employee = new JSONObject();
-            employee.put("name", name);
-            employee.put("id", id);
-            employee.put("gender", gender);
-            employee.put("start_date", startDate);
-            employee.put("level", level);
-            employee.put("team_info", teamInfo);
-            employee.put("position_title", positionTitle);
-            employee.put("mobile_number", mobileNumber);
-            employee.put("email", email);
-            employee.put("photo", photo);
-            employees.add(employee);
-            System.out.println(databaseJson);
-            reader.close();
-            try(FileWriter writer = new FileWriter("./src/main/java/com/mycompany/hrapplication/database.json", false)){
-                writer.write(databaseJson.toJSONString());
-                writer.flush();
-                writer.close();
+            if(!backendValidation(employees, id, mobileNumber, email, frame)){
+              return;
             }
+            else
+            {
+                JSONObject employee = new JSONObject();
+                employee.put("name", name);
+                employee.put("id", id);
+                employee.put("gender", gender);
+                employee.put("start_date", startDate);
+                employee.put("level", level);
+                employee.put("team_info", teamInfo);
+                employee.put("position_title", positionTitle);
+                employee.put("mobile_number", mobileNumber);
+                employee.put("email", email);
+                employee.put("photo", photo);
+                employees.add(employee);
+    //            System.out.println(databaseJson);
+                reader.close();
+                try(FileWriter writer = new FileWriter("./src/main/java/com/mycompany/hrapplication/database.json", false)){
+                    writer.write(databaseJson.toJSONString());
+                    writer.flush();
+                    writer.close();
+                    JOptionPane.showMessageDialog(frame, "Added the record successfully.", null, JOptionPane.OK_OPTION);
+                }
+            }    
         }
         catch(IOException ex){
             ex.printStackTrace();
@@ -318,5 +324,23 @@ public class AddPanel extends JPanel{
         catch(ParseException ex){
             ex.printStackTrace();
         }
+    }
+    public boolean backendValidation(JSONArray employees, int id, String mobileNumber, String email, JFrame frame){
+        for(int i = 0; i < employees.size(); i++){
+            JSONObject employee = (JSONObject)employees.get(i);
+            if(Integer.parseInt(employee.get("id").toString()) == id){
+                JOptionPane.showMessageDialog(frame, "An employee with the given Id already exists.\nPlease enter another Id.", "Alert", JOptionPane.OK_OPTION);
+                return false;
+            }
+            else if(employee.get("mobile_number").equals(mobileNumber)){
+                JOptionPane.showMessageDialog(frame, "An employee with the given mobile number already exists.\nPlease enter another mobile number.", "Alert", JOptionPane.OK_OPTION);
+                return false;
+            }
+            else if(employee.get("email").equals(email)){
+                JOptionPane.showMessageDialog(frame, "An employee with the given email already exists.\nPlease enter another email Id.", "Alert", JOptionPane.OK_OPTION);
+                return false;
+            }
+        }
+        return true;
     }
 }
