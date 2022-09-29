@@ -298,6 +298,7 @@ public class AddPanel extends JPanel{
                 JSONObject employee = new JSONObject();
                 employee.put("Name", name);
                 employee.put("Employee Id", id);
+                employee.put("Age", age);
                 employee.put("Gender", gender);
                 employee.put("Start date", startDate);
                 employee.put("level", level);
