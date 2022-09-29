@@ -19,7 +19,8 @@ public class HRApplication {
         tabPane.addTab("Home", new HomePanel());
         AddPanel ap = new AddPanel(window);
         tabPane.addTab("Add", ap);
-        tabPane.addTab("Search", new SearchPanel());
+        SearchPanel sp = new SearchPanel(window);
+        tabPane.addTab("Search", sp);
         tabPane.addTab("Update", new UpdatePanel());
         DeletePanel dp = new DeletePanel(window);
         tabPane.addTab("Delete", dp);

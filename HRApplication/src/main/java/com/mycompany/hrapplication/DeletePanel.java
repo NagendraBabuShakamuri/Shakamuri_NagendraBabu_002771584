@@ -86,11 +86,11 @@ public class DeletePanel extends JPanel{
             boolean isFound = false;
             for(int i = 0; i < employees.size(); i++){
               JSONObject employee = (JSONObject)employees.get(i);
-              if(employee.get(selectedItem).toString().equals(deleteText))
+              if(employee.get(selectedItem).toString().equals(deleteText)){
                 isFound = true;
                 employees.remove(employee);
-                System.out.println(employees);
                 break;  
+              }
             }
             reader.close();
             if(!isFound)
