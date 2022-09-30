@@ -158,7 +158,7 @@ public class UpdatePanel extends JPanel{
                 add(ageLabel);
                 
                 ageField.removeAllItems();
-                for(int j = 1; j< 100; j++){ 
+                for(int j = 18; j< 100; j++){ 
                     ageField.addItem(j);
                 }
                 ageField.getModel().setSelectedItem(employee.get("Age").toString());

@@ -131,140 +131,144 @@ public class SearchPanel extends JPanel{
               if(employee.get(selectedItem).toString().equals(searchText)){
                 isFound = true;           
                 imageLabel.setBounds(300, 200, 150, 100);
-                ImageIcon image = new ImageIcon(employee.get("Photo").toString());
-                Image img = image.getImage();
+                ImageIcon image = new ImageIcon(employee.get("Photo").toString());                  
+                Image img = image.getImage();                
                 Image imgScale = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon scaledIcon = new ImageIcon(imgScale);
+                ImageIcon scaledIcon = new ImageIcon(imgScale);                
                 imageLabel.setIcon(scaledIcon);
                 imageLabel.setVisible(true);
                 add(imageLabel);
                 
+                File f = new File(employee.get("Photo").toString());
+                if(!f.exists())
+                    imageLabel.setText("No image Found");
+                
                 
                 name.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                name.setBounds(250, 300, 200, 30);
+                name.setBounds(270, 310, 200, 30);
                 name.setVisible(true);
                 add(name);
                 
                 nameValue.setText(employee.get("Name").toString());
                 nameValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                nameValue.setBounds(400, 300, 200, 30);
+                nameValue.setBounds(420, 310, 200, 30);
                 nameValue.setVisible(true);
                 add(nameValue);
                 
                 
                 id.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                id.setBounds(250, 330, 200, 30);
+                id.setBounds(270, 350, 200, 30);
                 id.setVisible(true);
                 add(id);
                 
                 
                 idValue.setText(employee.get("Employee Id").toString());
                 idValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                idValue.setBounds(400, 330, 200, 30);
+                idValue.setBounds(420, 350, 200, 30);
                 idValue.setVisible(true);
                 add(idValue);
                 
                 
                 age.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                age.setBounds(250, 360, 200, 30);
+                age.setBounds(270, 390, 200, 30);
                 age.setVisible(true);
                 add(age);
                 
                 
                 ageValue.setText(employee.get("Age").toString());
                 ageValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                ageValue.setBounds(400, 360, 200, 30);
+                ageValue.setBounds(420, 390, 200, 30);
                 ageValue.setVisible(true);
                 add(ageValue);
                 
                 
                 gender.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                gender.setBounds(250, 390, 200, 30);
+                gender.setBounds(270, 430, 200, 30);
                 gender.setVisible(true);
                 add(gender);
                 
                 
                 genderValue.setText(employee.get("Gender").toString());
                 genderValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                genderValue.setBounds(400, 390, 200, 30);
+                genderValue.setBounds(420, 430, 200, 30);
                 genderValue.setVisible(true);
                 add(genderValue);
                 
                 
                 startDate.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                startDate.setBounds(250, 420, 200, 30);
+                startDate.setBounds(270, 470, 200, 30);
                 startDate.setVisible(true);
                 add(startDate);
                 
                 
                 startDateValue.setText(employee.get("Start date").toString());
                 startDateValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                startDateValue.setBounds(400, 420, 200, 30);
+                startDateValue.setBounds(420, 470, 200, 30);
                 startDateValue.setVisible(true);
                 add(startDateValue);
                 
                 
                 level.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                level.setBounds(250, 450, 200, 30);
+                level.setBounds(270, 510, 200, 30);
                 level.setVisible(true);
                 add(level);
                 
                 
                 levelValue.setText(employee.get("level").toString());
                 levelValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                levelValue.setBounds(400, 450, 200, 30);
+                levelValue.setBounds(420, 510, 200, 30);
                 levelValue.setVisible(true);
                 add(levelValue);
                 
                 
                 teamInfo.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                teamInfo.setBounds(250, 480, 200, 30);
+                teamInfo.setBounds(270, 550, 200, 30);
                 teamInfo.setVisible(true);
                 add(teamInfo);
                 
                 
                 teamInfoValue.setText(employee.get("team info").toString());
                 teamInfoValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                teamInfoValue.setBounds(400, 480, 200, 30);
+                teamInfoValue.setBounds(420, 550, 200, 30);
                 teamInfoValue.setVisible(true);
                 add(teamInfoValue);
                 
                 
                 positionTitle.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                positionTitle.setBounds(250, 510, 200, 30);
+                positionTitle.setBounds(270, 590, 200, 30);
                 positionTitle.setVisible(true);
                 add(positionTitle);
                 
                 
                 positionTitleValue.setText(employee.get("Position title").toString());
                 positionTitleValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                positionTitleValue.setBounds(400, 510, 200, 30);
+                positionTitleValue.setBounds(420, 590, 200, 30);
                 positionTitleValue.setVisible(true);
                 add(positionTitleValue);
                 
                 
                 mobileNumber.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                mobileNumber.setBounds(250, 540, 200, 30);
+                mobileNumber.setBounds(270, 630, 200, 30);
                 mobileNumber.setVisible(true);
                 add(mobileNumber);
                 
                 
                 mobileNumberValue.setText(employee.get("Mobile Number").toString());
                 mobileNumberValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                mobileNumberValue.setBounds(400, 540, 200, 30);
+                mobileNumberValue.setBounds(420, 630, 200, 30);
                 mobileNumberValue.setVisible(true);
                 add(mobileNumberValue);
                 
                 
                 email.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                email.setBounds(250, 570, 200, 30);
+                email.setBounds(270, 670, 200, 30);
                 email.setVisible(true);
                 add(email);
                 
                 
                 emailValue.setText(employee.get("Email").toString());
                 emailValue.setFont(new Font("Times New Roman", Font.PLAIN,20));
-                emailValue.setBounds(400, 570, 200, 30);
+                emailValue.setBounds(420, 670, 200, 30);
                 emailValue.setVisible(true);
                 add(emailValue);
                 repaint();

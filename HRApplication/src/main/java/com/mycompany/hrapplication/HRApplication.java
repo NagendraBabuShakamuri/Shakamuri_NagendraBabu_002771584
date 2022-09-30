@@ -22,20 +22,10 @@ public class HRApplication {
         UpdatePanel up = new UpdatePanel(window);
         DeletePanel dp = new DeletePanel(window);
         tabPane.addTab("Add", ap);     
-        tabPane.addTab("Search", sp);     
+        tabPane.addTab("View", sp);     
         tabPane.addTab("Update", up);      
         tabPane.addTab("Delete", dp);
         contentPane.add(tabPane);
-//        tabPane.addChangeListener(new ChangeListener() {
-//            public void stateChanged(ChangeEvent e) {
-//                tabPane.removeAll();
-//                tabPane.addTab("Add", new AddPanel(window));     
-//                tabPane.addTab("Search", new SearchPanel(window));     
-//                tabPane.addTab("Update", new UpdatePanel(window));      
-//                tabPane.addTab("Delete", new DeletePanel(window));
-//                window.pack();
-//            }
-//        });
     }
     public static void main(String args[]) {
         // TODO code application logic here

@@ -53,57 +53,57 @@ public class AddPanel extends JPanel{
         titleLabel.setBounds(250, 30, 300, 30);
         
         nameLabel = new JLabel("Name: ");
-        nameLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        nameLabel.setBounds(230, 100, 100, 25);
+        nameLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        nameLabel.setBounds(200, 100, 100, 25);
         
         nameField = new JTextField();
-        nameField.setFont(new Font("Arial", Font.PLAIN,15));
-        nameField.setBounds(370, 100, 190, 25);
+        nameField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        nameField.setBounds(400, 100, 190, 25);
         
         idLabel = new JLabel("Employee Id: ");
-        idLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        idLabel.setBounds(230, 150, 200, 25);
+        idLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        idLabel.setBounds(200, 150, 200, 25);
         
         idField = new JTextField();
-        idField.setFont(new Font("Arial", Font.PLAIN,15));
-        idField.setBounds(370, 150, 190, 25);
+        idField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        idField.setBounds(400, 150, 190, 25);
         
         ageLabel = new JLabel("Age: ");
-        ageLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        ageLabel.setBounds(230, 200, 100, 25);
+        ageLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        ageLabel.setBounds(200, 200, 100, 25);
         
         ageField = new JComboBox();
-        for(int i = 1; i< 100; i++){
+        for(int i = 18; i< 100; i++){
             ageField.addItem(i);
         }
-        ageField.setFont(new Font("Arial", Font.PLAIN,15));
-        ageField.setBounds(370, 200, 190, 25);
+        ageField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        ageField.setBounds(400, 200, 190, 25);
 
         
         genderLabel = new JLabel("Gender: ");
-        genderLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        genderLabel.setBounds(230, 250, 100, 25);
+        genderLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        genderLabel.setBounds(200, 250, 100, 25);
         
         male = new JRadioButton("Male", true);
         female = new JRadioButton("Female");
-        male.setBounds(370, 250, 95, 25);
-        female.setBounds(470, 250, 95, 25);
+        male.setBounds(400, 250, 95, 25);
+        female.setBounds(500, 250, 95, 25);
         bg = new ButtonGroup();
         bg.add(male);
         bg.add(female);
         
         
         startDateLabel = new JLabel("Start date: ");
-        startDateLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        startDateLabel.setBounds(230, 300, 100, 25);
+        startDateLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        startDateLabel.setBounds(200, 300, 100, 25);
         
         startDateField = new JTextField();
-        startDateField.setFont(new Font("Arial", Font.PLAIN,15));
-        startDateField.setBounds(370, 300, 190, 25);
+        startDateField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        startDateField.setBounds(400, 300, 190, 25);
         
         levelLabel = new JLabel("Level: ");
-        levelLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        levelLabel.setBounds(230, 350, 100, 25);
+        levelLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        levelLabel.setBounds(200, 350, 100, 25);
         
         levelField = new JComboBox();
         levelField.addItem("I");
@@ -111,48 +111,48 @@ public class AddPanel extends JPanel{
         levelField.addItem("III");
         levelField.addItem("IV");
         levelField.addItem("V");
-        levelField.setFont(new Font("Arial", Font.PLAIN,15));
-        levelField.setBounds(370, 350, 190, 25);
+        levelField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        levelField.setBounds(400, 350, 190, 25);
         
         teamInfoLabel = new JLabel("Team info (Optional): ");
-        teamInfoLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        teamInfoLabel.setBounds(230, 400, 200, 25);
+        teamInfoLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        teamInfoLabel.setBounds(200, 400, 200, 25);
         
         teamInfoField = new JTextArea();
-        teamInfoField.setFont(new Font("Arial", Font.PLAIN,15));
-        teamInfoField.setBounds(370, 400, 190, 50);
+        teamInfoField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        teamInfoField.setBounds(400, 400, 190, 80);
         
         positionTitleLabel = new JLabel("Position title: ");
-        positionTitleLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        positionTitleLabel.setBounds(230, 500, 200, 25);
+        positionTitleLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        positionTitleLabel.setBounds(200, 500, 200, 25);
         
         positionTitleField = new JTextField();
-        positionTitleField.setFont(new Font("Arial", Font.PLAIN,15));
-        positionTitleField.setBounds(370, 500, 190, 25);
+        positionTitleField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        positionTitleField.setBounds(400, 500, 190, 25);
         
         mobileNumberLabel = new JLabel("Mobile Number: ");
-        mobileNumberLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        mobileNumberLabel.setBounds(230, 550, 200, 25);
+        mobileNumberLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        mobileNumberLabel.setBounds(200, 550, 200, 25);
         
         mobileNumberField = new JTextField();
-        mobileNumberField.setFont(new Font("Arial", Font.PLAIN,15));
-        mobileNumberField.setBounds(370, 550, 190, 25);
+        mobileNumberField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        mobileNumberField.setBounds(400, 550, 190, 25);
         
         emailLabel = new JLabel("Email: ");
-        emailLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        emailLabel.setBounds(230, 600, 200, 25);
+        emailLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        emailLabel.setBounds(200, 600, 200, 25);
         
         emailField = new JTextField();
-        emailField.setFont(new Font("Arial", Font.PLAIN,15));
-        emailField.setBounds(370, 600, 190, 25);
+        emailField.setFont(new Font("Times New Roman", Font.PLAIN,15));
+        emailField.setBounds(400, 600, 190, 25);
         
         photoLabel = new JLabel("Photo: ");
-        photoLabel.setFont(new Font("Arial", Font.PLAIN,20));
-        photoLabel.setBounds(230, 650, 200, 25);
+        photoLabel.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        photoLabel.setBounds(200, 650, 200, 25);
         
         photoPath = new JTextField();
-        photoPath.setFont(new Font("Arial", Font.PLAIN,20));
-        photoPath.setBounds(370, 650, 200, 25);
+        photoPath.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        photoPath.setBounds(400, 650, 190, 25);
         photoPath.setEditable(false);
         
         fileButton = new JButton("..");
@@ -181,12 +181,12 @@ public class AddPanel extends JPanel{
           }
   
         });
-        fileButton.setFont(new Font("Arial", Font.PLAIN,20));
-        fileButton.setBounds(580, 650, 50, 25);
+        fileButton.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        fileButton.setBounds(600, 650, 50, 25);
         
         submit = new JButton("Submit");
-        submit.setFont(new Font("Arial", Font.PLAIN,20));
-        submit.setBounds(220, 690, 150, 25);
+        submit.setFont(new Font("Times New Roman", Font.PLAIN,20));
+        submit.setBounds(200, 690, 150, 25);
         submit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
