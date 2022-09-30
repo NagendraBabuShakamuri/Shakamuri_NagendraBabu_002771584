@@ -11,20 +11,31 @@ package com.mycompany.hrapplication;
  */
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
 public class HRApplication {
 
     HRApplication(JFrame window){
         Container contentPane = window.getContentPane();
         JTabbedPane tabPane = new JTabbedPane(JTabbedPane.TOP);
-        tabPane.addTab("Home", new HomePanel());
         AddPanel ap = new AddPanel(window);
-        tabPane.addTab("Add", ap);
         SearchPanel sp = new SearchPanel(window);
-        tabPane.addTab("Search", sp);
-        tabPane.addTab("Update", new UpdatePanel());
+        UpdatePanel up = new UpdatePanel(window);
         DeletePanel dp = new DeletePanel(window);
+        tabPane.addTab("Add", ap);     
+        tabPane.addTab("Search", sp);     
+        tabPane.addTab("Update", up);      
         tabPane.addTab("Delete", dp);
         contentPane.add(tabPane);
+//        tabPane.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                tabPane.removeAll();
+//                tabPane.addTab("Add", new AddPanel(window));     
+//                tabPane.addTab("Search", new SearchPanel(window));     
+//                tabPane.addTab("Update", new UpdatePanel(window));      
+//                tabPane.addTab("Delete", new DeletePanel(window));
+//                window.pack();
+//            }
+//        });
     }
     public static void main(String args[]) {
         // TODO code application logic here
