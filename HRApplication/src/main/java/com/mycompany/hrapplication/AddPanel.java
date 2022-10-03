@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.*;
+import java.text.*;
 import java.util.regex.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -198,7 +199,7 @@ public class AddPanel extends JPanel{
                     gender = "Male";
                 else if(female.isSelected())
                     gender = "Female";
-                String startDate = startDateField.getText().trim();
+                String startDate = startDateField.getText().trim();                
                 String level = levelField.getSelectedItem().toString();
                 String teamInfo = teamInfoField.getText().trim();
                 String positionTitle = positionTitleField.getText().trim();
@@ -248,7 +249,16 @@ public class AddPanel extends JPanel{
 //                    System.out.println("Name is valid.");
                     if(Pattern.compile("^[1-9]\\d*$").matcher(id).matches()){
 //                        System.out.println("Id is valid.");
-                        if(Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(startDate).matches()){
+                        if(Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(startDate).matches()){  
+                                try {                          
+                                    String DATE_FORMAT = "yyyy-MM-dd";
+                                    DateFormat dfd = new SimpleDateFormat(DATE_FORMAT);
+                                    dfd.setLenient(false);
+                                    dfd.parse(startDate);
+                                }catch (Exception ex) {     
+                                   JOptionPane.showMessageDialog(frame, "Start date should be in correct format.", "Alert", JOptionPane.WARNING_MESSAGE);
+                                   return false;
+                                }
 //                            System.out.println("Start date is valid.");
                             if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(positionTitle).matches() && !positionTitle.equals("")){
 //                                System.out.println("Position title is valid.");
