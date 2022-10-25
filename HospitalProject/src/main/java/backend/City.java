@@ -8,30 +8,33 @@ package backend;
  *
  * @author nbabu
  */
-import java.util.*;
+import java.util.ArrayList;
 public class City {
+    private int id;
     private String name;
     private String state;
     private static ArrayList<City> cityList = new ArrayList<>();
-    City(String name, String state){
+    public City(int id, String name, String state){
+      this.id = id;
       this.name = name;
-      this.state = state;
-      cityList.add(this);
+      this.state = state;      
     }
+    public void addCityList(){
+      cityList.add(this);
+    }  
+    public int getId(){
+      return id; 
+    }  
     public String getName(){
-     return name;
+      return name;
     }
     public String getState(){
       return state;
     }
+    public static void setCityList(ArrayList<City> newCityList){
+      cityList = newCityList;
+    }
     public static ArrayList<City> getCityList(){
       return cityList;
-    }
-    public static void main(String[] args){
-      City c1 = new City("Quincy", "Massachussets");
-      City c2 = new City("Boston", "Massachussets");
-      System.out.println("City List:");
-      for(City c: getCityList())
-        System.out.println("Name: " + c.getName() + "\n" + "State: " + c.getState());
     }
 }

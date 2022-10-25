@@ -8,6 +8,11 @@ package ui;
  *
  * @author nbabu
  */
+import javax.swing.*;
+import java.util.regex.*;
+import backend.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 public class CommunityAdministrator extends javax.swing.JFrame {
 
     /**
@@ -30,20 +35,85 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         createPanel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         createHousePanel = new javax.swing.JPanel();
+        houseId = new javax.swing.JLabel();
+        houseName = new javax.swing.JLabel();
+        houseOwner = new javax.swing.JLabel();
+        communityName = new javax.swing.JLabel();
+        cityName = new javax.swing.JLabel();
+        houseIdField = new javax.swing.JTextField();
+        houseNameField = new javax.swing.JTextField();
+        houseOwnerField = new javax.swing.JTextField();
+        houseCityField = new javax.swing.JTextField();
+        createHouseSubmit = new javax.swing.JButton();
+        houseCommComboField = new javax.swing.JComboBox<>();
         createCommPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        commIdField = new javax.swing.JTextField();
+        commNameField = new javax.swing.JTextField();
+        cityComboField = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cityStateField = new javax.swing.JTextField();
+        createCommSubmit = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        zipCodeField = new javax.swing.JTextField();
         createCityPanel = new javax.swing.JPanel();
+        cityIdLabel = new javax.swing.JLabel();
+        cityIdField = new javax.swing.JTextField();
+        cityNameLabel = new javax.swing.JLabel();
+        cityNameField = new javax.swing.JTextField();
+        stateLabel = new javax.swing.JLabel();
+        createCitySubmitButton = new javax.swing.JButton();
+        stateComboField = new javax.swing.JComboBox<>();
         searchPanel = new javax.swing.JPanel();
-        searchComboBox = new javax.swing.JComboBox<>();
-        searchField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
-        updatePanel = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        updateHousePanel = new javax.swing.JPanel();
-        updateCommPanel = new javax.swing.JPanel();
-        updateCityPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        updateHouseIdSearch = new javax.swing.JButton();
+        updateHouseIdField = new javax.swing.JTextField();
+        houseIdLabel = new javax.swing.JLabel();
+        updateHouseNameField = new javax.swing.JTextField();
+        houseNameLabel = new javax.swing.JLabel();
+        updateHouseNameSearch = new javax.swing.JButton();
+        houseOwnerLabel = new javax.swing.JLabel();
+        updateHouseOwnerField = new javax.swing.JTextField();
+        houseCommunityLabel = new javax.swing.JLabel();
+        updateHouseCommCombo = new javax.swing.JComboBox<>();
+        houseCityLabel = new javax.swing.JLabel();
+        updateHouseCityField = new javax.swing.JTextField();
+        houseUpdateButton = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        housePositionField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        updateCommIdField = new javax.swing.JTextField();
+        updateCommIdSearch = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        updateCommNameField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        updateCommNameSearch = new javax.swing.JButton();
+        commZipCodeLabel = new javax.swing.JLabel();
+        updateCommZipCodeField = new javax.swing.JTextField();
+        commCityLabel = new javax.swing.JLabel();
+        updateCommCityCombo = new javax.swing.JComboBox<>();
+        commStateLabel = new javax.swing.JLabel();
+        updateCommStateField = new javax.swing.JTextField();
+        updateCommButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        commPositionField = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        updateCityIdField = new javax.swing.JTextField();
+        updateCityIdSearch = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        updateCityNameField = new javax.swing.JTextField();
+        updateCityNameSearch = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        updateCityStateLabel = new javax.swing.JLabel();
+        updateCityStateCombo = new javax.swing.JComboBox<>();
+        updateCityButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        cityPositionField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(814, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
@@ -51,41 +121,250 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        houseId.setText("House Id:");
+
+        houseName.setText("House Name:");
+
+        houseOwner.setText("House Owner:");
+
+        communityName.setText("Community:");
+
+        cityName.setText("City:");
+
+        houseCityField.setEnabled(false);
+        houseCityField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                houseCityFieldActionPerformed(evt);
+            }
+        });
+
+        createHouseSubmit.setText("Add");
+        createHouseSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createHouseSubmitActionPerformed(evt);
+            }
+        });
+
+        houseCommComboField.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                houseCommComboFieldItemStateChanged(evt);
+            }
+        });
+        houseCommComboField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                houseCommComboFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout createHousePanelLayout = new javax.swing.GroupLayout(createHousePanel);
         createHousePanel.setLayout(createHousePanelLayout);
         createHousePanelLayout.setHorizontalGroup(
             createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createHousePanelLayout.createSequentialGroup()
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(createHousePanelLayout.createSequentialGroup()
+                        .addComponent(cityName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(houseCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createHouseSubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(createHousePanelLayout.createSequentialGroup()
+                        .addComponent(communityName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(houseCommComboField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(createHousePanelLayout.createSequentialGroup()
+                        .addComponent(houseOwner)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(houseOwnerField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(createHousePanelLayout.createSequentialGroup()
+                        .addComponent(houseName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(houseNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createHousePanelLayout.createSequentialGroup()
+                        .addComponent(houseId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(houseIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(281, 281, 281))
         );
         createHousePanelLayout.setVerticalGroup(
             createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(createHousePanelLayout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(houseId)
+                    .addComponent(houseIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(houseName)
+                    .addComponent(houseNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(houseOwner)
+                    .addComponent(houseOwnerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(communityName)
+                    .addComponent(houseCommComboField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityName)
+                    .addComponent(houseCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createHouseSubmit)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("House", createHousePanel);
+
+        jLabel1.setText("Community Id:");
+
+        jLabel2.setText("Community Name:");
+
+        jLabel3.setText("City:");
+
+        cityComboField.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cityComboFieldItemStateChanged(evt);
+            }
+        });
+        cityComboField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityComboFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("State:");
+
+        cityStateField.setEnabled(false);
+
+        createCommSubmit.setText("Submit");
+        createCommSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCommSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Zip Code: ");
 
         javax.swing.GroupLayout createCommPanelLayout = new javax.swing.GroupLayout(createCommPanel);
         createCommPanel.setLayout(createCommPanelLayout);
         createCommPanelLayout.setHorizontalGroup(
             createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
+            .addGroup(createCommPanelLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(createCommPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(commNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(createCommPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                            .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(createCommPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cityStateField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(createCommSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCommPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cityComboField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(createCommPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(commIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         createCommPanelLayout.setVerticalGroup(
             createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(createCommPanelLayout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(commIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(commNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(cityComboField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(cityStateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createCommSubmit)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Community", createCommPanel);
+
+        cityIdLabel.setText("City Id:");
+
+        cityNameLabel.setText("City Name:");
+
+        stateLabel.setText("State:");
+
+        createCitySubmitButton.setText("Submit");
+        createCitySubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCitySubmitButtonActionPerformed(evt);
+            }
+        });
+
+        stateComboField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Alabama", " Alaska", " Arizona", " Arkansas", " California", " Colorado", " Connecticut", " Delaware", " Florida", " Georgia", " Hawaii", " Idaho", " Illinois", " Indiana", " Iowa", " Kansas", " Kentucky", " Louisiana", " Maine", " Maryland", " Massachusetts", " Michigan", " Minnesota", " Mississippi", " Missouri", " Montana", " Nebraska", " Nevada", " New Hampshire", " New Jersey", " New Mexico", " New York", " North Carolina", " North Dakota", " Ohio", " Oklahoma", " Oregon", " Pennsylvania", " Rhode Island", " South Carolina", " South Dakota", " Tennessee", " Texas", " Utah", " Vermont", " Virginia", " Washington", " West Virginia", " Wisconsin", " Wyoming" }));
 
         javax.swing.GroupLayout createCityPanelLayout = new javax.swing.GroupLayout(createCityPanel);
         createCityPanel.setLayout(createCityPanelLayout);
         createCityPanelLayout.setHorizontalGroup(
             createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
+            .addGroup(createCityPanelLayout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(createCitySubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(createCityPanelLayout.createSequentialGroup()
+                        .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cityNameLabel)
+                            .addComponent(cityIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(createCityPanelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(cityIdField))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCityPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cityNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                    .addComponent(stateComboField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         createCityPanelLayout.setVerticalGroup(
             createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(createCityPanelLayout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cityIdLabel)
+                    .addComponent(cityIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cityNameLabel)
+                    .addComponent(cityNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stateLabel)
+                    .addComponent(stateComboField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createCitySubmitButton)
+                .addContainerGap(355, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("City", createCityPanel);
@@ -98,99 +377,358 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         );
         createPanelLayout.setVerticalGroup(
             createPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         tabPane.addTab("Create", createPanel);
 
-        searchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "House", "Community", "City" }));
-        searchComboBox.addActionListener(new java.awt.event.ActionListener() {
+        jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        updateHouseIdSearch.setText("Search");
+        updateHouseIdSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchComboBoxActionPerformed(evt);
+                updateHouseIdSearchActionPerformed(evt);
             }
         });
 
-        searchButton.setText("Search");
+        houseIdLabel.setText("House Id:");
+
+        houseNameLabel.setText("House Name:");
+
+        updateHouseNameSearch.setText("Search");
+        updateHouseNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateHouseNameSearchActionPerformed(evt);
+            }
+        });
+
+        houseOwnerLabel.setText("House Owner:");
+        houseOwnerLabel.setVisible(false);
+
+        updateHouseOwnerField.setVisible(false);
+
+        houseCommunityLabel.setText("Community:");
+        houseCommunityLabel.setVisible(false);
+
+        updateHouseCommCombo.setVisible(false);
+        updateHouseCommCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateHouseCommComboItemStateChanged(evt);
+            }
+        });
+
+        houseCityLabel.setText("City:");
+        houseCityLabel.setVisible(false);
+
+        updateHouseCityField.setEnabled(false);
+        updateHouseCityField.setVisible(false);
+
+        houseUpdateButton.setText("Update");
+        houseUpdateButton.setVisible(false);
+        houseUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                houseUpdateButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Position:");
+
+        housePositionField.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(houseUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(houseCityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(houseCommunityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(houseNameLabel)
+                                    .addComponent(houseIdLabel)
+                                    .addComponent(houseOwnerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(updateHouseIdField)
+                                            .addComponent(updateHouseNameField)
+                                            .addComponent(updateHouseOwnerField)
+                                            .addComponent(housePositionField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                                        .addComponent(updateHouseCommCombo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(updateHouseCityField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateHouseIdSearch)
+                            .addComponent(updateHouseNameSearch))))
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(housePositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHouseIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateHouseIdSearch)
+                    .addComponent(houseIdLabel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHouseNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(houseNameLabel)
+                    .addComponent(updateHouseNameSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(houseOwnerLabel)
+                    .addComponent(updateHouseOwnerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(houseCommunityLabel)
+                    .addComponent(updateHouseCommCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHouseCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(houseCityLabel))
+                .addGap(18, 18, 18)
+                .addComponent(houseUpdateButton)
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("House", jPanel1);
+
+        updateCommIdSearch.setText("Search");
+        updateCommIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCommIdSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Community Name:");
+
+        jLabel7.setText("Community Id:");
+
+        updateCommNameSearch.setText("Search");
+        updateCommNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCommNameSearchActionPerformed(evt);
+            }
+        });
+
+        commZipCodeLabel.setText("Zip Code:");
+        commZipCodeLabel.setVisible(false);
+
+        updateCommZipCodeField.setVisible(false);
+
+        commCityLabel.setText("City:");
+        commCityLabel.setVisible(false);
+
+        updateCommCityCombo.setVisible(false);
+        updateCommCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateCommCityComboItemStateChanged(evt);
+            }
+        });
+
+        commStateLabel.setText("State:");
+        commStateLabel.setVisible(false);
+
+        updateCommStateField.setEnabled(false);
+        updateCommStateField.setVisible(false);
+
+        updateCommButton.setText("Update");
+        updateCommButton.setVisible(false);
+        updateCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCommButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Position:");
+
+        commPositionField.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(updateCommButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(commStateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(commCityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(commZipCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateCommNameField)
+                            .addComponent(updateCommCityCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateCommZipCodeField)
+                            .addComponent(updateCommStateField)
+                            .addComponent(updateCommIdField)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(commPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 8, Short.MAX_VALUE)))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateCommIdSearch)
+                    .addComponent(updateCommNameSearch))
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(commPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateCommIdSearch)
+                    .addComponent(updateCommIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(updateCommNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateCommNameSearch))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commZipCodeLabel)
+                    .addComponent(updateCommZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commCityLabel)
+                    .addComponent(updateCommCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commStateLabel)
+                    .addComponent(updateCommStateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateCommButton)
+                .addContainerGap(294, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Community", jPanel2);
+
+        updateCityIdSearch.setText("Search");
+        updateCityIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCityIdSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("City Name:");
+
+        updateCityNameSearch.setText("Search");
+        updateCityNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCityNameSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("City Id:");
+
+        updateCityStateLabel.setText("State:");
+        updateCityStateLabel.setVisible(false);
+
+        updateCityStateCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Alabama", " Alaska", " Arizona", " Arkansas", " California", " Colorado", " Connecticut", " Delaware", " Florida", " Georgia", " Hawaii", " Idaho", " Illinois", " Indiana", " Iowa", " Kansas", " Kentucky", " Louisiana", " Maine", " Maryland", " Massachusetts", " Michigan", " Minnesota", " Mississippi", " Missouri", " Montana", " Nebraska", " Nevada", " New Hampshire", " New Jersey", " New Mexico", " New York", " North Carolina", " North Dakota", " Ohio", " Oklahoma", " Oregon", " Pennsylvania", " Rhode Island", " South Carolina", " South Dakota", " Tennessee", " Texas", " Utah", " Vermont", " Virginia", " Washington", " West Virginia", " Wisconsin", " Wyoming" }));
+        updateCityStateCombo.setVisible(false);
+
+        updateCityButton.setText("Update");
+        updateCityButton.setVisible(false);
+        updateCityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCityButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Position");
+
+        cityPositionField.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cityPositionField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                    .addComponent(updateCityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateCityStateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateCityStateCombo, 0, 1, Short.MAX_VALUE)
+                            .addComponent(updateCityIdField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(updateCityNameField))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateCityIdSearch)
+                    .addComponent(updateCityNameSearch))
+                .addContainerGap(256, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cityPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(updateCityIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateCityIdSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(updateCityNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateCityNameSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateCityStateLabel)
+                    .addComponent(updateCityStateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateCityButton)
+                .addContainerGap(354, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("City", jPanel3);
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(searchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchButton)
-                .addContainerGap(283, Short.MAX_VALUE))
+            .addComponent(jTabbedPane2)
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
-                .addContainerGap(619, Short.MAX_VALUE))
-        );
-
-        tabPane.addTab("Search", searchPanel);
-
-        jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-
-        javax.swing.GroupLayout updateHousePanelLayout = new javax.swing.GroupLayout(updateHousePanel);
-        updateHousePanel.setLayout(updateHousePanelLayout);
-        updateHousePanelLayout.setHorizontalGroup(
-            updateHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
-        );
-        updateHousePanelLayout.setVerticalGroup(
-            updateHousePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("House", updateHousePanel);
-
-        javax.swing.GroupLayout updateCommPanelLayout = new javax.swing.GroupLayout(updateCommPanel);
-        updateCommPanel.setLayout(updateCommPanelLayout);
-        updateCommPanelLayout.setHorizontalGroup(
-            updateCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
-        );
-        updateCommPanelLayout.setVerticalGroup(
-            updateCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Community", updateCommPanel);
-
-        javax.swing.GroupLayout updateCityPanelLayout = new javax.swing.GroupLayout(updateCityPanel);
-        updateCityPanel.setLayout(updateCityPanelLayout);
-        updateCityPanelLayout.setHorizontalGroup(
-            updateCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
-        );
-        updateCityPanelLayout.setVerticalGroup(
-            updateCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("City", updateCityPanel);
-
-        javax.swing.GroupLayout updatePanelLayout = new javax.swing.GroupLayout(updatePanel);
-        updatePanel.setLayout(updatePanelLayout);
-        updatePanelLayout.setHorizontalGroup(
-            updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
-        );
-        updatePanelLayout.setVerticalGroup(
-            updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane2)
         );
 
-        tabPane.addTab("Update", updatePanel);
+        tabPane.addTab("Search/Update", searchPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,10 +743,720 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchComboBoxActionPerformed
+    public static boolean clientSideValidation1(javax.swing.JFrame frame, String cityId, String cityName, String state){
+      if(Pattern.compile("^[1-9]\\d*$").matcher(cityId).matches()){
+        System.out.println("City Id is valid.");
+         if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(cityName).matches() && !cityName.equals("")){
+           System.out.println("City Name is valid.");
+           return true;
+         }
+         else
+         {
+            JOptionPane.showMessageDialog(frame, "City Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+         }
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "City Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    private void createCitySubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCitySubmitButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchComboBoxActionPerformed
+        String cityId = cityIdField.getText();
+        String cityName = cityNameField.getText();
+        String state = stateComboField.getSelectedItem().toString();
+        boolean passed = clientSideValidation1(this, cityId, cityName, state);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(City c: City.getCityList()){
+            if(Integer.parseInt(cityId) == c.getId())
+            {
+              JOptionPane.showMessageDialog(this, "City with the given Id already exists\nPlease give another Id to the city..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(cityName.equals(c.getName()))
+            {
+              JOptionPane.showMessageDialog(this, "City with the given name already exists\nPlease give another name to the city..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            City c1 = new City(Integer.parseInt(cityId), cityName, state);
+            c1.addCityList();
+            JOptionPane.showMessageDialog(this, "New City created successfully..", null, JOptionPane.OK_OPTION);         
+            cityComboField.removeAllItems();
+            updateCommCityCombo.removeAllItems();
+            for(City c: City.getCityList()){              
+              cityComboField.addItem(c.getName());
+              updateCommCityCombo.addItem(c.getName());
+              System.out.println("Id: " + c.getId() + "\nName: " + c.getName() + "\nState: " + c.getState());
+            }
+          }          
+        }
+    }//GEN-LAST:event_createCitySubmitButtonActionPerformed
+
+    private void cityComboFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityComboFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityComboFieldActionPerformed
+
+    private void cityComboFieldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityComboFieldItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+        String selectedItem = cityComboField.getSelectedItem().toString();
+        for(City c: City.getCityList()){
+          if(c.getName().equals(selectedItem)){
+            cityStateField.setText(c.getState());
+            break;
+          }
+        }
+    }        
+    }//GEN-LAST:event_cityComboFieldItemStateChanged
+    public static boolean clientSideValidation2(javax.swing.JFrame frame, String communityId, String communityName, String zipCode){
+      if(Pattern.compile("^[1-9]\\d*$").matcher(communityId).matches()){
+        System.out.println("Community Id is valid.");
+         if(Pattern.compile("^[a-zA-Z0-9\\s]*$").matcher(communityName).matches() && !communityName.equals(""))
+         {
+           System.out.println("Community Name is valid.");
+           if(Pattern.compile("^[0-9]\\d*$").matcher(zipCode).matches())
+           {
+               System.out.println("Zip Code is valid.");
+               return true;
+           }
+           else
+           {
+                JOptionPane.showMessageDialog(frame, "Zip Code is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+           }
+         }
+         else
+         {
+            JOptionPane.showMessageDialog(frame, "Community Name is not valid.\nOnly characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+         }
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "Community Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    private void createCommSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCommSubmitActionPerformed
+        // TODO add your handling code here:
+        String communityId = commIdField.getText();
+        String communityName = commNameField.getText();
+        String zipCode = zipCodeField.getText();
+        boolean passed = clientSideValidation2(this, communityId, communityName, zipCode);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(Community c: Community.getCommunityList()){
+            if(Integer.parseInt(communityId) == c.getId())
+            {
+              JOptionPane.showMessageDialog(this, "Community with the given Id already exists\nPlease give another Id to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(communityName.equals(c.getName()))
+            {
+              JOptionPane.showMessageDialog(this, "Community with the given name already exists\nPlease give another name to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            City city = null;
+            for(City c: City.getCityList())
+            {               
+              if(c.getName().equals(cityComboField.getSelectedItem().toString()))
+              {
+                city = c;
+                break;
+              }
+            }
+            if(city != null){
+            Community c1 = new Community(Integer.parseInt(communityId), communityName, Integer.parseInt(zipCode), city);
+            c1.addCommunityList();
+            JOptionPane.showMessageDialog(this, "New Community created successfully..", null, JOptionPane.OK_OPTION);
+            houseCommComboField.removeAllItems();
+            updateHouseCommCombo.removeAllItems();
+            for(Community c: Community.getCommunityList()){              
+              houseCommComboField.addItem(c.getName());
+              updateHouseCommCombo.addItem(c.getName());
+              System.out.println("Id: " + c.getId() + "\nName: " + c.getName() + "\nCity: " + c1.getCity().getName() + "\nState:" + c1.getCity().getState());
+            }
+            }
+            else{
+              JOptionPane.showMessageDialog(this, "Please choose a valid name for the city..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }          
+        }
+    }//GEN-LAST:event_createCommSubmitActionPerformed
+
+    private void houseCommComboFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_houseCommComboFieldActionPerformed
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_houseCommComboFieldActionPerformed
+
+    private void houseCommComboFieldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_houseCommComboFieldItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = houseCommComboField.getSelectedItem().toString();
+            for(Community c: Community.getCommunityList()){
+              if(c.getName().equals(selectedItem)){
+                houseCityField.setText(c.getCity().getName());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_houseCommComboFieldItemStateChanged
+    public static boolean clientSideValidation3(javax.swing.JFrame frame, String houseId, String houseName, String houseOwner){
+      if(Pattern.compile("^[1-9]\\d*$").matcher(houseId).matches()){
+        System.out.println("House Id is valid.");
+         if(Pattern.compile("^[a-zA-Z0-9\\s]*$").matcher(houseName).matches() && !houseName.equals(""))
+         {
+           System.out.println("House Name is valid.");
+           if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(houseOwner).matches() && !houseOwner.equals(""))
+           {
+               System.out.println("House owner is valid.");
+               return true;
+           }
+           else
+           {
+                JOptionPane.showMessageDialog(frame, "House owner is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+           }
+         }
+         else
+         {
+            JOptionPane.showMessageDialog(frame, "House Name is not valid.\nOnly characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+         }
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "House Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    private void createHouseSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createHouseSubmitActionPerformed
+        // TODO add your handling code here:
+        String houseId = houseIdField.getText();
+        String houseName = houseNameField.getText();
+        String houseOwner = houseOwnerField.getText();
+        boolean passed = clientSideValidation3(this, houseId, houseName, houseOwner);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(House c: House.getHouseList()){
+            if(Integer.parseInt(houseId) == c.getId())
+            {
+              JOptionPane.showMessageDialog(this, "House with the given Id already exists\nPlease give another Id to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(houseName.equals(c.getName()))
+            {
+              JOptionPane.showMessageDialog(this, "House with the given name already exists\nPlease give another name to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            Community community = null;
+            for(Community c: Community.getCommunityList())
+            {               
+              if(c.getName().equals(houseCommComboField.getSelectedItem().toString()))
+              {
+                community = c;
+                break;
+              }
+            }
+            City city = null;
+            for(City c: City.getCityList())
+            {               
+              if(c.getName().equals(houseCityField.getText()))
+              {
+                city = c;
+                break;
+              }
+            }
+            if(community != null){
+            community.setCity(city);
+            House c1 = new House(Integer.parseInt(houseId), houseName, houseOwner, community);
+            c1.addHouseList();
+            JOptionPane.showMessageDialog(this, "New House created successfully..", null, JOptionPane.OK_OPTION);
+            }
+            else{
+             JOptionPane.showMessageDialog(this, "Please choose a valid name for the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }          
+        }
+    }//GEN-LAST:event_createHouseSubmitActionPerformed
+    public void searchData(String type, String searchText){
+        int position = -1;
+        boolean found = false;
+        switch (type) {
+            case "houseId":
+                houseOwnerLabel.setVisible(false);
+                houseCommunityLabel.setVisible(false);
+                houseCityLabel.setVisible(false);
+                updateHouseOwnerField.setVisible(false);
+                updateHouseCommCombo.setVisible(false);
+                updateHouseCityField.setVisible(false);
+                houseUpdateButton.setVisible(false);
+                for(House h: House.getHouseList())
+                {
+                  if(Integer.parseInt(updateHouseIdField.getText()) == h.getId())
+                  {                    
+                    found = true;
+                    position = House.getHouseList().indexOf(h);
+                    houseOwnerLabel.setVisible(true);
+                    houseCommunityLabel.setVisible(true);
+                    houseCityLabel.setVisible(true);
+                    updateHouseOwnerField.setVisible(true);
+                    updateHouseCommCombo.setVisible(true);
+                    updateHouseCityField.setVisible(true);
+                    houseUpdateButton.setVisible(true);
+                    
+                    housePositionField.setText(Integer.valueOf(position).toString());
+                    updateHouseNameField.setText(h.getName());
+                    updateHouseOwnerField.setText(h.getOwner());
+                    updateHouseCommCombo.removeAllItems();
+                    for(Community c: Community.getCommunityList())
+                        updateHouseCommCombo.addItem(c.getName());
+                    updateHouseCommCombo.setSelectedItem(h.getCommunity().getName());
+                    updateHouseCityField.setText(h.getCommunity().getCity().getName());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "House with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "houseName":
+                houseOwnerLabel.setVisible(false);
+                houseCommunityLabel.setVisible(false);
+                houseCityLabel.setVisible(false);
+                updateHouseOwnerField.setVisible(false);
+                updateHouseCommCombo.setVisible(false);
+                updateHouseCityField.setVisible(false);
+                houseUpdateButton.setVisible(false);
+                for(House h: House.getHouseList())
+                {
+                  if(updateHouseNameField.getText().equals(h.getName()))
+                  {
+                    found = true;
+                    position = House.getHouseList().indexOf(h);
+                    houseOwnerLabel.setVisible(true);
+                    houseCommunityLabel.setVisible(true);
+                    houseCityLabel.setVisible(true);
+                    updateHouseOwnerField.setVisible(true);
+                    updateHouseCommCombo.setVisible(true);
+                    updateHouseCityField.setVisible(true);
+                    houseUpdateButton.setVisible(true);  
+                      
+                    housePositionField.setText(Integer.valueOf(position).toString());
+                    updateHouseIdField.setText(Integer.valueOf(h.getId()).toString());
+                    updateHouseOwnerField.setText(h.getOwner());
+                    updateHouseCommCombo.removeAllItems();
+                    for(Community c: Community.getCommunityList())
+                        updateHouseCommCombo.addItem(c.getName());
+                    updateHouseCommCombo.setSelectedItem(h.getCommunity().getName());
+                    updateHouseCityField.setText(h.getCommunity().getCity().getName());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "House with the given name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "communityId":
+                commZipCodeLabel.setVisible(false);
+                commCityLabel.setVisible(false);
+                commStateLabel.setVisible(false);
+                updateCommZipCodeField.setVisible(false);
+                updateCommCityCombo.setVisible(false);
+                updateCommStateField.setVisible(false);
+                updateCommButton.setVisible(false);
+                for(Community c: Community.getCommunityList())
+                {
+                   if(Integer.parseInt(updateCommIdField.getText()) == c.getId())
+                   {
+                    found = true;
+                    position = Community.getCommunityList().indexOf(c);
+                    commZipCodeLabel.setVisible(true);
+                    commCityLabel.setVisible(true);
+                    commStateLabel.setVisible(true);
+                    updateCommZipCodeField.setVisible(true);
+                    updateCommCityCombo.setVisible(true);
+                    updateCommStateField.setVisible(true);
+                    updateCommButton.setVisible(true);
+                    
+                    commPositionField.setText(Integer.valueOf(position).toString());
+                    updateCommNameField.setText(c.getName());
+                    updateCommZipCodeField.setText(Integer.valueOf(c.getZipCode()).toString());      
+                    updateCommCityCombo.removeAllItems();
+                    for(City city: City.getCityList())
+                        updateCommCityCombo.addItem(city.getName());
+                    updateCommCityCombo.setSelectedItem(c.getCity().getName());
+                    updateCommStateField.setText(c.getCity().getState());
+                    break;
+                   }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Community with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "communityName":
+                commZipCodeLabel.setVisible(false);
+                commCityLabel.setVisible(false);
+                commStateLabel.setVisible(false);
+                updateCommZipCodeField.setVisible(false);
+                updateCommCityCombo.setVisible(false);
+                updateCommStateField.setVisible(false);
+                updateCommButton.setVisible(false);
+                for(Community c: Community.getCommunityList())
+                {
+                  if(updateCommNameField.getText().equals(c.getName()))
+                  {
+                    found = true;
+                    position = Community.getCommunityList().indexOf(c);
+                    commZipCodeLabel.setVisible(true);
+                    commCityLabel.setVisible(true);
+                    commStateLabel.setVisible(true);
+                    updateCommZipCodeField.setVisible(true);
+                    updateCommCityCombo.setVisible(true);
+                    updateCommStateField.setVisible(true);
+                    updateCommButton.setVisible(true);
+                    
+                    commPositionField.setText(Integer.valueOf(position).toString());
+                    updateCommIdField.setText(Integer.valueOf(c.getId()).toString());
+                    updateCommZipCodeField.setText(Integer.valueOf(c.getZipCode()).toString());    
+                    updateCommCityCombo.removeAllItems();
+                    for(City city: City.getCityList())
+                        updateCommCityCombo.addItem(city.getName());
+                    updateCommCityCombo.setSelectedItem(c.getCity().getName());
+                    updateCommStateField.setText(c.getCity().getState());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Community with the given name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "cityId":
+                updateCityStateLabel.setVisible(false);
+                updateCityStateCombo.setVisible(false);
+                updateCityButton.setVisible(false);
+                for(City c: City.getCityList())
+                {
+                  if(Integer.parseInt(updateCityIdField.getText()) == c.getId())
+                  {
+                    found = true;
+                    position = City.getCityList().indexOf(c);
+                    updateCityStateLabel.setVisible(true);
+                    updateCityStateCombo.setVisible(true);
+                    updateCityButton.setVisible(true);
+                    
+                    cityPositionField.setText(Integer.valueOf(position).toString());
+                    updateCityNameField.setText(c.getName());                    
+                    updateCityStateCombo.setSelectedItem(c.getState());
+                    break;
+                  }                     
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "City with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "cityName":
+                updateCityStateLabel.setVisible(false);
+                updateCityStateCombo.setVisible(false);
+                updateCityButton.setVisible(false);
+                for(City c: City.getCityList())
+                {
+                  if(updateCityNameField.getText().equals(c.getName()))
+                  {
+                    found = true;
+                    position = City.getCityList().indexOf(c);
+                    updateCityStateLabel.setVisible(true);
+                    updateCityStateCombo.setVisible(true);
+                    updateCityButton.setVisible(true);
+                    
+                    cityPositionField.setText(Integer.valueOf(position).toString());
+                    updateCityIdField.setText(Integer.valueOf(c.getId()).toString());
+                    updateCityStateCombo.setSelectedItem(c.getState());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "City with the given Name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+        }
+    }
+    private void houseCityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_houseCityFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_houseCityFieldActionPerformed
+
+    private void updateCityIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCityIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateCityIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "City Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("cityId", searchText.trim());
+    }//GEN-LAST:event_updateCityIdSearchActionPerformed
+
+    private void updateCommIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCommIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateCommIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Community Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        
+        if(flag)
+            searchData("communityId", searchText.trim());
+    }//GEN-LAST:event_updateCommIdSearchActionPerformed
+
+    private void updateHouseIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHouseIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateHouseIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "House Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("houseId", searchText.trim());
+    }//GEN-LAST:event_updateHouseIdSearchActionPerformed
+
+    private void updateHouseNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHouseNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateHouseNameField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z0-9\\s]*$").matcher(searchText).matches()  && !searchText.equals(""))
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "House name is not valid.\nOnly characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+            searchData("houseName", searchText.trim());
+    }//GEN-LAST:event_updateHouseNameSearchActionPerformed
+
+    private void updateCommNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCommNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateCommNameField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z0-9\\s]*$").matcher(searchText).matches()  && !searchText.equals(""))
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Community name is not valid.\nOnly characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+            searchData("communityName", searchText.trim());
+    }//GEN-LAST:event_updateCommNameSearchActionPerformed
+
+    private void updateCityNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCityNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateCityNameField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(searchText).matches()  && !searchText.equals(""))
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "City name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+            searchData("cityName", searchText.trim());
+    }//GEN-LAST:event_updateCityNameSearchActionPerformed
+
+    private void updateCityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCityButtonActionPerformed
+        // TODO add your handling code here:
+        String cityId = updateCityIdField.getText();
+        String cityName = updateCityNameField.getText();
+        String state = updateCityStateCombo.getSelectedItem().toString();
+        int position = Integer.valueOf(cityPositionField.getText());
+        int oldCityId = City.getCityList().get(position).getId();
+        String oldCityName = City.getCityList().get(position).getName();
+        String oldStateName = City.getCityList().get(position).getState();
+        boolean passed = clientSideValidation1(this, cityId, cityName, state);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(City c: City.getCityList()){
+            if(Integer.parseInt(cityId) == c.getId() && City.getCityList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "City with the given Id already exists\nPlease give another Id to the city..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(cityName.equals(c.getName()) && City.getCityList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "City with the given name already exists\nPlease give another name to the city..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            City c1 = new City(Integer.parseInt(cityId), cityName, state);
+            ArrayList<City> cityList = City.getCityList();
+            cityList.set(position, c1);
+            City.setCityList(cityList);
+            for(City c: cityList)
+                System.out.println(c.getName());
+            JOptionPane.showMessageDialog(this, "Updated the city successfully..", null, JOptionPane.OK_OPTION);
+            for(Community community: Community.getCommunityList())
+            {
+              if(community.getCity().getName().equals(oldCityName))
+              {
+                community.setCity(c1);
+                break;
+              }
+            }
+            cityComboField.removeAllItems();
+            for(City c: City.getCityList()){              
+              cityComboField.addItem(c.getName());
+//              System.out.println("Id: " + c.getId() + "\nName: " + c.getName() + "\nState: " + c.getState());
+            }
+          }          
+        }
+    }//GEN-LAST:event_updateCityButtonActionPerformed
+
+    private void updateCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCommButtonActionPerformed
+        // TODO add your handling code here:
+        String communityId = updateCommIdField.getText();
+        String communityName = updateCommNameField.getText();
+        String zipCode = updateCommZipCodeField.getText();
+        int position = Integer.valueOf(commPositionField.getText());
+        int oldCommunityId = Community.getCommunityList().get(position).getId();
+        String oldCommunityName = Community.getCommunityList().get(position).getName();
+        int oldZipCode = Community.getCommunityList().get(position).getZipCode();
+        City oldCity = Community.getCommunityList().get(position).getCity();
+        boolean passed = clientSideValidation2(this, communityId, communityName, zipCode);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(Community c: Community.getCommunityList()){
+            if(Integer.parseInt(communityId) == c.getId() && Community.getCommunityList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Community with the given Id already exists\nPlease give another Id to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(communityName.equals(c.getName()) && Community.getCommunityList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Community with the given name already exists\nPlease give another name to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            City city = null;
+            for(City c: City.getCityList())
+            {               
+              if(c.getName().equals(updateCommCityCombo.getSelectedItem().toString()))
+              {
+                city = c;
+                break;
+              }
+            }
+            ArrayList<Community> communityList = Community.getCommunityList();
+            Community c1 = new Community(Integer.parseInt(communityId), communityName, Integer.parseInt(zipCode), city);
+            communityList.set(position, c1);
+            Community.setCommunityList(communityList);
+            for(House house: House.getHouseList())
+            {
+              if(house.getCommunity().getName().equals(oldCommunityName))
+              {
+                house.setCommunity(c1);
+                break;
+              }
+              
+            }
+            JOptionPane.showMessageDialog(this, "Updated the Community successfully..", null, JOptionPane.OK_OPTION);            
+            houseCommComboField.removeAllItems();
+            for(Community c: Community.getCommunityList()){              
+              houseCommComboField.addItem(c.getName());
+//              System.out.println("Id: " + c.getId() + "\nName: " + c.getName() + "\nCity: " + c1.getCity().getName() + "\nState:" + c1.getCity().getState());
+            }
+          }          
+        }
+    }//GEN-LAST:event_updateCommButtonActionPerformed
+
+    private void houseUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_houseUpdateButtonActionPerformed
+        // TODO add your handling code here:
+        String houseId = updateHouseIdField.getText();
+        String houseName = updateHouseNameField.getText();
+        String houseOwner = updateHouseOwnerField.getText();
+        int position = Integer.valueOf(housePositionField.getText());
+        boolean passed = clientSideValidation3(this, houseId, houseName, houseOwner);
+        boolean exists = false;
+        if(passed)
+        {    
+          for(House c: House.getHouseList()){
+            if(Integer.parseInt(houseId) == c.getId() && House.getHouseList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "House with the given Id already exists\nPlease give another Id to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(houseName.equals(c.getName()) && House.getHouseList().indexOf(c) != position)
+            {
+              JOptionPane.showMessageDialog(this, "House with the given name already exists\nPlease give another name to the community..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            Community community = null;
+            for(Community c: Community.getCommunityList())
+            {               
+              if(c.getName().equals(updateHouseCommCombo.getSelectedItem().toString()))
+              {
+                community = c;
+                break;
+              }
+            }
+            City city = null;
+            for(City c: City.getCityList())
+            {               
+              if(c.getName().equals(updateHouseCityField.getText()))
+              {
+                city = c;
+                break;
+              }
+            }
+            ArrayList<House> houseList = House.getHouseList();
+            community.setCity(city);
+            House h1 = new House(Integer.parseInt(houseId), houseName, houseOwner, community);
+            houseList.set(position, h1);
+            House.setHouseList(houseList);
+            JOptionPane.showMessageDialog(this, "Updated the House successfully..", null, JOptionPane.OK_OPTION);            
+          }          
+        }
+    }//GEN-LAST:event_houseUpdateButtonActionPerformed
+
+    private void updateCommCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateCommCityComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+        String selectedItem = updateCommCityCombo.getSelectedItem().toString();
+        for(City c: City.getCityList()){
+          if(c.getName().equals(selectedItem)){
+            updateCommStateField.setText(c.getState());
+            break;
+          }
+        }
+      }  
+    }//GEN-LAST:event_updateCommCityComboItemStateChanged
+
+    private void updateHouseCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateHouseCommComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = updateHouseCommCombo.getSelectedItem().toString();
+            for(Community c: Community.getCommunityList()){
+              if(c.getName().equals(selectedItem)){
+                updateHouseCityField.setText(c.getCity().getName());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_updateHouseCommComboItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -246,20 +1494,86 @@ public class CommunityAdministrator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cityComboField;
+    private javax.swing.JTextField cityIdField;
+    private javax.swing.JLabel cityIdLabel;
+    private javax.swing.JLabel cityName;
+    private javax.swing.JTextField cityNameField;
+    private javax.swing.JLabel cityNameLabel;
+    private javax.swing.JTextField cityPositionField;
+    private javax.swing.JTextField cityStateField;
+    private javax.swing.JLabel commCityLabel;
+    private javax.swing.JTextField commIdField;
+    private javax.swing.JTextField commNameField;
+    private javax.swing.JTextField commPositionField;
+    private javax.swing.JLabel commStateLabel;
+    private javax.swing.JLabel commZipCodeLabel;
+    private javax.swing.JLabel communityName;
     private javax.swing.JPanel createCityPanel;
+    private javax.swing.JButton createCitySubmitButton;
     private javax.swing.JPanel createCommPanel;
+    private javax.swing.JButton createCommSubmit;
     private javax.swing.JPanel createHousePanel;
+    private javax.swing.JButton createHouseSubmit;
     private javax.swing.JPanel createPanel;
+    private javax.swing.JTextField houseCityField;
+    private javax.swing.JLabel houseCityLabel;
+    private javax.swing.JComboBox<String> houseCommComboField;
+    private javax.swing.JLabel houseCommunityLabel;
+    private javax.swing.JLabel houseId;
+    private javax.swing.JTextField houseIdField;
+    private javax.swing.JLabel houseIdLabel;
+    private javax.swing.JLabel houseName;
+    private javax.swing.JTextField houseNameField;
+    private javax.swing.JLabel houseNameLabel;
+    private javax.swing.JLabel houseOwner;
+    private javax.swing.JTextField houseOwnerField;
+    private javax.swing.JLabel houseOwnerLabel;
+    private javax.swing.JTextField housePositionField;
+    private javax.swing.JButton houseUpdateButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JComboBox<String> searchComboBox;
-    private javax.swing.JTextField searchField;
     private javax.swing.JPanel searchPanel;
+    private javax.swing.JComboBox<String> stateComboField;
+    private javax.swing.JLabel stateLabel;
     private javax.swing.JTabbedPane tabPane;
-    private javax.swing.JPanel updateCityPanel;
-    private javax.swing.JPanel updateCommPanel;
-    private javax.swing.JPanel updateHousePanel;
-    private javax.swing.JPanel updatePanel;
+    private javax.swing.JButton updateCityButton;
+    private javax.swing.JTextField updateCityIdField;
+    private javax.swing.JButton updateCityIdSearch;
+    private javax.swing.JTextField updateCityNameField;
+    private javax.swing.JButton updateCityNameSearch;
+    private javax.swing.JComboBox<String> updateCityStateCombo;
+    private javax.swing.JLabel updateCityStateLabel;
+    private javax.swing.JButton updateCommButton;
+    private javax.swing.JComboBox<String> updateCommCityCombo;
+    private javax.swing.JTextField updateCommIdField;
+    private javax.swing.JButton updateCommIdSearch;
+    private javax.swing.JTextField updateCommNameField;
+    private javax.swing.JButton updateCommNameSearch;
+    private javax.swing.JTextField updateCommStateField;
+    private javax.swing.JTextField updateCommZipCodeField;
+    private javax.swing.JTextField updateHouseCityField;
+    private javax.swing.JComboBox<String> updateHouseCommCombo;
+    private javax.swing.JTextField updateHouseIdField;
+    private javax.swing.JButton updateHouseIdSearch;
+    private javax.swing.JTextField updateHouseNameField;
+    private javax.swing.JButton updateHouseNameSearch;
+    private javax.swing.JTextField updateHouseOwnerField;
+    private javax.swing.JTextField zipCodeField;
     // End of variables declaration//GEN-END:variables
 }

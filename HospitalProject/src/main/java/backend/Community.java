@@ -10,32 +10,39 @@ package backend;
  */
 import java.util.ArrayList;
 public class Community {
+    private int id;
     private String name;
-    private String zipCode;
+    private int zipCode;
     private City city;
     private static ArrayList<Community> communityList = new ArrayList<>();
-    Community(String name, String zipCode, City city){
+    public Community(int id, String name, int zipCode, City city){
+      this.id = id;
       this.name = name;
       this.zipCode = zipCode;
       this.city = city;
     }
+    public void addCommunityList(){
+      communityList.add(this);
+    }
+    public int getId(){
+      return id;
+    }
     public String getName(){
       return name;
     }
-    public String zipCode(){
+    public int getZipCode(){
       return zipCode;
+    }
+    public void setCity(City city){
+      this.city = city;
     }
     public City getCity(){
       return city;
     }
+    public static void setCommunityList(ArrayList<Community> newCommunityList){
+      communityList = newCommunityList;
+    }
     public static ArrayList<Community> getCommunityList(){
       return communityList;
-    }
-    public static void main(String[] args){
-     City city = new City("Boston", "Massachussets");
-     for(City c: City.getCityList())
-        System.out.println("Name: " + c.getName() + "\n" + "State: " + c.getState());
-     Community c1 = new Community("2001 falls blvd street", "02169", city);
-     System.out.println(c1.getName());
     }
 }

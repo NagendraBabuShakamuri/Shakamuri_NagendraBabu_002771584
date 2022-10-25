@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[814, 768]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
@@ -66,7 +63,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -90,15 +87,138 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="193" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="cityName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="houseCityField" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="createHouseSubmit" alignment="1" min="-2" pref="278" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="communityName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="houseCommComboField" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="houseOwner" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="houseOwnerField" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="houseName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="houseNameField" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="houseId" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="houseIdField" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="houseId" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseIdField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="houseName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseNameField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="houseOwner" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseOwnerField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="communityName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseCommComboField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cityName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseCityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="createHouseSubmit" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="254" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="houseId">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseOwner">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Owner:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="communityName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="cityName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="houseIdField">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="houseNameField">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="houseOwnerField">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="houseCityField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="houseCityFieldActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="createHouseSubmit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Add"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createHouseSubmitActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="houseCommComboField">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="houseCommComboFieldItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="houseCommComboFieldActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="createCommPanel">
                   <Constraints>
@@ -112,15 +232,138 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="commNameField" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel5" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                                          <Component id="zipCodeField" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="cityStateField" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="createCommSubmit" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel3" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cityComboField" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="commIdField" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="302" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="commIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="commNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="zipCodeField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityComboField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityStateField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="createCommSubmit" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="272" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="commIdField">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="commNameField">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cityComboField">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cityComboFieldItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cityComboFieldActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="cityStateField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="createCommSubmit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createCommSubmitActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Zip Code: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="zipCodeField">
+                    </Component>
+                  </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="createCityPanel">
                   <Constraints>
@@ -134,15 +377,150 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="createCitySubmitButton" min="-2" pref="246" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="stateLabel" min="-2" pref="65" max="-2" attributes="0"/>
+                                          <Component id="cityNameLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cityIdLabel" min="-2" pref="65" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                              <Component id="cityIdField" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="cityNameField" pref="142" max="32767" attributes="0"/>
+                                                  <Component id="stateComboField" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="325" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="cityIdLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityIdField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="cityNameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityNameField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="stateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stateComboField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="createCitySubmitButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="355" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="cityIdLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="cityIdField">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="cityNameLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="cityNameField">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="stateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="createCitySubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createCitySubmitButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="stateComboField">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="50">
+                            <StringItem index="0" value=" Alabama"/>
+                            <StringItem index="1" value=" Alaska"/>
+                            <StringItem index="2" value=" Arizona"/>
+                            <StringItem index="3" value=" Arkansas"/>
+                            <StringItem index="4" value=" California"/>
+                            <StringItem index="5" value=" Colorado"/>
+                            <StringItem index="6" value=" Connecticut"/>
+                            <StringItem index="7" value=" Delaware"/>
+                            <StringItem index="8" value=" Florida"/>
+                            <StringItem index="9" value=" Georgia"/>
+                            <StringItem index="10" value=" Hawaii"/>
+                            <StringItem index="11" value=" Idaho"/>
+                            <StringItem index="12" value=" Illinois"/>
+                            <StringItem index="13" value=" Indiana"/>
+                            <StringItem index="14" value=" Iowa"/>
+                            <StringItem index="15" value=" Kansas"/>
+                            <StringItem index="16" value=" Kentucky"/>
+                            <StringItem index="17" value=" Louisiana"/>
+                            <StringItem index="18" value=" Maine"/>
+                            <StringItem index="19" value=" Maryland"/>
+                            <StringItem index="20" value=" Massachusetts"/>
+                            <StringItem index="21" value=" Michigan"/>
+                            <StringItem index="22" value=" Minnesota"/>
+                            <StringItem index="23" value=" Mississippi"/>
+                            <StringItem index="24" value=" Missouri"/>
+                            <StringItem index="25" value=" Montana"/>
+                            <StringItem index="26" value=" Nebraska"/>
+                            <StringItem index="27" value=" Nevada"/>
+                            <StringItem index="28" value=" New Hampshire"/>
+                            <StringItem index="29" value=" New Jersey"/>
+                            <StringItem index="30" value=" New Mexico"/>
+                            <StringItem index="31" value=" New York"/>
+                            <StringItem index="32" value=" North Carolina"/>
+                            <StringItem index="33" value=" North Dakota"/>
+                            <StringItem index="34" value=" Ohio"/>
+                            <StringItem index="35" value=" Oklahoma"/>
+                            <StringItem index="36" value=" Oregon"/>
+                            <StringItem index="37" value=" Pennsylvania"/>
+                            <StringItem index="38" value=" Rhode Island"/>
+                            <StringItem index="39" value=" South Carolina"/>
+                            <StringItem index="40" value=" South Dakota"/>
+                            <StringItem index="41" value=" Tennessee"/>
+                            <StringItem index="42" value=" Texas"/>
+                            <StringItem index="43" value=" Utah"/>
+                            <StringItem index="44" value=" Vermont"/>
+                            <StringItem index="45" value=" Virginia"/>
+                            <StringItem index="46" value=" Washington"/>
+                            <StringItem index="47" value=" West Virginia"/>
+                            <StringItem index="48" value=" Wisconsin"/>
+                            <StringItem index="49" value=" Wyoming"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -151,72 +529,8 @@
         <Container class="javax.swing.JPanel" name="searchPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Search">
-                <Property name="tabTitle" type="java.lang.String" value="Search"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                      <Component id="searchComboBox" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="searchField" min="-2" pref="134" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="searchButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="283" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="searchField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="searchComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="619" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JComboBox" name="searchComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="House"/>
-                    <StringItem index="1" value="Community"/>
-                    <StringItem index="2" value="City"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchComboBoxActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="searchField">
-            </Component>
-            <Component class="javax.swing.JButton" name="searchButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Search"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="updatePanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Update">
-                <Property name="tabTitle" type="java.lang.String" value="Update"/>
+              <JTabbedPaneConstraints tabName="Search/Update">
+                <Property name="tabTitle" type="java.lang.String" value="Search/Update"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -241,7 +555,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="updateHousePanel">
+                <Container class="javax.swing.JPanel" name="jPanel1">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="House">
@@ -253,17 +567,196 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel12" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="houseUpdateButton" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="houseCityLabel" max="32767" attributes="0"/>
+                                                  <Component id="houseCommunityLabel" max="32767" attributes="0"/>
+                                                  <Component id="houseNameLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="houseIdLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="houseOwnerLabel" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="updateHouseIdField" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="updateHouseNameField" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="updateHouseOwnerField" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="housePositionField" alignment="0" pref="137" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="updateHouseCommCombo" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="updateHouseCityField" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="updateHouseIdSearch" min="-2" max="-2" attributes="0"/>
+                                          <Component id="updateHouseNameSearch" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="234" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="housePositionField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="updateHouseIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateHouseIdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="updateHouseNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateHouseNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="houseOwnerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateHouseOwnerField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="houseCommunityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateHouseCommCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="updateHouseCityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="houseCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="houseUpdateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="283" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JButton" name="updateHouseIdSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateHouseIdSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateHouseIdField">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseIdLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateHouseNameField">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseNameLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateHouseNameSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateHouseNameSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseOwnerLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="House Owner:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="houseOwnerLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateHouseOwnerField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField()"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="updateHouseOwnerField.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseCommunityLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="houseCommunityLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="updateHouseCommCombo">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="updateHouseCommComboItemStateChanged"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateHouseCommCombo.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="houseCityLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="houseCityLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateHouseCityField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateHouseCityField.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="houseUpdateButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Update"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="houseUpdateButtonActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="houseUpdateButton.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel12">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Position:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="housePositionField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="updateCommPanel">
+                <Container class="javax.swing.JPanel" name="jPanel2">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Community">
@@ -275,17 +768,192 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="updateCommButton" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="commStateLabel" max="32767" attributes="0"/>
+                                              <Component id="commCityLabel" max="32767" attributes="0"/>
+                                              <Component id="commZipCodeLabel" max="32767" attributes="0"/>
+                                              <Component id="jLabel6" max="32767" attributes="0"/>
+                                              <Component id="jLabel7" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel11" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="updateCommNameField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="updateCommCityCombo" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="updateCommZipCodeField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="updateCommStateField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="updateCommIdField" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="commPositionField" min="-2" pref="131" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="updateCommIdSearch" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommNameSearch" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="234" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel11" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <Component id="commPositionField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="updateCommIdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="commZipCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommZipCodeField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="commCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommCityCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="commStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCommStateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="updateCommButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="294" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="updateCommIdField">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCommIdSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCommIdSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateCommNameField">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Community Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCommNameSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCommNameSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="commZipCodeLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Zip Code:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="commZipCodeLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateCommZipCodeField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="updateCommZipCodeField.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="commCityLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="commCityLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="updateCommCityCombo">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="updateCommCityComboItemStateChanged"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCommCityCombo.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="commStateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="commStateLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateCommStateField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCommStateField.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCommButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Update"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCommButtonActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCommButton.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel11">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Position:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="commPositionField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="updateCityPanel">
+                <Container class="javax.swing.JPanel" name="jPanel3">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="City">
@@ -297,15 +965,193 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel10" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cityPositionField" pref="130" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="updateCityButton" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="updateCityStateLabel" max="32767" attributes="0"/>
+                                          <Component id="jLabel8" pref="100" max="32767" attributes="0"/>
+                                          <Component id="jLabel9" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="updateCityStateCombo" pref="0" max="32767" attributes="0"/>
+                                          <Component id="updateCityIdField" alignment="0" pref="130" max="32767" attributes="0"/>
+                                          <Component id="updateCityNameField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="updateCityIdSearch" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityNameSearch" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="256" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="737" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityPositionField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityIdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityIdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="updateCityStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateCityStateCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="updateCityButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="354" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="updateCityIdField">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCityIdSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCityIdSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel8">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="updateCityNameField">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCityNameSearch">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCityNameSearchActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel9">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City Id:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="updateCityStateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCityStateLabel.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="updateCityStateCombo">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="50">
+                            <StringItem index="0" value=" Alabama"/>
+                            <StringItem index="1" value=" Alaska"/>
+                            <StringItem index="2" value=" Arizona"/>
+                            <StringItem index="3" value=" Arkansas"/>
+                            <StringItem index="4" value=" California"/>
+                            <StringItem index="5" value=" Colorado"/>
+                            <StringItem index="6" value=" Connecticut"/>
+                            <StringItem index="7" value=" Delaware"/>
+                            <StringItem index="8" value=" Florida"/>
+                            <StringItem index="9" value=" Georgia"/>
+                            <StringItem index="10" value=" Hawaii"/>
+                            <StringItem index="11" value=" Idaho"/>
+                            <StringItem index="12" value=" Illinois"/>
+                            <StringItem index="13" value=" Indiana"/>
+                            <StringItem index="14" value=" Iowa"/>
+                            <StringItem index="15" value=" Kansas"/>
+                            <StringItem index="16" value=" Kentucky"/>
+                            <StringItem index="17" value=" Louisiana"/>
+                            <StringItem index="18" value=" Maine"/>
+                            <StringItem index="19" value=" Maryland"/>
+                            <StringItem index="20" value=" Massachusetts"/>
+                            <StringItem index="21" value=" Michigan"/>
+                            <StringItem index="22" value=" Minnesota"/>
+                            <StringItem index="23" value=" Mississippi"/>
+                            <StringItem index="24" value=" Missouri"/>
+                            <StringItem index="25" value=" Montana"/>
+                            <StringItem index="26" value=" Nebraska"/>
+                            <StringItem index="27" value=" Nevada"/>
+                            <StringItem index="28" value=" New Hampshire"/>
+                            <StringItem index="29" value=" New Jersey"/>
+                            <StringItem index="30" value=" New Mexico"/>
+                            <StringItem index="31" value=" New York"/>
+                            <StringItem index="32" value=" North Carolina"/>
+                            <StringItem index="33" value=" North Dakota"/>
+                            <StringItem index="34" value=" Ohio"/>
+                            <StringItem index="35" value=" Oklahoma"/>
+                            <StringItem index="36" value=" Oregon"/>
+                            <StringItem index="37" value=" Pennsylvania"/>
+                            <StringItem index="38" value=" Rhode Island"/>
+                            <StringItem index="39" value=" South Carolina"/>
+                            <StringItem index="40" value=" South Dakota"/>
+                            <StringItem index="41" value=" Tennessee"/>
+                            <StringItem index="42" value=" Texas"/>
+                            <StringItem index="43" value=" Utah"/>
+                            <StringItem index="44" value=" Vermont"/>
+                            <StringItem index="45" value=" Virginia"/>
+                            <StringItem index="46" value=" Washington"/>
+                            <StringItem index="47" value=" West Virginia"/>
+                            <StringItem index="48" value=" Wisconsin"/>
+                            <StringItem index="49" value=" Wyoming"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCityStateCombo.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updateCityButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Update"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCityButtonActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateCityButton.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel10">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Position"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="cityPositionField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>

@@ -8,14 +8,41 @@ package backend;
  *
  * @author nbabu
  */
+import java.util.ArrayList;
 public class House {
-    private int houseId;
+    private int id;
+    private String name;
+    private String owner;    
     private Community community;
-    private City city;
-    
-    House(int houseId, String communityName, String communityZipCode, String cityName, String cityState, String cityCountry){
-       this.houseId = houseId;
-       community = new Community(communityName, communityZipCode);
-       city = new City(cityName, cityState, cityCountry);
+    private static ArrayList<House> houseList = new ArrayList<>();
+    public House(int id, String name, String owner, Community community){
+       this.id = id;
+       this.name = name;
+       this.owner = owner;
+       this.community = community;
+    }
+    public void addHouseList(){
+      houseList.add(this);
+    }
+    public int getId(){
+      return id;
+    }
+    public String getName(){
+      return name;
+    }
+    public String getOwner(){
+      return owner;
+    }
+    public void setCommunity(Community community){
+      this.community = community;
+    }    
+    public Community getCommunity(){
+      return community;
+    }
+    public static void setHouseList(ArrayList<House> newHouseList){
+      houseList = newHouseList;
+    }
+    public static ArrayList<House> getHouseList(){
+      return houseList;
     }
 }
