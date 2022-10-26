@@ -8,8 +8,26 @@ package backend;
  *
  * @author nbabu
  */
-public class Hospital {
+public class Hospital {    
+    private int id;
+    private String name;
     private Community community;
-    private String hospitalName;
-    
+    public Hospital(int id, String name, Community community)
+    {
+      this.id = id;
+      this.name = name;
+      this.community = community;
+    }
+    public int getId()
+    {
+      return id;
+    }
+    public String getName()
+    {
+      return name;
+    }
+    public Community getCommunity()
+    {
+      return community;
+    }
 }

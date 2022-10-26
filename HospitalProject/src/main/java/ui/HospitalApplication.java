@@ -4,6 +4,11 @@
  */
 package ui;
 
+import backend.Person;
+import backend.PersonDirectory;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nbabu
@@ -152,6 +157,27 @@ public class HospitalApplication extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        ArrayList<Person> pa = PersonDirectory.getPersonList();
+        System.out.println(pa.size());
+        String userName = userNameField.getText();
+        String password = new String(passwordField.getPassword());
+        switch(loginComboBox.getSelectedItem().toString())
+        {
+            case "Community Administrator":
+                for(Person p: PersonDirectory.getPersonList())
+                {
+                  if(p.getRole().equals("Community Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
+                  {
+                    CommunityAdministrator ca = new CommunityAdministrator();
+                    ca.show();
+                    dispose();
+                    break;
+                  }
+                  else
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+                
+        }        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed

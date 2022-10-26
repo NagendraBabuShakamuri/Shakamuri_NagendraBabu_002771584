@@ -114,6 +114,7 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         cityPositionField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(814, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
