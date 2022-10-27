@@ -10,11 +10,12 @@ package backend;
  */
 import java.util.ArrayList;
 public class PatientDirectory {
-    private ArrayList<Patient> patientDirectory;
-    PatientDirectory(){
-     patientDirectory = new ArrayList<>();
+    private static ArrayList<Patient> patientList = new ArrayList<>();
+    public static void addPatient(Patient p)
+    {
+      patientList.add(p);
     }
-    public void addPatient(Patient p){
-      patientDirectory.add(p);
+    public static ArrayList<Patient> getPatientList(){
+      return patientList;
     }
 }

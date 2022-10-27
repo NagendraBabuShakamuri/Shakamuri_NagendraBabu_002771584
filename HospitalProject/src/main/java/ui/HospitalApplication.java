@@ -158,9 +158,9 @@ public class HospitalApplication extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         ArrayList<Person> pa = PersonDirectory.getPersonList();
-        System.out.println(pa.size());
         String userName = userNameField.getText();
         String password = new String(passwordField.getPassword());
+        boolean found = false;
         switch(loginComboBox.getSelectedItem().toString())
         {
             case "Community Administrator":
@@ -168,15 +168,33 @@ public class HospitalApplication extends javax.swing.JFrame {
                 {
                   if(p.getRole().equals("Community Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
                   {
+                    found = true;
                     CommunityAdministrator ca = new CommunityAdministrator();
+//                    ca.getComponents();
                     ca.show();
                     dispose();
                     break;
                   }
-                  else
-                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
                 }
-                
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+            break;
+            case "Hospital Administrator":
+                for(Person p: PersonDirectory.getPersonList())
+                {
+                  if(p.getRole().equals("Hospital Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
+                  {
+                    found = true;
+                    HospitalAdministrator ha = new HospitalAdministrator();
+//                    ca.getComponents();
+                    ha.show();
+                    dispose();
+                    break;
+                  }                    
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;   
         }        
     }//GEN-LAST:event_loginButtonActionPerformed
 

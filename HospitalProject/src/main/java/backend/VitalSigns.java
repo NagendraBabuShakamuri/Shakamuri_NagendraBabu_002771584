@@ -9,14 +9,35 @@ package backend;
  * @author nbabu
  */
 public class VitalSigns {
-    float temperature;
-    int pulaseRatePerMinute;
+    double temperature;
+    int pulseRatePerMinute;
+    int respirationRate;
     int systolicBloodPressure;
     int diastolicBloodPressure;
-    VitalSigns(float temperature, int pulaseRatePerMinute, int systolicBloodPressure, int diastolicBloodPressure){
+    public VitalSigns(double temperature, int pulseRatePerMinute, int respirationRate, int systolicBloodPressure, int diastolicBloodPressure){
       this.temperature = temperature;
-      this.pulaseRatePerMinute = pulaseRatePerMinute;
+      this.pulseRatePerMinute = pulseRatePerMinute;
       this.systolicBloodPressure = systolicBloodPressure;
       this.diastolicBloodPressure = diastolicBloodPressure;
+    }
+    public double getTemperature()
+    {
+      return temperature;
+    }
+    public int pulseRatePerMinute()
+    {
+      return pulseRatePerMinute;
+    }
+    public int respirationRate()
+    {
+      return respirationRate;
+    }
+    public int getSystolicBloodPressure()
+    {
+      return systolicBloodPressure;
+    }
+    public int getDiastolicBloodPressure()
+    {
+      return diastolicBloodPressure;
     }
 }

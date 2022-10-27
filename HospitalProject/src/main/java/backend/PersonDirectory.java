@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class PersonDirectory {
     private static Person commAdmin = new Person(1, "Community Admin", "male", 7818170970L, "commadmin@gmail.com", null, "Community Administrator", "root");
-    private static ArrayList<Person> personDirectory = new ArrayList<>(Arrays.asList(commAdmin));
+    private static Person hosAdmin = new Person(2, "Hospital Admin", "male", 9701998653L, "hosadmin@gmail.com", null, "Hospital Administrator", "root");
+    private static ArrayList<Person> personDirectory = new ArrayList<>(Arrays.asList(commAdmin, hosAdmin));    
     public void addPerson(Person p)
     {
       personDirectory.add(p);

@@ -8,6 +8,14 @@ package backend;
  *
  * @author nbabu
  */
+import java.util.ArrayList;
 public class EncounterHistory {
-    
+    private static ArrayList<Encounter> encounterList = new ArrayList<>();
+    public static void addEncounter(Encounter e)
+    {
+      encounterList.add(e);
+    }
+    public static ArrayList<Encounter> getEncounterList(){
+      return encounterList;
+    }
 }

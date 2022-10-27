@@ -13,6 +13,7 @@ import java.util.regex.*;
 import backend.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import ui.HospitalAdministrator;
 public class CommunityAdministrator extends javax.swing.JFrame {
 
     /**
@@ -66,6 +67,7 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         stateLabel = new javax.swing.JLabel();
         createCitySubmitButton = new javax.swing.JButton();
         stateComboField = new javax.swing.JComboBox<>();
+        commAdminLogoutButton = new javax.swing.JButton();
         searchPanel = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -256,14 +258,6 @@ public class CommunityAdministrator extends javax.swing.JFrame {
                 .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(createCommPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(commNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(createCommPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                            .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(createCommPanelLayout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cityStateField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,12 +265,19 @@ public class CommunityAdministrator extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCommPanelLayout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cityComboField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cityComboField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCommPanelLayout.createSequentialGroup()
+                            .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                            .addGroup(createCommPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(commNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                .addComponent(zipCodeField))))
                     .addGroup(createCommPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(commIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)))
+                        .addGap(21, 21, 21)
+                        .addComponent(commIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(302, Short.MAX_VALUE))
         );
         createCommPanelLayout.setVerticalGroup(
@@ -324,6 +325,13 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         stateComboField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Alabama", " Alaska", " Arizona", " Arkansas", " California", " Colorado", " Connecticut", " Delaware", " Florida", " Georgia", " Hawaii", " Idaho", " Illinois", " Indiana", " Iowa", " Kansas", " Kentucky", " Louisiana", " Maine", " Maryland", " Massachusetts", " Michigan", " Minnesota", " Mississippi", " Missouri", " Montana", " Nebraska", " Nevada", " New Hampshire", " New Jersey", " New Mexico", " New York", " North Carolina", " North Dakota", " Ohio", " Oklahoma", " Oregon", " Pennsylvania", " Rhode Island", " South Carolina", " South Dakota", " Tennessee", " Texas", " Utah", " Vermont", " Virginia", " Washington", " West Virginia", " Wisconsin", " Wyoming" }));
 
+        commAdminLogoutButton.setText("Logout");
+        commAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout createCityPanelLayout = new javax.swing.GroupLayout(createCityPanel);
         createCityPanel.setLayout(createCityPanelLayout);
         createCityPanelLayout.setHorizontalGroup(
@@ -331,7 +339,7 @@ public class CommunityAdministrator extends javax.swing.JFrame {
             .addGroup(createCityPanelLayout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(createCitySubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createCitySubmitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                     .addGroup(createCityPanelLayout.createSequentialGroup()
                         .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,7 +353,8 @@ public class CommunityAdministrator extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(createCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cityNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                    .addComponent(stateComboField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(stateComboField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(commAdminLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(325, Short.MAX_VALUE))
         );
         createCityPanelLayout.setVerticalGroup(
@@ -365,7 +374,9 @@ public class CommunityAdministrator extends javax.swing.JFrame {
                     .addComponent(stateComboField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createCitySubmitButton)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(commAdminLogoutButton)
+                .addContainerGap(314, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("City", createCityPanel);
@@ -770,7 +781,7 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         boolean passed = clientSideValidation1(this, cityId, cityName, state);
         boolean exists = false;
         if(passed)
-        {    
+        {
           for(City c: City.getCityList()){
             if(Integer.parseInt(cityId) == c.getId())
             {
@@ -882,9 +893,11 @@ public class CommunityAdministrator extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "New Community created successfully..", null, JOptionPane.OK_OPTION);
             houseCommComboField.removeAllItems();
             updateHouseCommCombo.removeAllItems();
+//            HospitalAdministrator.createHosCommCombo.removeAllItems();
             for(Community c: Community.getCommunityList()){              
               houseCommComboField.addItem(c.getName());
               updateHouseCommCombo.addItem(c.getName());
+//              HospitalAdministrator.createHosCommCombo.addItem(c.getName());
               System.out.println("Id: " + c.getId() + "\nName: " + c.getName() + "\nCity: " + c1.getCity().getName() + "\nState:" + c1.getCity().getState());
             }
             }
@@ -1459,6 +1472,13 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updateHouseCommComboItemStateChanged
 
+    private void commAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        HospitalApplication ha = new HospitalApplication();
+        ha.show();
+        dispose(); 
+    }//GEN-LAST:event_commAdminLogoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1503,6 +1523,7 @@ public class CommunityAdministrator extends javax.swing.JFrame {
     private javax.swing.JLabel cityNameLabel;
     private javax.swing.JTextField cityPositionField;
     private javax.swing.JTextField cityStateField;
+    private javax.swing.JButton commAdminLogoutButton;
     private javax.swing.JLabel commCityLabel;
     private javax.swing.JTextField commIdField;
     private javax.swing.JTextField commNameField;

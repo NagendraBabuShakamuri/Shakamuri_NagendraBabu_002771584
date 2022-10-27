@@ -17,7 +17,7 @@ public class Person {
     private House house;
     private String role;
     private String password;
-    Person(int id, String name, String gender, long mobileNumber, String email, House house, String role, String password){
+    public Person(int id, String name, String gender, long mobileNumber, String email, House house, String role, String password){
       this.id = id;
       this.name = name;
       this.gender = gender;
@@ -36,7 +36,7 @@ public class Person {
     public String getGender(){
       return gender;
     }
-    public long mobileNumber(){
+    public long getMobileNumber(){
       return mobileNumber;
     }
     public String getEmail(){

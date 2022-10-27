@@ -10,12 +10,17 @@ package backend;
  */
 public class Patient{
     private Person person;
-    private Doctor doctor;
-    private Encounter encounter;
-    private Hospital hospital;
-    private Community community;
-    Patient(Person person){
-      this.person = person;   
+    private String isInsured;
+    private String dateOfBirth;
+    private String password;
+    public Patient(Person person, String isInsured, String dateOfBirth, String password){
+      this.person = person;
+      this.isInsured = isInsured;
+      this.dateOfBirth = dateOfBirth;
+      this.password = password;
     }
-       
+    public Person getPerson()
+    {
+      return person;
+    }
 }

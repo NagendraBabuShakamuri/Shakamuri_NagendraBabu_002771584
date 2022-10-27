@@ -10,18 +10,28 @@ package backend;
  */
 public class Doctor{
   private Person person;
+  private Hospital hospital;
   private String medicalSpeciality;
+  private String doctorType;
   private int yearsOfExp;
-  Doctor(Person person, String medicalSpeciality, int yearsOfExp){
+  private String password;
+  public Doctor(Person person, Hospital hospital, String medicalSpeciality, String doctorType, int yearsOfExp, String password){
     this.person = person;
+    this.hospital = hospital;
     this.medicalSpeciality = medicalSpeciality;
+    this.doctorType = doctorType;
     this.yearsOfExp = yearsOfExp;
+    this.password = password;
   }
-  public void updateMedicalSpeciality(String speciality){
+  public void setMedicalSpeciality(String speciality){
     medicalSpeciality = speciality;
   }
-  public void updateYearsOfExp(int exp){
+  public void setYearsOfExp(int exp){
     yearsOfExp = exp;
+  }
+  public Person getPerson()
+  {
+    return person;
   }
   public String getMedicalSpeciality(){
     return medicalSpeciality;

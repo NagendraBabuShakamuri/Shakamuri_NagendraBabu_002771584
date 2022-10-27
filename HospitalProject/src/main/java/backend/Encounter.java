@@ -8,13 +8,44 @@ package backend;
  *
  * @author nbabu
  */
+import java.time.LocalDateTime;
 public class Encounter {
-    private String encounterDate;
-    private String encounterTime;
+    private int id;
+    private String type;
+    private Patient patient;
+    private Doctor doctor;
+    private LocalDateTime dateTime;
     private VitalSigns vitalSigns;
-    Encounter(String encounterDate, String encounterTime, float temperature, int pulseRatePerMinute, int systolicBloodPressure, int diastolicBloodPressure){
-      this.encounterDate = encounterDate;
-      this.encounterTime = encounterTime;
-      vitalSigns = new VitalSigns(temperature, pulseRatePerMinute, systolicBloodPressure, diastolicBloodPressure);
+    public Encounter(int id, String type, Patient patient, Doctor doctor, LocalDateTime dateTime, VitalSigns vitalSigns){
+      this.id = id;
+      this.type = type;
+      this.patient = patient;
+      this.doctor = doctor;
+      this.dateTime = dateTime;
+      this.vitalSigns = vitalSigns;
+    }
+    public int getId()
+    {
+      return id;
+    }
+    public String getType()
+    {
+      return type;
+    }
+    public Patient getPatient()
+    {
+      return patient;
+    }
+    public Doctor getDoctor()
+    {
+      return doctor;
+    }
+    public LocalDateTime getDateTime()
+    {
+      return dateTime;
+    }
+    public VitalSigns getVitalSigns()
+    {
+      return vitalSigns;
     }
 }
