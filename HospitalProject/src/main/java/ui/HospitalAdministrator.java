@@ -16,14 +16,21 @@ import backend.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 public class HospitalAdministrator extends javax.swing.JFrame {
 
     /**
      * Creates new form HospitalAdministrator
      */
-    public HospitalAdministrator() {
+    public HospitalAdministrator(String pass) {
         initComponents();
+        if(pass.equals("Hospital Admin"))
+        {
+            System.out.println("got it..");
+            jTabbedPane1.setEnabledAt(2, false);
+        }
     }
 
     /**
@@ -37,6 +44,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -73,7 +82,6 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         createPatientHouseCombo = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        createPatientPasswordField = new javax.swing.JTextField();
         createPatientSubmitButton = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         createPatientDOBField = new javax.swing.JTextField();
@@ -81,6 +89,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         createPatientCommField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         createPatientIsInsuredField = new javax.swing.JComboBox<>();
+        createPatientPasswordField = new javax.swing.JPasswordField();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         createDocPersonIdField = new javax.swing.JTextField();
@@ -123,18 +132,126 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         hosAdminLogoutButton = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         createHosStateField = new javax.swing.JTextField();
+        login = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
+        jLabel68 = new javax.swing.JLabel();
+        updateEncPositionField = new javax.swing.JTextField();
+        jLabel69 = new javax.swing.JLabel();
+        updateEncIdField = new javax.swing.JTextField();
+        updateEncIdSearch = new javax.swing.JButton();
+        updateEncTypeLabel = new javax.swing.JLabel();
+        updateEncTypeCombo = new javax.swing.JComboBox<>();
+        updateEncPatLabel = new javax.swing.JLabel();
+        updateEncPatCombo = new javax.swing.JComboBox<>();
+        updateEncCityLabel = new javax.swing.JLabel();
+        updateEncCommLabel = new javax.swing.JLabel();
+        updateEncHosLabel = new javax.swing.JLabel();
+        updateEncDocLabel = new javax.swing.JLabel();
+        updateEncDTLabel = new javax.swing.JLabel();
+        updateEncButton = new javax.swing.JButton();
+        updateEncCityCombo = new javax.swing.JComboBox<>();
+        updateEncCommCombo = new javax.swing.JComboBox<>();
+        updateEncHosCombo = new javax.swing.JComboBox<>();
+        updateEncDocCombo = new javax.swing.JComboBox<>();
+        updateEncDTField = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
+        jLabel57 = new javax.swing.JLabel();
+        updatePatPositionField = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        updatePatIdField = new javax.swing.JTextField();
+        updatePatPersonIdSearch = new javax.swing.JButton();
+        jLabel59 = new javax.swing.JLabel();
+        updatePatNameField = new javax.swing.JTextField();
+        updatePatNameSearch = new javax.swing.JButton();
+        updatePatGenderLabel = new javax.swing.JLabel();
+        updatePatGenderMale = new javax.swing.JRadioButton();
+        updatePatGenderFemale = new javax.swing.JRadioButton();
+        updatePatMobileLabel = new javax.swing.JLabel();
+        updatePatEmailLabel = new javax.swing.JLabel();
+        updatePatHouseLabel = new javax.swing.JLabel();
+        updatePatCommLabel = new javax.swing.JLabel();
+        updatePatIsInsLabel = new javax.swing.JLabel();
+        updatePatDOBLabel = new javax.swing.JLabel();
+        updatePatPasswordLabel = new javax.swing.JLabel();
+        updatePatMobileField = new javax.swing.JTextField();
+        updatePatEmailField = new javax.swing.JTextField();
+        updatePatHouseCombo = new javax.swing.JComboBox<>();
+        updatePatCommField = new javax.swing.JTextField();
+        updatePatIsInsCombo = new javax.swing.JComboBox<>();
+        updatePatDOBField = new javax.swing.JTextField();
+        updatePatPassField = new javax.swing.JTextField();
+        updatePatientButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        updateDocPositionField = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        updateDocIdField = new javax.swing.JTextField();
+        updateDocPersonIdSearch = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        updateDocNameField = new javax.swing.JTextField();
+        updateDocNameSearch = new javax.swing.JButton();
+        updateDocGenderLabel = new javax.swing.JLabel();
+        updateDocGenderMale = new javax.swing.JRadioButton();
+        updateDocGenderFemale = new javax.swing.JRadioButton();
+        updateDocMobileLabel = new javax.swing.JLabel();
+        updateDocEmailLabel = new javax.swing.JLabel();
+        updateDocHouseLabel = new javax.swing.JLabel();
+        updateDocHosLabel = new javax.swing.JLabel();
+        updateDocCommLabel = new javax.swing.JLabel();
+        updateDocCityLabel = new javax.swing.JLabel();
+        updateDocMedSpLabel = new javax.swing.JLabel();
+        updateDocTypeLabel = new javax.swing.JLabel();
+        updateDocExLabel = new javax.swing.JLabel();
+        updateDocPassLabel = new javax.swing.JLabel();
+        updateDocMobileField = new javax.swing.JTextField();
+        updateDocEmailField = new javax.swing.JTextField();
+        updateDocHouseCombo = new javax.swing.JComboBox<>();
+        updateDocHosCombo = new javax.swing.JComboBox<>();
+        updateDocCommField = new javax.swing.JTextField();
+        updateDocCityField = new javax.swing.JTextField();
+        updateDocMedSpField = new javax.swing.JTextField();
+        updateDocTypeCombo = new javax.swing.JComboBox<>();
+        updateDocButton = new javax.swing.JButton();
+        updateDocExCombo = new javax.swing.JComboBox<>();
+        updateDocPassField = new javax.swing.JPasswordField();
         jPanel10 = new javax.swing.JPanel();
-        jTextField23 = new javax.swing.JTextField();
+        updateHosIdField = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        updateHosIdSearch = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        updateHosNameField = new javax.swing.JTextField();
+        updateHosNameSearch = new javax.swing.JButton();
+        updateHosCommLabel = new javax.swing.JLabel();
+        updateHosCommCombo = new javax.swing.JComboBox<>();
+        updateHosCityLabel = new javax.swing.JLabel();
+        updateHosStateLabel = new javax.swing.JLabel();
+        updateHosCityField = new javax.swing.JTextField();
+        updateHosStateField = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        updateHosPositionField = new javax.swing.JTextField();
+        updateHosButton = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        deleteEncIdField = new javax.swing.JTextField();
+        deleteEncButton = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        deletePatIdField = new javax.swing.JTextField();
+        deletePatButton = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        deleteDocIdField = new javax.swing.JTextField();
+        deleteDocButton = new javax.swing.JButton();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        deleteHosIdField = new javax.swing.JTextField();
+        deleteHosButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(814, 768));
         setSize(new java.awt.Dimension(1000, 1000));
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -162,6 +279,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createEncCityComboActionPerformed(evt);
             }
         });
+        createEncCityCombo.removeAllItems();
+        for(City c: City.getCityList())
+        createEncCityCombo.addItem(c.getName());
 
         jLabel25.setText("Patient:");
 
@@ -175,6 +295,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createEncPatientFieldActionPerformed(evt);
             }
         });
+        createEncPatientField.removeAllItems();
+        for(Patient p: PatientDirectory.getPatientList()){
+            createEncPatientField.addItem(p.getName());
+        }
 
         jLabel26.setText("Community:");
 
@@ -258,7 +382,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(createEncHosCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,6 +460,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createPatientHouseComboActionPerformed(evt);
             }
         });
+        createPatientHouseCombo.removeAllItems();
+        for(House h: House.getHouseList()){
+            createPatientHouseCombo.addItem(h.getName());
+        }
 
         jLabel21.setText("Password:");
 
@@ -384,14 +512,14 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                             .addComponent(createPatientMobileField)
                             .addComponent(createPatientEmailField)
                             .addComponent(createPatientHouseCombo, 0, 115, Short.MAX_VALUE)
-                            .addComponent(createPatientPasswordField)
                             .addComponent(createPatientCommField)
-                            .addComponent(createPatientDOBField)))
+                            .addComponent(createPatientDOBField)
+                            .addComponent(createPatientPasswordField)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(createPatientIsInsuredField, 0, 115, Short.MAX_VALUE)))
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(446, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,6 +626,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createDocHospitalComboActionPerformed(evt);
             }
         });
+        createDocHospitalCombo.removeAllItems();
+        for(Hospital h: HospitalDirectory.getHospitalList()){
+            createDocHospitalCombo.addItem(h.getName());
+        }
 
         jLabel11.setText("House:");
 
@@ -516,6 +648,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createDocHouseComboActionPerformed(evt);
             }
         });
+        createDocHouseCombo.removeAllItems();
+        for(House h: House.getHouseList()){
+            createDocHouseCombo.addItem(h.getName());
+        }
 
         jLabel35.setText("type:");
 
@@ -584,7 +720,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(createDocTypeCombo, 0, 113, Short.MAX_VALUE)
                                 .addComponent(createDocExpCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -671,6 +807,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 createHosCommComboActionPerformed(evt);
             }
         });
+        createHosCommCombo.removeAllItems();
+        for(Community c: Community.getCommunityList()){
+            createHosCommCombo.addItem(c.getName());
+        }
 
         createHospitalSubmit.setText("Submit");
         createHospitalSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -721,12 +861,17 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(createHosCityField)
                             .addComponent(createHosStateField, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(247, 247, 247)
+                .addComponent(login)
+                .addGap(230, 230, 230)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(createHospitalIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -750,7 +895,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 .addComponent(createHospitalSubmit)
                 .addGap(18, 18, 18)
                 .addComponent(hosAdminLogoutButton)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Hospital", jPanel6);
@@ -770,48 +915,628 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jLabel68.setText("Position:");
+
+        updateEncPositionField.setEnabled(false);
+
+        jLabel69.setText("Encounter Id:");
+
+        updateEncIdSearch.setText("Search");
+        updateEncIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEncIdSearchActionPerformed(evt);
+            }
+        });
+
+        updateEncTypeLabel.setText("Encounter type:");
+        updateEncTypeLabel.setVisible(false);
+
+        updateEncTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inpatient", "Outpatient" }));
+        updateEncTypeCombo.setVisible(false);
+
+        updateEncPatLabel.setText("Patient:");
+        updateEncPatLabel.setVisible(false);
+
+        updateEncPatCombo.setVisible(false);
+
+        updateEncCityLabel.setText("City:");
+        updateEncCityLabel.setVisible(false);
+
+        updateEncCommLabel.setText("Community:");
+        updateEncCommLabel.setVisible(false);
+
+        updateEncHosLabel.setText("Hospital:");
+        updateEncHosLabel.setVisible(false);
+
+        updateEncDocLabel.setText("Doctor:");
+        updateEncDocLabel.setVisible(false);
+
+        updateEncDTLabel.setText("Date and Time:");
+        updateEncDTLabel.setVisible(false);
+
+        updateEncButton.setText("Update");
+        updateEncButton.setVisible(false);
+        updateEncButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEncButtonActionPerformed(evt);
+            }
+        });
+
+        updateEncCityCombo.setVisible(false);
+        updateEncCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateEncCityComboItemStateChanged(evt);
+            }
+        });
+
+        updateEncCommCombo.setVisible(false);
+        updateEncCommCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateEncCommComboItemStateChanged(evt);
+            }
+        });
+
+        updateEncHosCombo.setVisible(false);
+        updateEncHosCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateEncHosComboItemStateChanged(evt);
+            }
+        });
+
+        updateEncDocCombo.setVisible(false);
+
+        updateEncDTField.setVisible(false);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateEncDTLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncDocLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncHosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncCommLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncCityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncPatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateEncTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncPatCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncCommCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncHosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncDocCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(updateEncButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(updateEncIdSearch)
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel68)
+                    .addComponent(updateEncPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel69)
+                    .addComponent(updateEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateEncIdSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncTypeLabel)
+                    .addComponent(updateEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncPatLabel)
+                    .addComponent(updateEncPatCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncCityLabel)
+                    .addComponent(updateEncCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncCommLabel)
+                    .addComponent(updateEncCommCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncHosLabel)
+                    .addComponent(updateEncHosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncDocLabel)
+                    .addComponent(updateEncDocCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncDTLabel)
+                    .addComponent(updateEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateEncButton)
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Encounter", jPanel7);
+
+        jLabel57.setText("Position:");
+
+        updatePatPositionField.setEnabled(false);
+
+        jLabel58.setText("Person Id:");
+
+        updatePatPersonIdSearch.setText("Search");
+        updatePatPersonIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatPersonIdSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setText("Name:");
+
+        updatePatNameSearch.setText("Search");
+        updatePatNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatNameSearchActionPerformed(evt);
+            }
+        });
+
+        updatePatGenderLabel.setText("Gender:");
+        updatePatGenderLabel.setVisible(false);
+
+        buttonGroup4.add(updatePatGenderMale);
+        updatePatGenderMale.setText("Male");
+        updatePatGenderMale.setVisible(false);
+
+        buttonGroup4.add(updatePatGenderFemale);
+        updatePatGenderFemale.setText("Female");
+        updatePatGenderFemale.setVisible(false);
+
+        updatePatMobileLabel.setText("Mobile:");
+        updatePatMobileLabel.setVisible(false);
+
+        updatePatEmailLabel.setText("Email:");
+        updatePatEmailLabel.setVisible(false);
+
+        updatePatHouseLabel.setText("House:");
+        updatePatHouseLabel.setVisible(false);
+
+        updatePatCommLabel.setText("Community:");
+        updatePatCommLabel.setVisible(false);
+
+        updatePatIsInsLabel.setText("Is Insured?:");
+        updatePatIsInsLabel.setVisible(false);
+
+        updatePatDOBLabel.setText("Date of birth:");
+        updatePatDOBLabel.setVisible(false);
+
+        updatePatPasswordLabel.setText("Password:");
+        updatePatPasswordLabel.setVisible(false);
+
+        updatePatMobileField.setVisible(false);
+
+        updatePatEmailField.setVisible(false);
+
+        updatePatHouseCombo.setVisible(false);
+        updatePatHouseCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updatePatHouseComboItemStateChanged(evt);
+            }
+        });
+
+        updatePatCommField.setEnabled(false);
+        updatePatCommField.setVisible(false);
+
+        updatePatIsInsCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        updatePatIsInsCombo.setVisible(false);
+
+        updatePatDOBField.setVisible(false);
+
+        updatePatPassField.setVisible(false);
+
+        updatePatientButton.setText("Update");
+        updatePatientButton.setVisible(false);
+        updatePatientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatientButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(204, 204, 204)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(updatePatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updatePatPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatDOBLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(updatePatIsInsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatCommLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatHouseLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatMobileLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatGenderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(updatePatGenderFemale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(updatePatGenderMale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(updatePatPassField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(updatePatDOBField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(updatePatIsInsCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 120, Short.MAX_VALUE)
+                                            .addComponent(updatePatCommField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(updatePatHouseCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(updatePatEmailField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(updatePatMobileField, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(0, 143, Short.MAX_VALUE)))
+                                .addGap(292, 292, 292))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(updatePatIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(updatePatPersonIdSearch))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(updatePatNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(updatePatNameSearch))
+                                    .addComponent(updatePatPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel57)
+                    .addComponent(updatePatPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58)
+                    .addComponent(updatePatIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePatPersonIdSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel59)
+                    .addComponent(updatePatNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePatNameSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatGenderLabel)
+                    .addComponent(updatePatGenderMale))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updatePatGenderFemale)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatMobileLabel)
+                    .addComponent(updatePatMobileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatEmailLabel)
+                    .addComponent(updatePatEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatHouseLabel)
+                    .addComponent(updatePatHouseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatCommLabel)
+                    .addComponent(updatePatCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatIsInsLabel)
+                    .addComponent(updatePatIsInsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatDOBLabel)
+                    .addComponent(updatePatDOBField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatPasswordLabel)
+                    .addComponent(updatePatPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updatePatientButton)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Patient", jPanel8);
+
+        jLabel43.setText("Position:");
+
+        updateDocPositionField.setEnabled(false);
+
+        jLabel44.setText("Person Id:");
+
+        updateDocPersonIdSearch.setText("Search");
+        updateDocPersonIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDocPersonIdSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel45.setText("Name:");
+
+        updateDocNameSearch.setText("Search");
+        updateDocNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDocNameSearchActionPerformed(evt);
+            }
+        });
+
+        updateDocGenderLabel.setText("Gender:");
+        updateDocGenderLabel.setVisible(false);
+
+        buttonGroup3.add(updateDocGenderMale);
+        updateDocGenderMale.setText("Male");
+        updateDocGenderMale.setVisible(false);
+
+        buttonGroup3.add(updateDocGenderFemale);
+        updateDocGenderFemale.setText("Female");
+        updateDocGenderFemale.setVisible(false);
+
+        updateDocMobileLabel.setText("Mobile:");
+        updateDocMobileLabel.setVisible(false);
+
+        updateDocEmailLabel.setText("Email:");
+        updateDocEmailLabel.setVisible(false);
+
+        updateDocHouseLabel.setText("House:");
+        updateDocHouseLabel.setVisible(false);
+
+        updateDocHosLabel.setText("Hospital:");
+        updateDocHosLabel.setVisible(false);
+
+        updateDocCommLabel.setText("Community:");
+        updateDocCommLabel.setVisible(false);
+
+        updateDocCityLabel.setText("City:");
+        updateDocCityLabel.setVisible(false);
+
+        updateDocMedSpLabel.setText("Medical Speciality:");
+        updateDocMedSpLabel.setVisible(false);
+
+        updateDocTypeLabel.setText("type:");
+        updateDocTypeLabel.setVisible(false);
+
+        updateDocExLabel.setText("Experience:");
+        updateDocExLabel.setVisible(false);
+
+        updateDocPassLabel.setText("Password:");
+        updateDocPassLabel.setVisible(false);
+
+        updateDocMobileField.setVisible(false);
+
+        updateDocEmailField.setVisible(false);
+
+        updateDocHouseCombo.setVisible(false);
+
+        updateDocHosCombo.setVisible(false);
+        updateDocHosCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateDocHosComboItemStateChanged(evt);
+            }
+        });
+
+        updateDocCommField.setEnabled(false);
+        updateDocCommField.setVisible(false);
+
+        updateDocCityField.setEnabled(false);
+        updateDocCityField.setVisible(false);
+
+        updateDocMedSpField.setVisible(false);
+
+        updateDocTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCP", "Surgeon", "Specialist" }));
+        updateDocTypeCombo.setVisible(false);
+
+        updateDocButton.setText("Update");
+        updateDocButton.setVisible(false);
+        updateDocButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDocButtonActionPerformed(evt);
+            }
+        });
+
+        updateDocExCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+        updateDocExCombo.setVisible(false);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(updateDocButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(437, 437, 437))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(updateDocPassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocExLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocHosLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocHouseLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocEmailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocMobileLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocGenderLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocMedSpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocCityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateDocCommLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(updateDocPositionField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(updateDocIdField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(updateDocNameField))
+                                .addGap(18, 27, Short.MAX_VALUE)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(updateDocPersonIdSearch)
+                                    .addComponent(updateDocNameSearch))
+                                .addGap(347, 347, 347))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(updateDocMobileField)
+                                    .addComponent(updateDocEmailField)
+                                    .addComponent(updateDocHouseCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(updateDocHosCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(updateDocCommField)
+                                    .addComponent(updateDocCityField)
+                                    .addComponent(updateDocMedSpField)
+                                    .addComponent(updateDocTypeCombo, 0, 121, Short.MAX_VALUE)
+                                    .addComponent(updateDocExCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(updateDocPassField)
+                                    .addComponent(updateDocGenderFemale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(updateDocGenderMale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(updateDocPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(updateDocIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateDocPersonIdSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel45)
+                    .addComponent(updateDocNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateDocNameSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocGenderLabel)
+                    .addComponent(updateDocGenderMale))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(updateDocGenderFemale)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocMobileLabel)
+                    .addComponent(updateDocMobileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocEmailLabel)
+                    .addComponent(updateDocEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocHouseLabel)
+                    .addComponent(updateDocHouseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocHosLabel)
+                    .addComponent(updateDocHosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocCommLabel)
+                    .addComponent(updateDocCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocCityLabel)
+                    .addComponent(updateDocCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocMedSpLabel)
+                    .addComponent(updateDocMedSpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocTypeLabel)
+                    .addComponent(updateDocTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocExLabel)
+                    .addComponent(updateDocExCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDocPassLabel)
+                    .addComponent(updateDocPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateDocButton)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
+
+        updateDocPassField.setVisible(false);
 
         jTabbedPane3.addTab("Doctor", jPanel9);
 
         jLabel33.setText("Hospital Id:");
 
-        jButton5.setText("Search");
+        updateHosIdSearch.setText("Search");
+        updateHosIdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateHosIdSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setText("Hospital Name:");
+
+        updateHosNameSearch.setText("Search");
+        updateHosNameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateHosNameSearchActionPerformed(evt);
+            }
+        });
+
+        updateHosCommLabel.setText("Community:");
+        updateHosCommLabel.setVisible(false);
+
+        updateHosCommCombo.setVisible(false);
+        updateHosCommCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateHosCommComboItemStateChanged(evt);
+            }
+        });
+
+        updateHosCityLabel.setText("City:");
+        updateHosCityLabel.setVisible(false);
+
+        updateHosStateLabel.setText("State:");
+        updateHosStateLabel.setVisible(false);
+
+        updateHosCityField.setEnabled(false);
+        updateHosCityField.setVisible(false);
+
+        updateHosStateField.setEnabled(false);
+        updateHosStateField.setVisible(false);
+
+        jLabel42.setText("Position:");
+
+        updateHosPositionField.setEnabled(false);
+
+        updateHosButton.setText("Update");
+        updateHosButton.setVisible(false);
+        updateHosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateHosButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -819,22 +1544,62 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(183, 183, 183)
-                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(updateHosButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateHosStateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateHosCityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateHosCommLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateHosIdField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(updateHosNameField)
+                            .addComponent(updateHosCommCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updateHosCityField)
+                            .addComponent(updateHosStateField)
+                            .addComponent(updateHosPositionField))))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(updateHosIdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(updateHosNameSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(205, 205, 205)
+                .addGap(167, 167, 167)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel42)
+                    .addComponent(updateHosPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHosIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33)
-                    .addComponent(jButton5))
-                .addContainerGap(509, Short.MAX_VALUE))
+                    .addComponent(updateHosIdSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(updateHosNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateHosNameSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHosCommLabel)
+                    .addComponent(updateHosCommCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHosCityLabel)
+                    .addComponent(updateHosCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateHosStateLabel)
+                    .addComponent(updateHosStateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateHosButton)
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Hospital", jPanel10);
@@ -852,11 +1617,174 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Search/Update", jPanel2);
 
+        jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jLabel39.setText("Encounter Id:");
+
+        deleteEncButton.setText("Delete");
+        deleteEncButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEncButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deleteEncButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(397, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(deleteEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(deleteEncButton)
+                .addContainerGap(582, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Encounter", jPanel12);
+
+        jLabel40.setText("Patient Id:");
+
+        deletePatButton.setText("Delete");
+        deletePatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePatButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(198, 198, 198)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deletePatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deletePatIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(401, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(deletePatIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(deletePatButton)
+                .addContainerGap(606, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Patient", jPanel13);
+
+        jLabel41.setText("Doctor Id:");
+
+        deleteDocButton.setText("Delete");
+        deleteDocButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDocButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deleteDocButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteDocIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(390, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(deleteDocIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(deleteDocButton)
+                .addContainerGap(601, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Doctor", jPanel14);
+
+        jLabel46.setText("Hospital Id:");
+
+        deleteHosButton.setText("Delete");
+        deleteHosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteHosButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deleteHosButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteHosIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(372, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(deleteHosIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(deleteHosButton)
+                .addContainerGap(590, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Hospital", jPanel15);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane4)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane4)
+        );
+
+        jTabbedPane1.addTab("Delete", jPanel11);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -889,6 +1817,15 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 //        this.jTabbedPane1.setEnabledAt(1, false);
         String hospitalId = createHospitalIdField.getText().trim();
         String hospitalName = createHospitalNameField.getText().trim();
+        try
+        {
+            String communityName = createHosCommCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(this, "Please choose a valid community for the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+           return;
+        }
         boolean passed = clientSideValidation1(this, hospitalId, hospitalName);
         boolean exists = false;
         if(passed)
@@ -920,13 +1857,16 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             }
             if(community != null)
             {
-            Hospital h1 = new Hospital(Integer.parseInt(hospitalId), hospitalName, community);
-            HospitalDirectory.addHospital(h1);
-            JOptionPane.showMessageDialog(this, "New Hospital created successfully..", null, JOptionPane.OK_OPTION);
+                Hospital h1 = new Hospital(Integer.parseInt(hospitalId), hospitalName, community);
+                HospitalDirectory.addHospital(h1);
+                JOptionPane.showMessageDialog(this, "New Hospital created successfully..", null, JOptionPane.OK_OPTION);
+                createDocHospitalCombo.removeAllItems();
+                for(Hospital h: HospitalDirectory.getHospitalList())
+                  createDocHospitalCombo.addItem(h.getName());
             }
             else
             {
-              JOptionPane.showMessageDialog(this, "Please choose a valid community for the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Please choose a valid community for the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
             }
           } 
         }
@@ -949,10 +1889,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
     private void createHosCommComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createHosCommComboMouseClicked
         // TODO add your handling code here:
-        createHosCommCombo.removeAllItems();
-        for(Community c: Community.getCommunityList()){
-            createHosCommCombo.addItem(c.getName());
-        }
+//        createHosCommCombo.removeAllItems();
+//        for(Community c: Community.getCommunityList()){
+//            createHosCommCombo.addItem(c.getName());
+//        }
     }//GEN-LAST:event_createHosCommComboMouseClicked
 
     private void createHosCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createHosCommComboItemStateChanged
@@ -977,10 +1917,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private void createDocHospitalComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createDocHospitalComboMouseClicked
         // TODO add your handling code here:
 //        System.out.println(HospitalDirectory.getHospitalList().size());
-        createDocHospitalCombo.removeAllItems();        
-        for(Hospital h: HospitalDirectory.getHospitalList()){
-            createDocHospitalCombo.addItem(h.getName());
-        }
+//        createDocHospitalCombo.removeAllItems();        
+//        for(Hospital h: HospitalDirectory.getHospitalList()){
+//            createDocHospitalCombo.addItem(h.getName());
+//        }
     }//GEN-LAST:event_createDocHospitalComboMouseClicked
     private boolean clientSideValidation2(JFrame frame, String doctorPersonId, String doctorName, String doctorMobile, String doctorEmail, String doctorMedicSp, String password)
     {
@@ -1052,25 +1992,25 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         {
           for(Doctor d: DoctorDirectory.getDoctorList())
           {
-            if(Integer.parseInt(doctorPersonId) == d.getPerson().getId())
+            if(Integer.parseInt(doctorPersonId) == d.getId())
             {
               JOptionPane.showMessageDialog(this, "Doctor with the given Id already exists\nPlease give another Id to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(doctorName.equals(d.getPerson().getName()))
+            else if(doctorName.equals(d.getName()))
             {
               JOptionPane.showMessageDialog(this, "Doctor with the given name already exists\nPlease give another name to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(Long.parseLong(doctorMobile) == d.getPerson().getMobileNumber())
+            else if(Long.parseLong(doctorMobile) == d.getMobileNumber())
             {
               JOptionPane.showMessageDialog(this, "Doctor with the mobile number already exists\nPlease give another mobile number to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(doctorEmail.equals(d.getPerson().getEmail()))
+            else if(doctorEmail.equals(d.getEmail()))
             {
               JOptionPane.showMessageDialog(this, "Doctor with the given email already exists\nPlease give another email to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
@@ -1098,8 +2038,14 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             }
             if(house != null && hospital != null)
             {
-                Person p = new Person(Integer.parseInt(doctorPersonId), doctorName, doctorGender, Long.parseLong(doctorMobile, 10), doctorEmail, house, "Doctor", doctorPassword);
-                Doctor d1 = new Doctor(p, hospital, doctorMedicSp, doctorType, Integer.parseInt(doctorExp), doctorPassword);
+                int id = Integer.parseInt(doctorPersonId);
+                String name = doctorName;
+                String gender = doctorGender;
+                long mobile = Long.parseLong(doctorMobile, 10);
+                String email = doctorEmail;
+                int exp = Integer.parseInt(doctorExp);
+//                Person p = new Person(id, name, gender, mobile, email, house, "Doctor", doctorPassword);
+                Doctor d1 = new Doctor(id, name, gender, mobile, email, house, "Doctor", doctorPassword, hospital, doctorMedicSp, doctorType, exp);
                 DoctorDirectory.addDoctor(d1);
                 JOptionPane.showMessageDialog(this, "New doctor created successfully..", null, JOptionPane.OK_OPTION);
             }
@@ -1137,10 +2083,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
     private void createDocHouseComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createDocHouseComboMouseClicked
         // TODO add your handling code here:
-        createDocHouseCombo.removeAllItems();        
-        for(House h: House.getHouseList()){
-            createDocHouseCombo.addItem(h.getName());
-        }
+//        createDocHouseCombo.removeAllItems();        
+//        for(House h: House.getHouseList()){
+//            createDocHouseCombo.addItem(h.getName());
+//        }
     }//GEN-LAST:event_createDocHouseComboMouseClicked
 
     private void createPatientHouseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientHouseComboActionPerformed
@@ -1150,10 +2096,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
     private void createPatientHouseComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPatientHouseComboMouseClicked
         // TODO add your handling code here:
-        createPatientHouseCombo.removeAllItems();        
-        for(House h: House.getHouseList()){
-            createPatientHouseCombo.addItem(h.getName());
-        }
+//        createPatientHouseCombo.removeAllItems();        
+//        for(House h: House.getHouseList()){
+//            createPatientHouseCombo.addItem(h.getName());
+//        }
     }//GEN-LAST:event_createPatientHouseComboMouseClicked
 
     private void createPatientHouseComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createPatientHouseComboItemStateChanged
@@ -1181,17 +2127,17 @@ public class HospitalAdministrator extends javax.swing.JFrame {
              if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(patientEmail).matches() && !patientEmail.equals(""))
              {
                 System.out.println("Email is valid");
-                if(Pattern.compile("^\\d{2}-\\d{2}-\\d{4}$").matcher(patientDOB).matches() && !patientDOB.equals(""))
+                if(Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(patientDOB).matches() && !patientDOB.equals(""))
                 {
                   System.out.println("DOB is valid");
                   try 
                   {                          
-                    String DATE_FORMAT = "dd-MM-yyyy";
+                    String DATE_FORMAT = "yyyy-MM-dd";
                     DateFormat dfd = new SimpleDateFormat(DATE_FORMAT);
                     dfd.setLenient(false);
                     dfd.parse(patientDOB);
                    }catch (ParseException ex) {     
-                       JOptionPane.showMessageDialog(frame, "Date of birth is not valid.\nPlease enter the DOB in dd-MM-YYYY.", "Alert", JOptionPane.WARNING_MESSAGE);
+                       JOptionPane.showMessageDialog(frame, "Date of birth is not valid.\nPlease enter the DOB in the correct format (YYYY-MM-DD).", "Alert", JOptionPane.WARNING_MESSAGE);
                        return false;
                    }
                   if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches())
@@ -1200,7 +2146,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(frame, "Password is not valid.\nPassword must contain at least 4 characters with at least one digit.", "Alert", JOptionPane.WARNING_MESSAGE);
                 }
                 else
-                  JOptionPane.showMessageDialog(frame, "Date of birth is not valid.\nPlease enter the DOB in dd-MM-YYYY.", "Alert", JOptionPane.WARNING_MESSAGE);
+                  JOptionPane.showMessageDialog(frame, "Date of birth is not valid.\nPlease enter the DOB in YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
              } 
              else
               JOptionPane.showMessageDialog(frame, "Email is not valid.\nPlease enter a valid email.", "Alert", JOptionPane.WARNING_MESSAGE);
@@ -1241,32 +2187,32 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         }
         String isInsured = createPatientIsInsuredField.getSelectedItem().toString();
         String patientDOB = createPatientDOBField.getText();
-        String patientPassword = createPatientPasswordField.getText();
+        String patientPassword = new String(createPatientPasswordField.getPassword());
         boolean passed = clientSideValidation3(this, patientPersonId, patientName, patientMobile, patientEmail, patientDOB, patientPassword);
         boolean exists = false;
         if(passed)
         {
           for(Patient p: PatientDirectory.getPatientList())
           {
-            if(Integer.parseInt(patientPersonId) == p.getPerson().getId())
+            if(Integer.parseInt(patientPersonId) == p.getId())
             {
               JOptionPane.showMessageDialog(this, "Patient with the given Id already exists\nPlease give another Id to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(patientName.equals(p.getPerson().getName()))
+            else if(patientName.equals(p.getName()))
             {
               JOptionPane.showMessageDialog(this, "Patient with the given name already exists\nPlease give another name to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(Long.parseLong(patientMobile) == p.getPerson().getMobileNumber())
+            else if(Long.parseLong(patientMobile) == p.getMobileNumber())
             {
               JOptionPane.showMessageDialog(this, "Patient with the mobile number already exists\nPlease give another mobile number to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
               break;
             }
-            else if(patientEmail.equals(p.getPerson().getEmail()))
+            else if(patientEmail.equals(p.getEmail()))
             {
               JOptionPane.showMessageDialog(this, "Patient with the given email already exists\nPlease give another email to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
               exists = true;
@@ -1286,10 +2232,18 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             }
             if(house != null)
             {
-                Person p = new Person(Integer.parseInt(patientPersonId), patientName, patientGender, Long.parseLong(patientMobile, 10), patientEmail, house, "Patient", patientPassword);
-                Patient p1 = new Patient(p, isInsured, patientDOB, patientPassword);
+                int id = Integer.parseInt(patientPersonId);
+                long mobile = Long.parseLong(patientMobile, 10);
+                boolean insured = Boolean.parseBoolean(isInsured);
+                String[] dateSplit = patientDOB.split("-");
+                LocalDate dateOfBirth = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
+//                Person p = new Person(Integer.parseInt(patientPersonId), patientName, patientGender, Long.parseLong(patientMobile, 10), patientEmail, house, "Patient", patientPassword);
+                Patient p1 = new Patient(id, patientName, patientGender, mobile, patientEmail, house, "Patient", patientPassword, insured, dateOfBirth);
                 PatientDirectory.addPatient(p1);
                 JOptionPane.showMessageDialog(this, "New patient created successfully..", null, JOptionPane.OK_OPTION);
+                createEncPatientField.removeAllItems();
+                for(Patient p: PatientDirectory.getPatientList())
+                    createEncPatientField.addItem(p.getName());
             }
             else
             {
@@ -1305,32 +2259,36 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
     private void createEncCityComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEncCityComboActionPerformed
         // TODO add your handling code here:
-        
+//        createEncCityCombo.removeAllItems();
+//        for(City c: City.getCityList())
+//            createEncCityCombo.addItem(c.getName());
     }//GEN-LAST:event_createEncCityComboActionPerformed
 
     private void createEncPatientFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEncPatientFieldMouseClicked
         // TODO add your handling code here:
-        createEncPatientField.removeAllItems();        
-        for(Patient p: PatientDirectory.getPatientList())
-            createEncPatientField.addItem(p.getPerson().getName());
+//        createEncPatientField.removeAllItems();        
+//        for(Patient p: PatientDirectory.getPatientList())
+//            createEncPatientField.addItem(p.getName());
     }//GEN-LAST:event_createEncPatientFieldMouseClicked
 
     private void createEncCityComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEncCityComboMouseClicked
         // TODO add your handling code here:
-        createEncCityCombo.removeAllItems();
-        for(City c: City.getCityList())
-            createEncCityCombo.addItem(c.getName());
+//        createEncCityCombo.removeAllItems();
+//        for(City c: City.getCityList())
+//            createEncCityCombo.addItem(c.getName());
     }//GEN-LAST:event_createEncCityComboMouseClicked
 
     private void createEncCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncCityComboItemStateChanged
         // TODO add your handling code here:
-        createEncCommCombo.removeAllItems();
-        for(Community community: Community.getCommunityList())
-        {
-          if(community.getCity().getName().equals(createEncCityCombo.getSelectedItem().toString()))
-          {
-            createEncCommCombo.addItem(community.getName());            
-          }
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            createEncCommCombo.removeAllItems();
+            for(Community community: Community.getCommunityList())
+            {
+              if(community.getCity().getName().equals(createEncCityCombo.getSelectedItem().toString()))
+              {
+                createEncCommCombo.addItem(community.getName());            
+              }
+            }
         }
     }//GEN-LAST:event_createEncCityComboItemStateChanged
 
@@ -1353,6 +2311,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
     private void createEncCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncCommComboItemStateChanged
         // TODO add your handling code here:
+      if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
         createEncHosCombo.removeAllItems();
         for(Hospital hospital: HospitalDirectory.getHospitalList())
         {
@@ -1361,17 +2320,21 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             createEncHosCombo.addItem(hospital.getName());            
           }
         }
+      }
     }//GEN-LAST:event_createEncCommComboItemStateChanged
 
     private void createEncHosComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncHosComboItemStateChanged
-        // TODO add your handling code here:
-        createEncDocCombo.removeAllItems();
-        for(Doctor d: DoctorDirectory.getDoctorList())
-        {
-          if(d.getPerson().getName().equals(createEncHosCombo.getSelectedItem().toString()))
-          {
-            createEncDocCombo.addItem(d.getPerson().getName());       
-          }
+        // TODO add your handling code here:        
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            createEncDocCombo.removeAllItems();
+            for(Doctor d: DoctorDirectory.getDoctorList())
+            {
+              System.out.println(d.getName());
+              if(d.getHospital().getName().equals(createEncHosCombo.getSelectedItem().toString()))
+              {
+                createEncDocCombo.addItem(d.getName());       
+              }
+            }
         }
     }//GEN-LAST:event_createEncHosComboItemStateChanged
 
@@ -1430,7 +2393,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             Patient p = null;
             for(Patient pat: PatientDirectory.getPatientList())
             {
-              if(pat.getPerson().getName().equals(createEncPatientField.getSelectedItem().toString()))
+              if(pat.getName().equals(createEncPatientField.getSelectedItem().toString()))
               {
                 p = pat;
                 break;
@@ -1439,7 +2402,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             Doctor d = null;
             for(Doctor doc: DoctorDirectory.getDoctorList())
             {
-              if(doc.getPerson().getName().equals(createEncDocCombo.getSelectedItem().toString()))
+              if(doc.getName().equals(createEncDocCombo.getSelectedItem().toString()))
               {
                 d = doc;
                 break;
@@ -1463,6 +2426,1097 @@ public class HospitalAdministrator extends javax.swing.JFrame {
           }
         }
     }//GEN-LAST:event_createEncButtonActionPerformed
+
+    public void searchData(String type, String searchText)
+    {
+      int position = -1;
+      boolean found = false;
+      switch(type) {
+          case "hospitalId":
+                updateHosCommLabel.setVisible(false);
+                updateHosCityLabel.setVisible(false);
+                updateHosStateLabel.setVisible(false);
+                updateHosCommCombo.setVisible(false);
+                updateHosCityField.setVisible(false);
+                updateHosStateField.setVisible(false);
+                updateHosButton.setVisible(false);
+                for(Hospital h: HospitalDirectory.getHospitalList())
+                {
+                  if(Integer.parseInt(updateHosIdField.getText()) == h.getId())
+                  {                    
+                    found = true;
+                    position = HospitalDirectory.getHospitalList().indexOf(h);
+                    updateHosCommLabel.setVisible(true);
+                    updateHosCityLabel.setVisible(true);
+                    updateHosStateLabel.setVisible(true);
+                    updateHosCommCombo.setVisible(true);
+                    updateHosCityField.setVisible(true);
+                    updateHosStateField.setVisible(true);
+                    updateHosButton.setVisible(true);
+                    
+                    updateHosPositionField.setText(Integer.valueOf(position).toString());
+                    updateHosNameField.setText(h.getName()); 
+                    updateHosCommCombo.removeAllItems();
+                    for(Community c: Community.getCommunityList())
+                        updateHosCommCombo.addItem(c.getName());
+                    updateHosCommCombo.setSelectedItem(h.getCommunity().getName());
+                    updateHosCityField.setText(h.getCommunity().getCity().getName());
+                    updateHosStateField.setText(h.getCommunity().getCity().getState());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Hospital with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+            case "hospitalName":
+                updateHosCommLabel.setVisible(false);
+                updateHosCityLabel.setVisible(false);
+                updateHosStateLabel.setVisible(false);
+                updateHosCommCombo.setVisible(false);
+                updateHosCityField.setVisible(false);
+                updateHosStateField.setVisible(false);
+                updateHosButton.setVisible(false);
+                for(Hospital h: HospitalDirectory.getHospitalList())
+                {
+                  if(updateHosNameField.getText().equals(h.getName()))
+                  {                    
+                    found = true;
+                    position = HospitalDirectory.getHospitalList().indexOf(h);
+                    updateHosCommLabel.setVisible(true);
+                    updateHosCityLabel.setVisible(true);
+                    updateHosStateLabel.setVisible(true);
+                    updateHosCommCombo.setVisible(true);
+                    updateHosCityField.setVisible(true);
+                    updateHosStateField.setVisible(true);
+                    updateHosButton.setVisible(true);
+                    
+                    updateHosPositionField.setText(Integer.valueOf(position).toString());
+                    updateHosIdField.setText(Integer.valueOf(h.getId()).toString()); 
+                    updateHosCommCombo.removeAllItems();
+                    for(Community c: Community.getCommunityList())
+                        updateHosCommCombo.addItem(c.getName());
+                    updateHosCommCombo.setSelectedItem(h.getCommunity().getName());
+                    updateHosCityField.setText(h.getCommunity().getCity().getName());
+                    updateHosStateField.setText(h.getCommunity().getCity().getState());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Hospital with the given name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+            case "doctorId":
+                updateDocGenderLabel.setVisible(false);
+                updateDocMobileLabel.setVisible(false);
+                updateDocEmailLabel.setVisible(false);
+                updateDocHouseLabel.setVisible(false);
+                updateDocHosLabel.setVisible(false);
+                updateDocCommLabel.setVisible(false);
+                updateDocCityLabel.setVisible(false);
+                updateDocMedSpLabel.setVisible(false);
+                updateDocTypeLabel.setVisible(false);
+                updateDocExLabel.setVisible(false);
+                updateDocPassLabel.setVisible(false);
+                updateDocGenderMale.setVisible(false);
+                updateDocGenderFemale.setVisible(false);
+                updateDocMobileField.setVisible(false);
+                updateDocEmailField.setVisible(false);
+                updateDocHouseCombo.setVisible(false);
+                updateDocHosCombo.setVisible(false);
+                updateDocCommField.setVisible(false);
+                updateDocCityField.setVisible(false);
+                updateDocMedSpField.setVisible(false);
+                updateDocTypeCombo.setVisible(false);
+                updateDocExCombo.setVisible(false);
+                updateDocPassField.setVisible(false);
+                updateDocButton.setVisible(false);
+                for(Doctor d: DoctorDirectory.getDoctorList())
+                {
+                  if(Integer.parseInt(updateDocIdField.getText()) == d.getId())
+                  {                    
+                    found = true;
+                    position = DoctorDirectory.getDoctorList().indexOf(d);
+                    updateDocGenderLabel.setVisible(true);
+                    updateDocMobileLabel.setVisible(true);
+                    updateDocEmailLabel.setVisible(true);
+                    updateDocHouseLabel.setVisible(true);
+                    updateDocHosLabel.setVisible(true);
+                    updateDocCommLabel.setVisible(true);
+                    updateDocCityLabel.setVisible(true);
+                    updateDocMedSpLabel.setVisible(true);
+                    updateDocTypeLabel.setVisible(true);
+                    updateDocExLabel.setVisible(true);
+                    updateDocPassLabel.setVisible(true);
+                    updateDocGenderMale.setVisible(true);
+                    updateDocGenderFemale.setVisible(true);
+                    updateDocMobileField.setVisible(true);
+                    updateDocEmailField.setVisible(true);
+                    updateDocHouseCombo.setVisible(true);
+                    updateDocHosCombo.setVisible(true);
+                    updateDocCommField.setVisible(true);
+                    updateDocCityField.setVisible(true);
+                    updateDocMedSpField.setVisible(true);
+                    updateDocTypeCombo.setVisible(true);
+                    updateDocExCombo.setVisible(true);
+                    updateDocPassField.setVisible(true);
+                    updateDocButton.setVisible(true);
+                    
+                    updateDocPositionField.setText(Integer.valueOf(position).toString());
+                    updateDocNameField.setText(d.getName());
+                    if(d.getGender().equals("Male"))
+                        updateDocGenderMale.setSelected(true);
+                    else
+                        updateDocGenderFemale.setSelected(true);
+                    updateDocMobileField.setText(Long.valueOf(d.getMobileNumber()).toString());
+                    updateDocEmailField.setText(d.getEmail());                    
+                    updateDocHouseCombo.removeAllItems();
+                    for(House h: House.getHouseList())
+                        updateDocHouseCombo.addItem(h.getName());
+                    updateDocHouseCombo.setSelectedItem(d.getHouse().getName());
+                    updateDocHosCombo.removeAllItems();
+                    for(Hospital h: HospitalDirectory.getHospitalList())
+                        updateDocHosCombo.addItem(h.getName());
+                    updateDocHosCombo.setSelectedItem(d.getHospital().getName());
+                    updateDocCommField.setText(d.getHospital().getCommunity().getName());
+                    updateDocCityField.setText(d.getHospital().getCommunity().getCity().getName());
+                    updateDocMedSpField.setText(d.getMedicalSpeciality());
+                    updateDocTypeCombo.setSelectedItem(d.getDoctorType());
+                    updateDocExCombo.setSelectedItem(Integer.valueOf(d.getYearsOfExp()).toString());
+                    updateDocPassField.setText(d.getPassword());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Doctor with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+                case "doctorName":
+                updateDocGenderLabel.setVisible(false);
+                updateDocMobileLabel.setVisible(false);
+                updateDocEmailLabel.setVisible(false);
+                updateDocHouseLabel.setVisible(false);
+                updateDocHosLabel.setVisible(false);
+                updateDocCommLabel.setVisible(false);
+                updateDocCityLabel.setVisible(false);
+                updateDocMedSpLabel.setVisible(false);
+                updateDocTypeLabel.setVisible(false);
+                updateDocExLabel.setVisible(false);
+                updateDocPassLabel.setVisible(false);
+                updateDocGenderMale.setVisible(false);
+                updateDocGenderFemale.setVisible(false);
+                updateDocMobileField.setVisible(false);
+                updateDocEmailField.setVisible(false);
+                updateDocHouseCombo.setVisible(false);
+                updateDocHosCombo.setVisible(false);
+                updateDocCommField.setVisible(false);
+                updateDocCityField.setVisible(false);
+                updateDocMedSpField.setVisible(false);
+                updateDocTypeCombo.setVisible(false);
+                updateDocExCombo.setVisible(false);
+                updateDocPassField.setVisible(false);
+                updateDocButton.setVisible(false);
+                for(Doctor d: DoctorDirectory.getDoctorList())
+                {
+                  if(updateDocNameField.getText().equals(d.getName()))
+                  {                    
+                    found = true;
+                    position = DoctorDirectory.getDoctorList().indexOf(d);
+                    updateDocGenderLabel.setVisible(true);
+                    updateDocMobileLabel.setVisible(true);
+                    updateDocEmailLabel.setVisible(true);
+                    updateDocHouseLabel.setVisible(true);
+                    updateDocHosLabel.setVisible(true);
+                    updateDocCommLabel.setVisible(true);
+                    updateDocCityLabel.setVisible(true);
+                    updateDocMedSpLabel.setVisible(true);
+                    updateDocTypeLabel.setVisible(true);
+                    updateDocExLabel.setVisible(true);
+                    updateDocPassLabel.setVisible(true);
+                    updateDocGenderMale.setVisible(true);
+                    updateDocGenderFemale.setVisible(true);
+                    updateDocMobileField.setVisible(true);
+                    updateDocEmailField.setVisible(true);
+                    updateDocHouseCombo.setVisible(true);
+                    updateDocHosCombo.setVisible(true);
+                    updateDocCommField.setVisible(true);
+                    updateDocCityField.setVisible(true);
+                    updateDocMedSpField.setVisible(true);
+                    updateDocTypeCombo.setVisible(true);
+                    updateDocExCombo.setVisible(true);
+                    updateDocPassField.setVisible(true);
+                    updateDocButton.setVisible(true);
+                    
+                    updateDocPositionField.setText(Integer.valueOf(position).toString());
+                    updateDocIdField.setText(Integer.valueOf(d.getId()).toString());
+                    if(d.getGender().equals("Male"))
+                        updateDocGenderMale.setSelected(true);
+                    else
+                        updateDocGenderFemale.setSelected(true);
+                    updateDocMobileField.setText(Long.valueOf(d.getMobileNumber()).toString());
+                    updateDocEmailField.setText(d.getEmail());                    
+                    updateDocHouseCombo.removeAllItems();
+                    for(House h: House.getHouseList())
+                        updateDocHouseCombo.addItem(h.getName());
+                    updateDocHouseCombo.setSelectedItem(d.getHouse().getName());
+                    updateDocHosCombo.removeAllItems();
+                    for(Hospital h: HospitalDirectory.getHospitalList())
+                        updateDocHosCombo.addItem(h.getName());
+                    updateDocHosCombo.setSelectedItem(d.getHospital().getName());
+                    updateDocCommField.setText(d.getHospital().getCommunity().getName());
+                    updateDocCityField.setText(d.getHospital().getCommunity().getCity().getName());
+                    updateDocMedSpField.setText(d.getMedicalSpeciality());
+                    updateDocTypeCombo.setSelectedItem(d.getDoctorType());
+                    updateDocExCombo.setSelectedItem(Integer.valueOf(d.getYearsOfExp()).toString());
+                    updateDocPassField.setText(d.getPassword());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Doctor with the given name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+                case "patientId":
+                updatePatGenderLabel.setVisible(false);
+                updatePatMobileLabel.setVisible(false);
+                updatePatEmailLabel.setVisible(false);
+                updatePatHouseLabel.setVisible(false);
+                updatePatCommLabel.setVisible(false);
+                updatePatIsInsLabel.setVisible(false);
+                updatePatDOBLabel.setVisible(false);                
+                updatePatPasswordLabel.setVisible(false);
+                updatePatGenderMale.setVisible(false);
+                updatePatGenderFemale.setVisible(false);
+                updatePatMobileField.setVisible(false);
+                updatePatEmailField.setVisible(false);
+                updatePatHouseCombo.setVisible(false);
+                updatePatCommField.setVisible(false);
+                updatePatIsInsCombo.setVisible(false);
+                updatePatDOBField.setVisible(false);
+                updatePatPassField.setVisible(false);
+                updatePatientButton.setVisible(false);                
+                for(Patient p: PatientDirectory.getPatientList())
+                {
+                  if(Integer.parseInt(updatePatIdField.getText()) == p.getId())
+                  {                    
+                    found = true;
+                    position = PatientDirectory.getPatientList().indexOf(p);
+                    updatePatGenderLabel.setVisible(true);
+                    updatePatMobileLabel.setVisible(true);
+                    updatePatEmailLabel.setVisible(true);
+                    updatePatHouseLabel.setVisible(true);
+                    updatePatCommLabel.setVisible(true);
+                    updatePatIsInsLabel.setVisible(true);
+                    updatePatDOBLabel.setVisible(true); 
+                    updatePatPasswordLabel.setVisible(true);
+                    updatePatGenderMale.setVisible(true);
+                    updatePatGenderFemale.setVisible(true);
+                    updatePatMobileField.setVisible(true);
+                    updatePatEmailField.setVisible(true);
+                    updatePatHouseCombo.setVisible(true);
+                    updatePatCommField.setVisible(true);
+                    updatePatIsInsCombo.setVisible(true);
+                    updatePatDOBField.setVisible(true);
+                    updatePatPassField.setVisible(true);
+                    updatePatientButton.setVisible(true); 
+                    
+                    updatePatPositionField.setText(Integer.valueOf(position).toString());
+                    updatePatNameField.setText(p.getName());
+                    if(p.getGender().equals("Male"))
+                        updatePatGenderMale.setSelected(true);
+                    else
+                        updatePatGenderFemale.setSelected(true);
+                    updatePatMobileField.setText(Long.valueOf(p.getMobileNumber()).toString());
+                    updatePatEmailField.setText(p.getEmail());                    
+                    updatePatHouseCombo.removeAllItems();
+                    for(House h: House.getHouseList())
+                        updatePatHouseCombo.addItem(h.getName());
+                    updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
+                    updatePatCommField.setText(p.getHouse().getCommunity().getName());
+                    updatePatIsInsCombo.setSelectedItem(p.getIsInsured());
+                    updatePatDOBField.setText(p.getDateOfBirth().toString());
+                    updatePatPassField.setText(p.getPassword());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Patient with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+                case "patientName":
+                updatePatGenderLabel.setVisible(false);
+                updatePatMobileLabel.setVisible(false);
+                updatePatEmailLabel.setVisible(false);
+                updatePatHouseLabel.setVisible(false);
+                updatePatCommField.setVisible(false);
+                updatePatIsInsCombo.setVisible(false);
+                updatePatDOBField.setVisible(false);
+                updatePatPasswordLabel.setVisible(false);
+                updatePatGenderMale.setVisible(false);
+                updatePatGenderFemale.setVisible(false);
+                updatePatMobileField.setVisible(false);
+                updatePatEmailField.setVisible(false);
+                updatePatHouseCombo.setVisible(false);
+                updatePatCommField.setVisible(false);
+                updatePatIsInsCombo.setVisible(false);
+                updatePatDOBField.setVisible(false);
+                updatePatPassField.setVisible(false);
+                updatePatientButton.setVisible(false);                
+                for(Patient p: PatientDirectory.getPatientList())
+                {
+                  if(updatePatNameField.getText().equals( p.getName()))
+                  {                    
+                    found = true;
+                    position = PatientDirectory.getPatientList().indexOf(p);
+                    updatePatGenderLabel.setVisible(true);
+                    updatePatMobileLabel.setVisible(true);
+                    updatePatEmailLabel.setVisible(true);
+                    updatePatHouseLabel.setVisible(true);
+                    updatePatCommField.setVisible(true);
+                    updatePatIsInsCombo.setVisible(true);
+                    updatePatDOBField.setVisible(true);
+                    updatePatPasswordLabel.setVisible(true);
+                    updatePatGenderMale.setVisible(true);
+                    updatePatGenderFemale.setVisible(true);
+                    updatePatMobileField.setVisible(true);
+                    updatePatEmailField.setVisible(true);
+                    updatePatHouseCombo.setVisible(true);
+                    updatePatCommField.setVisible(true);
+                    updatePatIsInsCombo.setVisible(true);
+                    updatePatDOBField.setVisible(true);
+                    updatePatPassField.setVisible(true);
+                    updatePatientButton.setVisible(true); 
+                    
+                    updatePatPositionField.setText(Integer.valueOf(position).toString());
+                    updatePatIdField.setText(Integer.valueOf(p.getId()).toString());
+                    if(p.getGender().equals("Male"))
+                        updatePatGenderMale.setSelected(true);
+                    else
+                        updatePatGenderFemale.setSelected(true);
+                    updatePatMobileField.setText(Long.valueOf(p.getMobileNumber()).toString());
+                    updatePatEmailField.setText(p.getEmail());                    
+                    updatePatHouseCombo.removeAllItems();
+                    for(House h: House.getHouseList())
+                        updatePatHouseCombo.addItem(h.getName());
+                    updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
+                    updatePatCommField.setText(p.getHouse().getCommunity().getName());
+                    updatePatIsInsCombo.setSelectedItem(p.getIsInsured());
+                    updatePatDOBField.setText(p.getDateOfBirth().toString());
+                    updatePatPassField.setText(p.getPassword());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Patient with the given name does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+                case "encounterId":
+                updateEncTypeLabel.setVisible(false);
+                updateEncPatLabel.setVisible(false);
+                updateEncCityLabel.setVisible(false);
+                updateEncCommLabel.setVisible(false);
+                updateEncHosLabel.setVisible(false);
+                updateEncDocLabel.setVisible(false);
+                updateEncDTLabel.setVisible(false);                
+                updateEncTypeCombo.setVisible(false);
+                updateEncPatCombo.setVisible(false);
+                updateEncCityCombo.setVisible(false);
+                updateEncCommCombo.setVisible(false);
+                updateEncHosCombo.setVisible(false);
+                updateEncDocCombo.setVisible(false);
+                updateEncDTField.setVisible(false);
+                updateEncButton.setVisible(false);               
+                for(Encounter e: EncounterHistory.getEncounterList())
+                {
+                  if(Integer.parseInt(updateEncIdField.getText()) == e.getId())
+                  {                    
+                    found = true;
+                    position = EncounterHistory.getEncounterList().indexOf(e);
+                    updateEncTypeLabel.setVisible(true);
+                    updateEncPatLabel.setVisible(true);
+                    updateEncCityLabel.setVisible(true);
+                    updateEncCommLabel.setVisible(true);
+                    updateEncHosLabel.setVisible(true);
+                    updateEncDocLabel.setVisible(true);
+                    updateEncDTLabel.setVisible(true);                
+                    updateEncTypeCombo.setVisible(true);
+                    updateEncPatCombo.setVisible(true);
+                    updateEncCityCombo.setVisible(true);
+                    updateEncCommCombo.setVisible(true);
+                    updateEncHosCombo.setVisible(true);
+                    updateEncDocCombo.setVisible(true);
+                    updateEncDTField.setVisible(true);
+                    updateEncButton.setVisible(true);
+                    
+                    updateEncPositionField.setText(Integer.valueOf(position).toString());
+                    updateEncTypeCombo.setSelectedItem(e.getType());
+                    updateEncPatCombo.removeAllItems();
+                    for(Patient p: PatientDirectory.getPatientList())
+                        updateEncPatCombo.addItem(p.getName());
+                    updateEncPatCombo.setSelectedItem(e.getPatient().getName());
+                    updateEncCityCombo.removeAllItems();
+                    for(City c: City.getCityList())
+                        updateEncCityCombo.addItem(c.getName());
+                    updateEncCityCombo.setSelectedItem(e.getDoctor().getHospital().getCommunity().getCity().getName());
+                    updateEncCommCombo.removeAllItems();
+                    for(Community community: Community.getCommunityList())
+                    {
+                      if(community.getCity().getName().equals(updateEncCityCombo.getSelectedItem().toString()))
+                      {
+                       updateEncCommCombo.addItem(community.getName());            
+                      }
+                    }                    
+                    updateEncCommCombo.setSelectedItem(e.getDoctor().getHospital().getCommunity().getName());
+                    updateEncHosCombo.removeAllItems();
+                    for(Hospital hospital: HospitalDirectory.getHospitalList())
+                    {
+                      if(hospital.getCommunity().getName().equals(updateEncCommCombo.getSelectedItem().toString()))
+                      {
+                        updateEncHosCombo.addItem(hospital.getName());            
+                      }
+                    }
+                    updateEncHosCombo.setSelectedItem(e.getDoctor().getHospital().getName());
+                    updateEncDocCombo.removeAllItems();
+                    for(Doctor d: DoctorDirectory.getDoctorList())
+                    {
+                      System.out.println(d.getName());
+                      if(d.getHospital().getName().equals(updateEncHosCombo.getSelectedItem().toString()))
+                      {
+                        updateEncDocCombo.addItem(d.getName());       
+                      }
+                    }                   
+                    updateEncDocCombo.setSelectedItem(e.getDoctor().getName());
+                    updateEncDTField.setText(e.getDateTime().toString());
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Encounter with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+      }
+    }
+    private void updateHosIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHosIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateHosIdField.getText().trim();
+        System.out.println(searchText);
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Hospital Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("hospitalId", searchText.trim());
+    }//GEN-LAST:event_updateHosIdSearchActionPerformed
+
+    private void updateHosNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHosNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateHosNameField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(searchText).matches()  && !searchText.equals(""))
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Hospital name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+            searchData("hospitalName", searchText.trim());
+    }//GEN-LAST:event_updateHosNameSearchActionPerformed
+
+    private void updateDocPersonIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDocPersonIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateDocIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Doctor Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("doctorId", searchText.trim());
+    }//GEN-LAST:event_updateDocPersonIdSearchActionPerformed
+
+    private void updateDocNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDocNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateDocNameField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Doctor name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("doctorName", searchText.trim());
+    }//GEN-LAST:event_updateDocNameSearchActionPerformed
+
+    private void updatePatPersonIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatPersonIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updatePatIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Patient Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("patientId", searchText.trim());
+    }//GEN-LAST:event_updatePatPersonIdSearchActionPerformed
+
+    private void updatePatNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatNameSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updatePatNameField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Patient name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("patientName", searchText.trim());
+    }//GEN-LAST:event_updatePatNameSearchActionPerformed
+
+    private void updateEncIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEncIdSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateEncIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Encounter Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("encounterId", searchText.trim());
+    }//GEN-LAST:event_updateEncIdSearchActionPerformed
+
+    private void updateHosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHosButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updateHosPositionField.getText());
+        String hospitalId = updateHosIdField.getText().trim();
+        String hospitalName = updateHosNameField.getText().trim();
+        String oldHospitalName = HospitalDirectory.getHospitalList().get(position).getName();
+        try
+        {
+            String communityName = updateHosCommCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(this, "Please choose a valid community for the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+           return;
+        }
+        boolean passed = clientSideValidation1(this, hospitalId, hospitalName);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Hospital h: HospitalDirectory.getHospitalList())
+          {
+            if(Integer.parseInt(hospitalId) == h.getId() && HospitalDirectory.getHospitalList().indexOf(h) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Hospital with the given Id already exists\nPlease give another Id to the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(hospitalName.equals(h.getName()) && HospitalDirectory.getHospitalList().indexOf(h) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Hospital with the given name already exists\nPlease give another name to the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            Community community = null;
+            for(Community c: Community.getCommunityList())
+            {               
+              if(c.getName().equals(updateHosCommCombo.getSelectedItem().toString()))
+              {
+                community = c;
+                break;
+              }
+            }            
+            if(community != null)
+            {
+              ArrayList<Hospital> hospitalList = HospitalDirectory.getHospitalList();              
+              Hospital h1 = new Hospital(Integer.parseInt(hospitalId), hospitalName, community);              
+              hospitalList.set(position, h1);
+              HospitalDirectory.setHospitalList(hospitalList);
+              for(Doctor doctor: DoctorDirectory.getDoctorList())
+              {
+                if(doctor.getHospital().getName().equals(oldHospitalName))
+                {
+                  doctor.setHospital(h1);
+                }
+              }
+              JOptionPane.showMessageDialog(this, "Updated the hospital successfully..", null, JOptionPane.OK_OPTION);
+              createDocHospitalCombo.removeAllItems();
+                for(Hospital h: HospitalDirectory.getHospitalList())
+                  createDocHospitalCombo.addItem(h.getName());
+              updateDocHosCombo.removeAllItems();
+                for(Hospital h: HospitalDirectory.getHospitalList())
+                  updateDocHosCombo.addItem(h.getName());
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a valid community for the hospital..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          } 
+        }
+    }//GEN-LAST:event_updateHosButtonActionPerformed
+
+    private void updateDocButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDocButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updateDocPositionField.getText());
+        String doctorPersonId = updateDocIdField.getText().trim();
+        String doctorName = updateDocNameField.getText().trim();
+        String oldDoctorName = DoctorDirectory.getDoctorList().get(position).getName();
+        String doctorGender = "";
+        if(updateDocGenderMale.isSelected())
+            doctorGender = "Male";
+        else
+            doctorGender = "Female";
+        String doctorMobile = updateDocMobileField.getText().trim();
+        String doctorEmail = updateDocEmailField.getText().trim();
+        try
+        {
+          String doctorHouse = updateDocHouseCombo.getSelectedItem().toString();
+          String doctorHospital = updateDocHosCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        { 
+          JOptionPane.showMessageDialog(this, "Please choose both house and hospital for the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String doctorMedicSp = updateDocMedSpField.getText().trim();
+        String doctorType = updateDocTypeCombo.getSelectedItem().toString();
+        String doctorExp = updateDocExCombo.getSelectedItem().toString();
+        String doctorPassword = new String(updateDocPassField.getPassword()).trim();
+        boolean passed = clientSideValidation2(this, doctorPersonId, doctorName, doctorMobile, doctorEmail, doctorMedicSp, doctorPassword);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Doctor d: DoctorDirectory.getDoctorList())
+          {
+            if(Integer.parseInt(doctorPersonId) == d.getId() && DoctorDirectory.getDoctorList().indexOf(d) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Doctor with the given Id already exists\nPlease give another Id to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(doctorName.equals(d.getName()) && DoctorDirectory.getDoctorList().indexOf(d) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Doctor with the given name already exists\nPlease give another name to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(Long.parseLong(doctorMobile) == d.getMobileNumber() && DoctorDirectory.getDoctorList().indexOf(d) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Doctor with the mobile number already exists\nPlease give another mobile number to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(doctorEmail.equals(d.getEmail()) && DoctorDirectory.getDoctorList().indexOf(d) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Doctor with the given email already exists\nPlease give another email to the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists){
+            House house = null;
+            for(House h: House.getHouseList())
+            {
+              if(h.getName().equals(createDocHouseCombo.getSelectedItem().toString()))
+              {
+                house = h;
+                break;
+              }
+            }
+            Hospital hospital = null;
+            for(Hospital h: HospitalDirectory.getHospitalList())
+            {               
+              if(h.getName().equals(createDocHospitalCombo.getSelectedItem().toString()))
+              {
+                hospital = h;
+                break;
+              }
+            }
+            if(house != null && hospital != null)
+            {
+                int id = Integer.parseInt(doctorPersonId);
+                String name = doctorName;
+                String gender = doctorGender;
+                long mobile = Long.parseLong(doctorMobile, 10);
+                String email = doctorEmail;
+                int exp = Integer.parseInt(doctorExp);
+//                Person p = new Person(id, name, gender, mobile, email, house, "Doctor", doctorPassword);
+                ArrayList<Doctor> doctorList = DoctorDirectory.getDoctorList();
+                Doctor d1 = new Doctor(id, name, gender, mobile, email, house, "Doctor", doctorPassword, hospital, doctorMedicSp, doctorType, exp);
+                doctorList.set(position, d1);
+                DoctorDirectory.setDoctorList(doctorList);
+                for(Encounter encounter: EncounterHistory.getEncounterList())
+                {
+                    if(encounter.getDoctor().getName().equals(oldDoctorName))
+                    {
+                      encounter.setDoctor(d1);
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Updated the doctor record successfully..", null, JOptionPane.OK_OPTION);  
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose both house and hospital for the doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+        }
+    }//GEN-LAST:event_updateDocButtonActionPerformed
+
+    private void updatePatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatientButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updatePatPositionField.getText());
+        String patientPersonId = updatePatIdField.getText().trim();
+        String patientName = updatePatNameField.getText().trim();
+        String oldPatientName = PatientDirectory.getPatientList().get(position).getName();
+        String patientGender = "";
+        if(updatePatGenderMale.isSelected())
+            patientGender = "Male";
+        else
+            patientGender = "Female";     
+        String patientMobile = updatePatMobileField.getText().trim();
+        String patientEmail = updatePatEmailField.getText().trim();
+        try
+        {
+          String doctorHouse = updatePatHouseCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        { 
+          JOptionPane.showMessageDialog(this, "Please choose the house for the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String isInsured = updatePatIsInsCombo.getSelectedItem().toString();
+        String patientDOB = updatePatDOBField.getText().trim();
+        String patientPassword = updatePatPassField.getText().trim();
+        boolean passed = clientSideValidation3(this, patientPersonId, patientName, patientMobile, patientEmail, patientDOB, patientPassword);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Patient p: PatientDirectory.getPatientList())
+          {
+            if(Integer.parseInt(patientPersonId) == p.getId() && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given Id already exists\nPlease give another Id to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(patientName.equals(p.getName()) && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given name already exists\nPlease give another name to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(Long.parseLong(patientMobile) == p.getMobileNumber() && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the mobile number already exists\nPlease give another mobile number to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(patientEmail.equals(p.getEmail()) && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given email already exists\nPlease give another email to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists)
+          {
+            House house = null;
+            for(House h: House.getHouseList())
+            {
+              if(h.getName().equals(createPatientHouseCombo.getSelectedItem().toString()))
+              {
+                  house = h;
+                  break;
+              }
+            }
+            if(house != null)
+            {
+                int id = Integer.parseInt(patientPersonId);
+                long mobile = Long.parseLong(patientMobile, 10);
+                boolean insured = Boolean.parseBoolean(isInsured);
+                String[] dateSplit = patientDOB.split("-");
+                LocalDate dateOfBirth = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
+//                Person p = new Person(Integer.parseInt(patientPersonId), patientName, patientGender, Long.parseLong(patientMobile, 10), patientEmail, house, "Patient", patientPassword);
+                ArrayList<Patient> patientList = PatientDirectory.getPatientList();
+                Patient p1 = new Patient(id, patientName, patientGender, mobile, patientEmail, house, "Patient", patientPassword, insured, dateOfBirth);
+                patientList.set(position, p1);
+                PatientDirectory.setPatientList(patientList);
+                for(Encounter encounter: EncounterHistory.getEncounterList())
+                {
+                    if(encounter.getPatient().getName().equals(oldPatientName))
+                    {
+                      encounter.setPatient(p1);
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Updated the patient record successfully..", null, JOptionPane.OK_OPTION);
+                createEncPatientField.removeAllItems();
+                for(Patient p: PatientDirectory.getPatientList())
+                    createEncPatientField.addItem(p.getName());
+                updateEncPatCombo.removeAllItems();
+                for(Patient p: PatientDirectory.getPatientList())
+                    updateEncPatCombo.addItem(p.getName());
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a house for the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }           
+        }
+    }//GEN-LAST:event_updatePatientButtonActionPerformed
+
+    private void updateEncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEncButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updateEncPositionField.getText());
+        String encounterId = updateEncIdField.getText();        
+        String encounterType = updateEncTypeCombo.getSelectedItem().toString();        
+        try
+        {
+          String patient = updateEncPatCombo.getSelectedItem().toString();
+          String city = updateEncCityCombo.getSelectedItem().toString();
+          String community = updateEncCommCombo.getSelectedItem().toString();
+          String hospital = updateEncHosCombo.getSelectedItem().toString();
+          String doctor = updateEncDocCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a valid patient, city, community, hospital \nand doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String dateTime = updateEncDTField.getText();
+        boolean passed = clientSideValidation4(this, encounterId, dateTime);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Encounter e: EncounterHistory.getEncounterList())
+          {
+            if(Integer.parseInt(encounterId) == e.getId() && EncounterHistory.getEncounterList().indexOf(e) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Encounter with the given Id already exists\nPlease give another Id to the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }            
+          }
+          if(!exists)
+          {
+            Patient p = null;
+            for(Patient pat: PatientDirectory.getPatientList())
+            {
+              if(pat.getName().equals(updateEncPatCombo.getSelectedItem().toString()))
+              {
+                p = pat;
+                break;
+              }
+            }
+            Doctor d = null;
+            for(Doctor doc: DoctorDirectory.getDoctorList())
+            {
+              if(doc.getName().equals(updateEncDocCombo.getSelectedItem().toString()))
+              {
+                d = doc;
+                break;
+              }
+            }
+            if(p != null && d != null)
+            {
+                String[] dateTimeSplit = dateTime.split(" ");
+                String[] dateSplit = dateTimeSplit[0].split("-");
+                String[] timeSplit = dateTimeSplit[1].split(":");
+                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);                                
+                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
+                encounterList.set(position, encounter);
+                EncounterHistory.setEncounterList(encounterList);
+                JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a valid patient and doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+        }
+    }//GEN-LAST:event_updateEncButtonActionPerformed
+
+    private void updateHosCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateHosCommComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = updateHosCommCombo.getSelectedItem().toString();
+            for(Community c: Community.getCommunityList()){
+              if(c.getName().equals(selectedItem)){
+                updateHosCityField.setText(c.getCity().getName());
+                updateHosStateField.setText(c.getCity().getState());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_updateHosCommComboItemStateChanged
+
+    private void updateDocHosComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateDocHosComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = updateDocHosCombo.getSelectedItem().toString();
+            for(Hospital h: HospitalDirectory.getHospitalList()){
+              if(h.getName().equals(selectedItem)){
+                updateDocCommField.setText(h.getCommunity().getName());
+                updateDocCityField.setText(h.getCommunity().getCity().getName());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_updateDocHosComboItemStateChanged
+
+    private void updatePatHouseComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updatePatHouseComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = updatePatHouseCombo.getSelectedItem().toString();
+            for(House h: House.getHouseList()){
+              if(h.getName().equals(selectedItem)){
+                updatePatCommField.setText(h.getCommunity().getName());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_updatePatHouseComboItemStateChanged
+
+    private void updateEncCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateEncCityComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            updateEncCommCombo.removeAllItems();
+            for(Community community: Community.getCommunityList())
+            {
+              if(community.getCity().getName().equals(updateEncCityCombo.getSelectedItem().toString()))
+              {
+                updateEncCommCombo.addItem(community.getName());            
+              }
+            }
+        }
+    }//GEN-LAST:event_updateEncCityComboItemStateChanged
+
+    private void updateEncCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateEncCommComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+        updateEncHosCombo.removeAllItems();
+        for(Hospital hospital: HospitalDirectory.getHospitalList())
+        {
+          if(hospital.getCommunity().getName().equals(updateEncCommCombo.getSelectedItem().toString()))
+          {
+            updateEncHosCombo.addItem(hospital.getName());            
+          }
+        }
+      }
+    }//GEN-LAST:event_updateEncCommComboItemStateChanged
+
+    private void updateEncHosComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateEncHosComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            updateEncDocCombo.removeAllItems();
+            for(Doctor d: DoctorDirectory.getDoctorList())
+            {
+              System.out.println(d.getName());
+              if(d.getHospital().getName().equals(updateEncHosCombo.getSelectedItem().toString()))
+              {
+                updateEncDocCombo.addItem(d.getName());       
+              }
+            }
+        }
+    }//GEN-LAST:event_updateEncHosComboItemStateChanged
+
+    private void deleteEncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEncButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteEncIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Encounter Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int id = Integer.parseInt(deleteEncIdField.getText());
+          ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
+          for(Encounter e : encounterList)
+          {
+            if(e.getId() == id)
+            {
+              encounterList.remove(e);
+              break;
+            }
+          }
+          EncounterHistory.setEncounterList(encounterList);
+        }
+    }//GEN-LAST:event_deleteEncButtonActionPerformed
+
+    private void deletePatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePatButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deletePatIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Patient Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+        {
+          int id = Integer.parseInt(deletePatIdField.getText());
+          ArrayList<Patient> patientList = PatientDirectory.getPatientList();
+          for(Patient p : patientList)
+          {
+            if(p.getId() == id)
+            {
+              patientList.remove(p);
+              break;
+            }
+          }
+          PatientDirectory.setPatientList(patientList);
+        }
+    }//GEN-LAST:event_deletePatButtonActionPerformed
+
+    private void deleteDocButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteDocIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Doctor Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+        {
+          int id = Integer.parseInt(deleteDocIdField.getText());
+          ArrayList<Doctor> doctorList = DoctorDirectory.getDoctorList();
+          for(Doctor d : doctorList)
+          {
+            if(d.getId() == id)
+            {
+              doctorList.remove(d);
+              break;
+            }
+          }
+          DoctorDirectory.setDoctorList(doctorList);
+        }
+    }//GEN-LAST:event_deleteDocButtonActionPerformed
+
+    private void deleteHosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHosButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteHosIdField.getText();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Hospital Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        if(flag)
+        {
+          int id = Integer.parseInt(deleteHosIdField.getText());
+          ArrayList<Hospital> hospitalList = HospitalDirectory.getHospitalList();
+          for(Hospital h : hospitalList)
+          {
+            if(h.getId() == id)
+            {
+              hospitalList.remove(h);
+              break;
+            }
+          }
+          HospitalDirectory.setHospitalList(hospitalList);
+        }
+    }//GEN-LAST:event_deleteHosButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1494,7 +3548,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HospitalAdministrator().setVisible(true);
+                new HospitalAdministrator("a").setVisible(true);
             }
         });
     }
@@ -1502,6 +3556,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JTextField createDocCityField;
     private javax.swing.JTextField createDocCommField;
     private javax.swing.JTextField createDocEmailField;
@@ -1527,7 +3583,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> createEncPatientField;
     private javax.swing.JComboBox<String> createEncTypeCombo;
     private javax.swing.JTextField createHosCityField;
-    public static javax.swing.JComboBox<String> createHosCommCombo;
+    public javax.swing.JComboBox<String> createHosCommCombo;
     private javax.swing.JTextField createHosStateField;
     private javax.swing.JTextField createHospitalIdField;
     private javax.swing.JTextField createHospitalNameField;
@@ -1541,11 +3597,18 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private javax.swing.JRadioButton createPatientMale;
     private javax.swing.JTextField createPatientMobileField;
     private javax.swing.JTextField createPatientNameField;
-    private javax.swing.JTextField createPatientPasswordField;
+    private javax.swing.JPasswordField createPatientPasswordField;
     private javax.swing.JTextField createPatientPersonIdField;
     private javax.swing.JButton createPatientSubmitButton;
+    private javax.swing.JButton deleteDocButton;
+    private javax.swing.JTextField deleteDocIdField;
+    private javax.swing.JButton deleteEncButton;
+    private javax.swing.JTextField deleteEncIdField;
+    private javax.swing.JButton deleteHosButton;
+    private javax.swing.JTextField deleteHosIdField;
+    private javax.swing.JButton deletePatButton;
+    private javax.swing.JTextField deletePatIdField;
     private javax.swing.JButton hosAdminLogoutButton;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1577,14 +3640,33 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    public static javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1596,6 +3678,89 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTabbedPane jTabbedPane4;
+    public static javax.swing.JLabel login;
+    private javax.swing.JButton updateDocButton;
+    private javax.swing.JTextField updateDocCityField;
+    private javax.swing.JLabel updateDocCityLabel;
+    private javax.swing.JTextField updateDocCommField;
+    private javax.swing.JLabel updateDocCommLabel;
+    private javax.swing.JTextField updateDocEmailField;
+    private javax.swing.JLabel updateDocEmailLabel;
+    private javax.swing.JComboBox<String> updateDocExCombo;
+    private javax.swing.JLabel updateDocExLabel;
+    private javax.swing.JRadioButton updateDocGenderFemale;
+    private javax.swing.JLabel updateDocGenderLabel;
+    private javax.swing.JRadioButton updateDocGenderMale;
+    private javax.swing.JComboBox<String> updateDocHosCombo;
+    private javax.swing.JLabel updateDocHosLabel;
+    private javax.swing.JComboBox<String> updateDocHouseCombo;
+    private javax.swing.JLabel updateDocHouseLabel;
+    private javax.swing.JTextField updateDocIdField;
+    private javax.swing.JTextField updateDocMedSpField;
+    private javax.swing.JLabel updateDocMedSpLabel;
+    private javax.swing.JTextField updateDocMobileField;
+    private javax.swing.JLabel updateDocMobileLabel;
+    private javax.swing.JTextField updateDocNameField;
+    private javax.swing.JButton updateDocNameSearch;
+    private javax.swing.JPasswordField updateDocPassField;
+    private javax.swing.JLabel updateDocPassLabel;
+    private javax.swing.JButton updateDocPersonIdSearch;
+    private javax.swing.JTextField updateDocPositionField;
+    private javax.swing.JComboBox<String> updateDocTypeCombo;
+    private javax.swing.JLabel updateDocTypeLabel;
+    private javax.swing.JButton updateEncButton;
+    private javax.swing.JComboBox<String> updateEncCityCombo;
+    private javax.swing.JLabel updateEncCityLabel;
+    private javax.swing.JComboBox<String> updateEncCommCombo;
+    private javax.swing.JLabel updateEncCommLabel;
+    private javax.swing.JTextField updateEncDTField;
+    private javax.swing.JLabel updateEncDTLabel;
+    private javax.swing.JComboBox<String> updateEncDocCombo;
+    private javax.swing.JLabel updateEncDocLabel;
+    private javax.swing.JComboBox<String> updateEncHosCombo;
+    private javax.swing.JLabel updateEncHosLabel;
+    private javax.swing.JTextField updateEncIdField;
+    private javax.swing.JButton updateEncIdSearch;
+    private javax.swing.JComboBox<String> updateEncPatCombo;
+    private javax.swing.JLabel updateEncPatLabel;
+    private javax.swing.JTextField updateEncPositionField;
+    private javax.swing.JComboBox<String> updateEncTypeCombo;
+    private javax.swing.JLabel updateEncTypeLabel;
+    private javax.swing.JButton updateHosButton;
+    private javax.swing.JTextField updateHosCityField;
+    private javax.swing.JLabel updateHosCityLabel;
+    private javax.swing.JComboBox<String> updateHosCommCombo;
+    private javax.swing.JLabel updateHosCommLabel;
+    private javax.swing.JTextField updateHosIdField;
+    private javax.swing.JButton updateHosIdSearch;
+    private javax.swing.JTextField updateHosNameField;
+    private javax.swing.JButton updateHosNameSearch;
+    private javax.swing.JTextField updateHosPositionField;
+    private javax.swing.JTextField updateHosStateField;
+    private javax.swing.JLabel updateHosStateLabel;
+    private javax.swing.JTextField updatePatCommField;
+    private javax.swing.JLabel updatePatCommLabel;
+    private javax.swing.JTextField updatePatDOBField;
+    private javax.swing.JLabel updatePatDOBLabel;
+    private javax.swing.JTextField updatePatEmailField;
+    private javax.swing.JLabel updatePatEmailLabel;
+    private javax.swing.JRadioButton updatePatGenderFemale;
+    private javax.swing.JLabel updatePatGenderLabel;
+    private javax.swing.JRadioButton updatePatGenderMale;
+    private javax.swing.JComboBox<String> updatePatHouseCombo;
+    private javax.swing.JLabel updatePatHouseLabel;
+    private javax.swing.JTextField updatePatIdField;
+    private javax.swing.JComboBox<String> updatePatIsInsCombo;
+    private javax.swing.JLabel updatePatIsInsLabel;
+    private javax.swing.JTextField updatePatMobileField;
+    private javax.swing.JLabel updatePatMobileLabel;
+    private javax.swing.JTextField updatePatNameField;
+    private javax.swing.JButton updatePatNameSearch;
+    private javax.swing.JTextField updatePatPassField;
+    private javax.swing.JLabel updatePatPasswordLabel;
+    private javax.swing.JButton updatePatPersonIdSearch;
+    private javax.swing.JTextField updatePatPositionField;
+    private javax.swing.JButton updatePatientButton;
     // End of variables declaration//GEN-END:variables
 }

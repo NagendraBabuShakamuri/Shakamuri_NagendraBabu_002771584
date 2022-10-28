@@ -32,9 +32,17 @@ public class Encounter {
     {
       return type;
     }
+    public void setPatient(Patient patient)
+    {
+      this.patient = patient;
+    }
     public Patient getPatient()
     {
       return patient;
+    }
+    public void setDoctor(Doctor doctor)
+    {
+      this.doctor = doctor;
     }
     public Doctor getDoctor()
     {

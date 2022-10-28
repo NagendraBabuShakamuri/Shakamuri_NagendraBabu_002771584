@@ -185,8 +185,9 @@ public class HospitalApplication extends javax.swing.JFrame {
                   if(p.getRole().equals("Hospital Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
                   {
                     found = true;
-                    HospitalAdministrator ha = new HospitalAdministrator();
+                    HospitalAdministrator ha = new HospitalAdministrator("Hospital Admin");
 //                    ca.getComponents();
+//                    ha.login.setText(userName);
                     ha.show();
                     dispose();
                     break;

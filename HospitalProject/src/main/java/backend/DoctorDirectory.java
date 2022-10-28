@@ -16,6 +16,9 @@ public class DoctorDirectory {
     {
       doctorList.add(d);
     }
+    public static void setDoctorList(ArrayList<Doctor> newDoctorList){
+      doctorList = newDoctorList;
+    }
     public static ArrayList<Doctor> getDoctorList(){
       return doctorList;
     }

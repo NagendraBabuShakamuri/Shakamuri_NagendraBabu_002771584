@@ -14,6 +14,9 @@ public class HospitalDirectory {
     {
       hospitalList.add(h);
     }
+    public static void setHospitalList(ArrayList<Hospital> newHospitalList){
+      hospitalList = newHospitalList;
+    }
     public static ArrayList<Hospital> getHospitalList(){
       return hospitalList;
     }

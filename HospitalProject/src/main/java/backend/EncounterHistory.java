@@ -15,6 +15,10 @@ public class EncounterHistory {
     {
       encounterList.add(e);
     }
+    public static void setEncounterList(ArrayList<Encounter> newEncounterList)
+    {
+      encounterList = newEncounterList;
+    }
     public static ArrayList<Encounter> getEncounterList(){
       return encounterList;
     }

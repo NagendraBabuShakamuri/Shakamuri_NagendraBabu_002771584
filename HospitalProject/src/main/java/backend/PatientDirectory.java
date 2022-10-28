@@ -15,6 +15,10 @@ public class PatientDirectory {
     {
       patientList.add(p);
     }
+    public static void setPatientList(ArrayList<Patient> newPatientList)
+    {
+      patientList = newPatientList;
+    }
     public static ArrayList<Patient> getPatientList(){
       return patientList;
     }
