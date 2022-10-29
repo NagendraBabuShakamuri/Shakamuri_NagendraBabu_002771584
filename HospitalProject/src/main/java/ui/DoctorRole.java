@@ -9,6 +9,7 @@ package ui;
  * @author nbabu
  */
 import backend.*;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -23,6 +24,21 @@ public class DoctorRole extends javax.swing.JFrame {
     public DoctorRole(String doctorName) {                 
         initComponents();
         loginLabel.setText(doctorName);
+        createEncDocField.setText(doctorName);
+        updateEncDocField.setText(doctorName);
+        for(Doctor d: DoctorDirectory.getDoctorList())
+        {
+          if(d.getName().equals(doctorName))
+          {
+            createEncHosField.setText(d.getHospital().getName());
+            updateEncHosField.setText(d.getHospital().getName());
+            createEncCommField.setText(d.getHospital().getCommunity().getName());
+            updateEncCommField.setText(d.getHospital().getCommunity().getName());
+            createEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
+            updateEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
+            break;
+          }
+        }
     }
 
     /**
@@ -55,6 +71,7 @@ public class DoctorRole extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         createEncDocField = new javax.swing.JTextField();
         loginLabel = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         updateEncIdField = new javax.swing.JTextField();
@@ -119,16 +136,6 @@ public class DoctorRole extends javax.swing.JFrame {
         jLabel4.setText("Hospital:");
 
         createEncHosField.setEnabled(false);
-        for(Doctor d: DoctorDirectory.getDoctorList())
-        {
-            if(d.getName().equals(loginLabel.getText()))
-            {
-                createEncHosField.setText(d.getHospital().getName());
-                createEncCommField.setText(d.getHospital().getCommunity().getName());
-                createEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
-                break;
-            }
-        }
 
         jLabel5.setText("Community:");
 
@@ -150,12 +157,22 @@ public class DoctorRole extends javax.swing.JFrame {
         jLabel8.setText("Doctor:");
 
         createEncDocField.setEnabled(false);
-        createEncDocField.setText(loginLabel.getText());
+
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(154, 154, 154)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -191,12 +208,9 @@ public class DoctorRole extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(createEncDocField)))
+                        .addComponent(createEncDocField))
+                    .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(287, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +250,9 @@ public class DoctorRole extends javax.swing.JFrame {
                     .addComponent(createEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createEncButton)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(logoutButton)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Create Encounter", jPanel2);
@@ -268,23 +284,12 @@ public class DoctorRole extends javax.swing.JFrame {
 
         updateEncDocField.setEnabled(false);
         updateEncDocField.setVisible(false);
-        updateEncDocField.setText(loginLabel.getText());
 
         updateEncHosLabel.setText("Hospital:");
         updateEncHosLabel.setVisible(false);
 
         updateEncHosField.setEnabled(false);
         updateEncHosField.setVisible(false);
-        for(Doctor d: DoctorDirectory.getDoctorList())
-        {
-            if(d.getName().equals(loginLabel.getText()))
-            {
-                updateEncHosField.setText(d.getHospital().getName());
-                updateEncCommField.setText(d.getHospital().getCommunity().getName());
-                updateEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
-                break;
-            }
-        }
 
         updateEncCommLabel.setText("Community:");
         updateEncCommLabel.setVisible(false);
@@ -535,11 +540,18 @@ public class DoctorRole extends javax.swing.JFrame {
                 String[] dateTimeSplit = dateTime.split(" ");
                 String[] dateSplit = dateTimeSplit[0].split("-");
                 String[] timeSplit = dateTimeSplit[1].split(":");
-                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
-                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
-                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
-                EncounterHistory.addEncounter(encounter);
-                JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+                try
+                {
+                  LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                  VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
+                  Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                  EncounterHistory.addEncounter(encounter);
+                  JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+                }
+                catch(DateTimeException e)
+                {
+                  JOptionPane.showMessageDialog(this, "DateTime is not valid.\nShould be in the format YYYY-MM-DD HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }                
             }
             else
             {
@@ -554,11 +566,11 @@ public class DoctorRole extends javax.swing.JFrame {
         System.out.println("Encounter Id is valid.");
          if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2})").matcher(dateTime).matches()){
            System.out.println("DateTime is valid.");
-           if(Pattern.compile("^[1-9]\\d*$").matcher(temperature).matches())
+           if(Pattern.compile("^\\d*\\.?\\d*$").matcher(temperature).matches())
            {
-             if(Pattern.compile("^[1-9]\\d*$").matcher(pulseRate).matches())
+             if(Pattern.compile("^[0-9]\\d*$").matcher(pulseRate).matches())
              {
-               if(Pattern.compile("^[1-9]\\d*$").matcher(respRate).matches())
+               if(Pattern.compile("^[0-9]\\d*$").matcher(respRate).matches())
                {
                  return true;
                }
@@ -592,7 +604,7 @@ public class DoctorRole extends javax.swing.JFrame {
         String pulseRate = updateEncPRField.getText();
         String respRate = updateEncRRField.getText();
         String sysBP = updateEncSBPCombo.getSelectedItem().toString();
-        String diaBP = updateEncSBPCombo.getSelectedItem().toString();
+        String diaBP = updateEncDBPCombo.getSelectedItem().toString();
         boolean passed = clientSideValidation(this, encounterId, dateTime, temperature, pulseRate, respRate);
         boolean exists = false;
         if(passed)
@@ -631,18 +643,25 @@ public class DoctorRole extends javax.swing.JFrame {
                 String[] dateTimeSplit = dateTime.split(" ");
                 String[] dateSplit = dateTimeSplit[0].split("-");
                 String[] timeSplit = dateTimeSplit[1].split(":");
-                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
-                double temp = Double.parseDouble(temperature);
-                int pulse = Integer.parseInt(pulseRate);
-                int resp = Integer.parseInt(respRate);
-                int sBP = Integer.parseInt(sysBP);
-                int dBP = Integer.parseInt(diaBP);
-                VitalSigns vs = new VitalSigns(temp, pulse, resp, sBP, dBP);                                
-                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
-                ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
-                encounterList.set(position, encounter);
-                EncounterHistory.setEncounterList(encounterList);
-                JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+                try
+                {
+                  LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                  double temp = Double.parseDouble(temperature);
+                  int pulse = Integer.parseInt(pulseRate);
+                  int resp = Integer.parseInt(respRate);
+                  int sBP = Integer.parseInt(sysBP);
+                  int dBP = Integer.parseInt(diaBP);
+                  VitalSigns vs = new VitalSigns(temp, pulse, resp, sBP, dBP);                                
+                  Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                  ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
+                  encounterList.set(position, encounter);
+                  EncounterHistory.setEncounterList(encounterList);
+                  JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+                }
+                catch(DateTimeException e)
+                {
+                  JOptionPane.showMessageDialog(this, "DateTime is not valid.\nShould be in the format YYYY-MM-DD HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }                
             }
             else
             {
@@ -721,18 +740,20 @@ public class DoctorRole extends javax.swing.JFrame {
             updateEncPositionField.setText(Integer.valueOf(position).toString());
             updateEncTypeCombo.setSelectedItem(e.getType());
             updateEncPatCombo.setSelectedItem(e.getPatient().getName());
-            updateEncDTField.setText(e.getDateTime().toString());
+            String[] dTSplit = e.getDateTime().toString().split("T");
+            String dT = dTSplit[0] + " " + dTSplit[1];
+            updateEncDTField.setText(dT);
             updateEncTempField.setText(Double.valueOf(e.getVitalSigns().getTemperature()).toString());
             updateEncPRField.setText(Integer.valueOf(e.getVitalSigns().getPulseRatePerMinute()).toString());
             updateEncRRField.setText(Integer.valueOf(e.getVitalSigns().getRespirationRate()).toString());
-            updateEncSBPCombo.setSelectedItem(e.getVitalSigns().getSystolicBloodPressure());
-            updateEncDBPCombo.setSelectedItem(e.getVitalSigns().getDiastolicBloodPressure());
+            updateEncSBPCombo.setSelectedItem(Integer.valueOf(e.getVitalSigns().getSystolicBloodPressure()).toString());
+            updateEncDBPCombo.setSelectedItem(Integer.valueOf(e.getVitalSigns().getDiastolicBloodPressure()).toString());
           }
         }        
       }
       if(!found)
           JOptionPane.showMessageDialog(this, "Encounter with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
-      if(!identity)
+      else if(!identity)
           JOptionPane.showMessageDialog(this, "You don't have permission to view this encounter record..", "Alert", JOptionPane.WARNING_MESSAGE);
     }
     private void updateEncSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEncSearchActionPerformed
@@ -746,6 +767,13 @@ public class DoctorRole extends javax.swing.JFrame {
         if(flag)
             searchData(searchText);
     }//GEN-LAST:event_updateEncSearchActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        HospitalApplication ha = new HospitalApplication();
+        ha.show();
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -808,6 +836,7 @@ public class DoctorRole extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel loginLabel;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JLabel minLabel;
     private javax.swing.JButton updateEncButton;
     private javax.swing.JTextField updateEncCityField;

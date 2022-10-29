@@ -75,6 +75,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="loginLabel" min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -119,13 +124,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="createEncDocField" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="logoutButton" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="287" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="loginLabel" min="-2" pref="138" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -175,7 +176,9 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="createEncButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="238" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="197" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -231,9 +234,6 @@
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Doctor d: DoctorDirectory.getDoctorList())&#xa;{&#xa;  if(d.getName().equals(loginLabel.getText()))&#xa;  {&#xa;    createEncHosField.setText(d.getHospital().getName());&#xa;    createEncCommField.setText(d.getHospital().getCommunity().getName());&#xa;    createEncCityField.setText(d.getHospital().getCommunity().getCity().getName());&#xa;    break;&#xa;  }&#xa;}"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -279,11 +279,16 @@
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="createEncDocField.setText(loginLabel.getText());"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="loginLabel">
+            </Component>
+            <Component class="javax.swing.JButton" name="logoutButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -507,7 +512,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateEncDocField.setVisible(false);&#xa;updateEncDocField.setText(loginLabel.getText());"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateEncDocField.setVisible(false);"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="updateEncHosLabel">
@@ -523,7 +528,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateEncHosField.setVisible(false);&#xa;for(Doctor d: DoctorDirectory.getDoctorList())&#xa;{&#xa;  if(d.getName().equals(loginLabel.getText()))&#xa;  {&#xa;    updateEncHosField.setText(d.getHospital().getName());&#xa;    updateEncCommField.setText(d.getHospital().getCommunity().getName());&#xa;    updateEncCityField.setText(d.getHospital().getCommunity().getCity().getName());&#xa;    break;&#xa;  }&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updateEncHosField.setVisible(false);"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="updateEncCommLabel">
