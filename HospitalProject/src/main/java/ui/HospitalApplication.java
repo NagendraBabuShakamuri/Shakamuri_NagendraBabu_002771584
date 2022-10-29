@@ -4,8 +4,7 @@
  */
 package ui;
 
-import backend.Person;
-import backend.PersonDirectory;
+import backend.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -185,9 +184,7 @@ public class HospitalApplication extends javax.swing.JFrame {
                   if(p.getRole().equals("Hospital Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
                   {
                     found = true;
-                    HospitalAdministrator ha = new HospitalAdministrator("Hospital Admin");
-//                    ca.getComponents();
-//                    ha.login.setText(userName);
+                    HospitalAdministrator ha = new HospitalAdministrator(userName);
                     ha.show();
                     dispose();
                     break;
@@ -195,7 +192,37 @@ public class HospitalApplication extends javax.swing.JFrame {
                 }
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
-             break;   
+             break;
+            case "System Administrator":
+                for(Person p: PersonDirectory.getPersonList())
+                {
+                  if(p.getRole().equals("System Administrator") && p.getName().equals(userName) && p.getPassword().equals(password))
+                  {
+                    found = true;
+                    HospitalAdministrator ha = new HospitalAdministrator(userName);
+                    ha.show();
+                    dispose();
+                    break;
+                  }                    
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+             case "Doctor":
+                for(Doctor d: DoctorDirectory.getDoctorList())
+                {
+                  if(d.getRole().equals("Doctor") && d.getName().equals(userName) && d.getPassword().equals(password))
+                  {
+                    found = true;
+                    DoctorRole dr = new DoctorRole(userName);
+                    dr.show();
+                    dispose();
+                    break;
+                  }                    
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
         }        
     }//GEN-LAST:event_loginButtonActionPerformed
 

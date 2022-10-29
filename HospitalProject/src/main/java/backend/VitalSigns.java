@@ -17,6 +17,7 @@ public class VitalSigns {
     public VitalSigns(double temperature, int pulseRatePerMinute, int respirationRate, int systolicBloodPressure, int diastolicBloodPressure){
       this.temperature = temperature;
       this.pulseRatePerMinute = pulseRatePerMinute;
+      this.respirationRate = respirationRate;
       this.systolicBloodPressure = systolicBloodPressure;
       this.diastolicBloodPressure = diastolicBloodPressure;
     }
@@ -24,11 +25,11 @@ public class VitalSigns {
     {
       return temperature;
     }
-    public int pulseRatePerMinute()
+    public int getPulseRatePerMinute()
     {
       return pulseRatePerMinute;
     }
-    public int respirationRate()
+    public int getRespirationRate()
     {
       return respirationRate;
     }

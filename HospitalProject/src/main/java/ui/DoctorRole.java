@@ -8,13 +8,21 @@ package ui;
  *
  * @author nbabu
  */
+import backend.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static ui.HospitalAdministrator.clientSideValidation4;
 public class DoctorRole extends javax.swing.JFrame {
 
     /**
      * Creates new form Doctor
      */
-    public DoctorRole() {
+    public DoctorRole(String doctorName) {                 
         initComponents();
+        loginLabel.setText(doctorName);
     }
 
     /**
@@ -26,21 +34,718 @@ public class DoctorRole extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        createEncIdField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        createEncTypeCombo = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        createEncPatCombo = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        createEncHosField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        createEncCommField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        createEncCityField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        createEncDTField = new javax.swing.JTextField();
+        createEncButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        createEncDocField = new javax.swing.JTextField();
+        loginLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        updateEncIdField = new javax.swing.JTextField();
+        updateEncSearch = new javax.swing.JButton();
+        updateEncTypeLabel = new javax.swing.JLabel();
+        updateEncTypeCombo = new javax.swing.JComboBox<>();
+        updateEncPatLabel = new javax.swing.JLabel();
+        updateEncPatCombo = new javax.swing.JComboBox<>();
+        updateEncDocLabel = new javax.swing.JLabel();
+        updateEncDocField = new javax.swing.JTextField();
+        updateEncHosLabel = new javax.swing.JLabel();
+        updateEncHosField = new javax.swing.JTextField();
+        updateEncCommLabel = new javax.swing.JLabel();
+        updateEncCommField = new javax.swing.JTextField();
+        updateEncCityField = new javax.swing.JTextField();
+        updateEncCityLabel = new javax.swing.JLabel();
+        updateEncDTLabel = new javax.swing.JLabel();
+        updateEncDTField = new javax.swing.JTextField();
+        updateEncTempLabel = new javax.swing.JLabel();
+        updateEncTempField = new javax.swing.JTextField();
+        updateEncPRLabel = new javax.swing.JLabel();
+        updateEncPRField = new javax.swing.JTextField();
+        minLabel = new javax.swing.JLabel();
+        updateEncRRLabel = new javax.swing.JLabel();
+        updateEncRRField = new javax.swing.JTextField();
+        updateEncSBPLabel = new javax.swing.JLabel();
+        updateEncDBPLabel = new javax.swing.JLabel();
+        updateEncSBPCombo = new javax.swing.JComboBox<>();
+        updateEncDBPCombo = new javax.swing.JComboBox<>();
+        updateEncButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        updateEncPositionField = new javax.swing.JTextField();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(814, 768));
+        setSize(new java.awt.Dimension(1000, 1000));
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jLabel1.setText("Encounter Id:");
+
+        jLabel2.setText("Encounter type:");
+
+        createEncTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inpatient", "Outpatient" }));
+
+        jLabel3.setText("Patient:");
+
+        for(Patient p: PatientDirectory.getPatientList())
+        createEncPatCombo.addItem(p.getName());
+
+        jLabel4.setText("Hospital:");
+
+        createEncHosField.setEnabled(false);
+        for(Doctor d: DoctorDirectory.getDoctorList())
+        {
+            if(d.getName().equals(loginLabel.getText()))
+            {
+                createEncHosField.setText(d.getHospital().getName());
+                createEncCommField.setText(d.getHospital().getCommunity().getName());
+                createEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
+                break;
+            }
+        }
+
+        jLabel5.setText("Community:");
+
+        createEncCommField.setEnabled(false);
+
+        jLabel6.setText("City:");
+
+        createEncCityField.setEnabled(false);
+
+        jLabel7.setText("Date and Time:");
+
+        createEncButton.setText("Create");
+        createEncButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createEncButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Doctor:");
+
+        createEncDocField.setEnabled(false);
+        createEncDocField.setText(loginLabel.getText());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncPatCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createEncDocField)))
+                .addContainerGap(287, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(loginLabel)
+                .addGap(112, 112, 112)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(createEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(createEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(createEncPatCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(createEncDocField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(createEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(createEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(createEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(createEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createEncButton)
+                .addContainerGap(238, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Create Encounter", jPanel2);
+
+        jLabel9.setText("Encounter Id:");
+
+        updateEncSearch.setText("Search");
+        updateEncSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEncSearchActionPerformed(evt);
+            }
+        });
+
+        updateEncTypeLabel.setText("Encounter type:");
+        updateEncTypeLabel.setVisible(false);
+
+        updateEncTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inpatient", "Outpatient" }));
+        updateEncTypeCombo.setVisible(false);
+
+        updateEncPatLabel.setText("Patient:");
+        updateEncPatLabel.setVisible(false);
+
+        updateEncPatCombo.setVisible(false);
+        for(Patient p: PatientDirectory.getPatientList())
+        updateEncPatCombo.addItem(p.getName());
+
+        updateEncDocLabel.setText("Doctor:");
+        updateEncDocLabel.setVisible(false);
+
+        updateEncDocField.setEnabled(false);
+        updateEncDocField.setVisible(false);
+        updateEncDocField.setText(loginLabel.getText());
+
+        updateEncHosLabel.setText("Hospital:");
+        updateEncHosLabel.setVisible(false);
+
+        updateEncHosField.setEnabled(false);
+        updateEncHosField.setVisible(false);
+        for(Doctor d: DoctorDirectory.getDoctorList())
+        {
+            if(d.getName().equals(loginLabel.getText()))
+            {
+                updateEncHosField.setText(d.getHospital().getName());
+                updateEncCommField.setText(d.getHospital().getCommunity().getName());
+                updateEncCityField.setText(d.getHospital().getCommunity().getCity().getName());
+                break;
+            }
+        }
+
+        updateEncCommLabel.setText("Community:");
+        updateEncCommLabel.setVisible(false);
+
+        updateEncCommField.setEnabled(false);
+        updateEncCommField.setVisible(false);
+
+        updateEncCityField.setEnabled(false);
+        updateEncCityField.setVisible(false);
+
+        updateEncCityLabel.setText("City:");
+        updateEncCityLabel.setVisible(false);
+
+        updateEncDTLabel.setText("Date and Time:");
+        updateEncDTLabel.setVisible(false);
+
+        updateEncDTField.setVisible(false);
+
+        updateEncTempLabel.setText("Temperature:");
+        updateEncTempLabel.setVisible(false);
+
+        updateEncTempField.setVisible(false);
+
+        updateEncPRLabel.setText("Pulse rate:");
+        updateEncPRLabel.setVisible(false);
+
+        updateEncPRField.setVisible(false);
+
+        minLabel.setText("/min");
+        minLabel.setVisible(false);
+
+        updateEncRRLabel.setText("Respiration rate:");
+        updateEncRRLabel.setVisible(false);
+
+        updateEncRRField.setVisible(false);
+
+        updateEncSBPLabel.setText("Systolic Blood Pressure:");
+        updateEncSBPLabel.setVisible(false);
+
+        updateEncDBPLabel.setText("Diastolic Blood Pressure:");
+        updateEncDBPLabel.setVisible(false);
+
+        updateEncSBPCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200" }));
+        updateEncSBPCombo.setVisible(false);
+
+        updateEncDBPCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200" }));
+        updateEncDBPCombo.setVisible(false);
+
+        updateEncButton.setText("Update");
+        updateEncButton.setVisible(false);
+        updateEncButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEncButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Position:");
+
+        updateEncPositionField.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateEncButton, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateEncDTLabel)
+                            .addComponent(jLabel9)
+                            .addComponent(updateEncTypeLabel)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(updateEncDocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(updateEncPatLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(updateEncHosLabel)
+                            .addComponent(updateEncCommLabel)
+                            .addComponent(updateEncRRLabel)
+                            .addComponent(updateEncSBPLabel)
+                            .addComponent(updateEncDBPLabel)
+                            .addComponent(updateEncCityLabel)
+                            .addComponent(updateEncTempLabel)
+                            .addComponent(updateEncPRLabel)
+                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateEncSBPCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncDBPCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncPRField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncTempField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncDocField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncPatCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(updateEncRRField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(minLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(updateEncPositionField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(updateEncIdField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addComponent(updateEncSearch)))))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(updateEncPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(updateEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateEncSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncTypeLabel)
+                    .addComponent(updateEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncPatLabel)
+                    .addComponent(updateEncPatCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncDocLabel)
+                    .addComponent(updateEncDocField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncHosLabel)
+                    .addComponent(updateEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncCommLabel)
+                    .addComponent(updateEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncCityLabel)
+                    .addComponent(updateEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncDTLabel)
+                    .addComponent(updateEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncTempLabel)
+                    .addComponent(updateEncTempField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncPRLabel)
+                    .addComponent(updateEncPRField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncRRLabel)
+                    .addComponent(updateEncRRField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncSBPLabel)
+                    .addComponent(updateEncSBPCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEncDBPLabel)
+                    .addComponent(updateEncDBPCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(updateEncButton)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Update Encounter", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createEncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEncButtonActionPerformed
+        // TODO add your handling code here:
+        String encounterId = createEncIdField.getText();
+        String encounterType = createEncTypeCombo.getSelectedItem().toString();
+        try
+        {
+          String patient = createEncPatCombo.getSelectedItem().toString();        
+        }
+        catch(Exception e)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a patient for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String doctor = createEncDocField.getText();
+        if(doctor.equals(""))
+        {
+          JOptionPane.showMessageDialog(this, "Please login as a doctor..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        } 
+        String dateTime = createEncDTField.getText();
+        boolean passed = clientSideValidation4(this, encounterId, dateTime);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Encounter e: EncounterHistory.getEncounterList())
+          {
+            if(Integer.parseInt(encounterId) == e.getId())
+            {
+              JOptionPane.showMessageDialog(this, "Encounter with the given Id already exists\nPlease give another Id to the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists)
+          {
+            Patient p = null;
+            for(Patient pat: PatientDirectory.getPatientList())
+            {
+              if(pat.getName().equals(createEncPatCombo.getSelectedItem().toString()))
+              {
+                p = pat;
+                break;
+              }
+            }
+            Doctor d = null;
+            for(Doctor doc: DoctorDirectory.getDoctorList())
+            {
+              if(doc.getName().equals(createEncDocField.getText()))
+              {
+                d = doc;
+                break;
+              }
+            }
+            if(p != null && d != null)
+            {
+                String[] dateTimeSplit = dateTime.split(" ");
+                String[] dateSplit = dateTimeSplit[0].split("-");
+                String[] timeSplit = dateTimeSplit[1].split(":");
+                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
+                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                EncounterHistory.addEncounter(encounter);
+                JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a valid patient and doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+        }
+    }//GEN-LAST:event_createEncButtonActionPerformed
+    private boolean clientSideValidation(JFrame frame, String encounterId, String dateTime, String temperature, String pulseRate, String respRate)
+    {
+      if(Pattern.compile("^[1-9]\\d*$").matcher(encounterId).matches()){
+        System.out.println("Encounter Id is valid.");
+         if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2})").matcher(dateTime).matches()){
+           System.out.println("DateTime is valid.");
+           if(Pattern.compile("^[1-9]\\d*$").matcher(temperature).matches())
+           {
+             if(Pattern.compile("^[1-9]\\d*$").matcher(pulseRate).matches())
+             {
+               if(Pattern.compile("^[1-9]\\d*$").matcher(respRate).matches())
+               {
+                 return true;
+               }
+               else
+                JOptionPane.showMessageDialog(frame, "Respiration rate is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE); 
+             }
+             else
+               JOptionPane.showMessageDialog(frame, "Pulse rate is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);  
+           }
+           else
+            JOptionPane.showMessageDialog(frame, "Temperature is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);            
+         }
+         else
+         {
+            JOptionPane.showMessageDialog(frame, "DateTime is not valid.\nShould be in the format YYYY-MM-DD HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+         }
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "Encounter Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;      
+    }
+    private void updateEncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEncButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updateEncPositionField.getText());
+        String encounterId = updateEncIdField.getText();        
+        String encounterType = updateEncTypeCombo.getSelectedItem().toString();
+        String dateTime = updateEncDTField.getText();
+        String temperature = updateEncTempField.getText();
+        String pulseRate = updateEncPRField.getText();
+        String respRate = updateEncRRField.getText();
+        String sysBP = updateEncSBPCombo.getSelectedItem().toString();
+        String diaBP = updateEncSBPCombo.getSelectedItem().toString();
+        boolean passed = clientSideValidation(this, encounterId, dateTime, temperature, pulseRate, respRate);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Encounter e: EncounterHistory.getEncounterList())
+          {
+            if(Integer.parseInt(encounterId) == e.getId() && EncounterHistory.getEncounterList().indexOf(e) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Encounter with the given Id already exists\nPlease give another Id to the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }            
+          }
+          if(!exists)
+          {
+            Patient p = null;
+            for(Patient pat: PatientDirectory.getPatientList())
+            {
+              if(pat.getName().equals(updateEncPatCombo.getSelectedItem().toString()))
+              {
+                p = pat;
+                break;
+              }
+            }
+            Doctor d = null;
+            for(Doctor doc: DoctorDirectory.getDoctorList())
+            {
+              if(doc.getName().equals(updateEncDocField.getText()))
+              {
+                d = doc;
+                break;
+              }
+            }
+            if(p != null && d != null)
+            {
+                String[] dateTimeSplit = dateTime.split(" ");
+                String[] dateSplit = dateTimeSplit[0].split("-");
+                String[] timeSplit = dateTimeSplit[1].split(":");
+                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                double temp = Double.parseDouble(temperature);
+                int pulse = Integer.parseInt(pulseRate);
+                int resp = Integer.parseInt(respRate);
+                int sBP = Integer.parseInt(sysBP);
+                int dBP = Integer.parseInt(diaBP);
+                VitalSigns vs = new VitalSigns(temp, pulse, resp, sBP, dBP);                                
+                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
+                encounterList.set(position, encounter);
+                EncounterHistory.setEncounterList(encounterList);
+                JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a valid patient and doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+        }
+    }//GEN-LAST:event_updateEncButtonActionPerformed
+    private void searchData(String searchText)
+    {
+      int position = -1;
+      boolean found = false;
+      boolean identity = false;
+      updateEncTypeLabel.setVisible(false);
+      updateEncTypeCombo.setVisible(false);
+      updateEncPatLabel.setVisible(false);
+      updateEncPatCombo.setVisible(false);
+      updateEncDocLabel.setVisible(false);
+      updateEncDocField.setVisible(false);
+      updateEncHosLabel.setVisible(false);
+      updateEncHosField.setVisible(false);
+      updateEncCommLabel.setVisible(false);
+      updateEncCommField.setVisible(false);
+      updateEncCityLabel.setVisible(false);
+      updateEncCityField.setVisible(false);
+      updateEncDTLabel.setVisible(false);
+      updateEncDTField.setVisible(false);
+      updateEncTempLabel.setVisible(false);
+      updateEncTempField.setVisible(false);
+      updateEncPRLabel.setVisible(false);
+      updateEncPRField.setVisible(false);
+      updateEncRRLabel.setVisible(false);
+      updateEncRRField.setVisible(false);
+      minLabel.setVisible(false);
+      updateEncSBPLabel.setVisible(false);
+      updateEncSBPCombo.setVisible(false);
+      updateEncDBPLabel.setVisible(false);
+      updateEncDBPCombo.setVisible(false);
+      updateEncButton.setVisible(false);
+      for(Encounter e: EncounterHistory.getEncounterList())
+      {
+        if(Integer.parseInt(searchText) == e.getId())
+        {
+          found = true;
+          if(e.getDoctor().getName().equals(loginLabel.getText()))
+          {
+            identity = true;
+            position = EncounterHistory.getEncounterList().indexOf(e);
+            updateEncTypeLabel.setVisible(true);
+            updateEncTypeCombo.setVisible(true);
+            updateEncPatLabel.setVisible(true);
+            updateEncPatCombo.setVisible(true);
+            updateEncDocLabel.setVisible(true);
+            updateEncDocField.setVisible(true);
+            updateEncHosLabel.setVisible(true);
+            updateEncHosField.setVisible(true);
+            updateEncCommLabel.setVisible(true);
+            updateEncCommField.setVisible(true);
+            updateEncCityLabel.setVisible(true);
+            updateEncCityField.setVisible(true);
+            updateEncDTLabel.setVisible(true);
+            updateEncDTField.setVisible(true);
+            updateEncTempLabel.setVisible(true);
+            updateEncTempField.setVisible(true);
+            updateEncPRLabel.setVisible(true);
+            updateEncPRField.setVisible(true);
+            updateEncRRLabel.setVisible(true);
+            updateEncRRField.setVisible(true);
+            minLabel.setVisible(true);
+            updateEncSBPLabel.setVisible(true);
+            updateEncSBPCombo.setVisible(true);
+            updateEncDBPLabel.setVisible(true);
+            updateEncDBPCombo.setVisible(true);
+            updateEncButton.setVisible(true);
+            
+            updateEncPositionField.setText(Integer.valueOf(position).toString());
+            updateEncTypeCombo.setSelectedItem(e.getType());
+            updateEncPatCombo.setSelectedItem(e.getPatient().getName());
+            updateEncDTField.setText(e.getDateTime().toString());
+            updateEncTempField.setText(Double.valueOf(e.getVitalSigns().getTemperature()).toString());
+            updateEncPRField.setText(Integer.valueOf(e.getVitalSigns().getPulseRatePerMinute()).toString());
+            updateEncRRField.setText(Integer.valueOf(e.getVitalSigns().getRespirationRate()).toString());
+            updateEncSBPCombo.setSelectedItem(e.getVitalSigns().getSystolicBloodPressure());
+            updateEncDBPCombo.setSelectedItem(e.getVitalSigns().getDiastolicBloodPressure());
+          }
+        }        
+      }
+      if(!found)
+          JOptionPane.showMessageDialog(this, "Encounter with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+      if(!identity)
+          JOptionPane.showMessageDialog(this, "You don't have permission to view this encounter record..", "Alert", JOptionPane.WARNING_MESSAGE);
+    }
+    private void updateEncSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEncSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateEncIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Encounter Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData(searchText);
+    }//GEN-LAST:event_updateEncSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +778,64 @@ public class DoctorRole extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorRole().setVisible(true);
+                new DoctorRole("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createEncButton;
+    private javax.swing.JTextField createEncCityField;
+    private javax.swing.JTextField createEncCommField;
+    private javax.swing.JTextField createEncDTField;
+    private javax.swing.JTextField createEncDocField;
+    private javax.swing.JTextField createEncHosField;
+    private javax.swing.JTextField createEncIdField;
+    private javax.swing.JComboBox<String> createEncPatCombo;
+    private javax.swing.JComboBox<String> createEncTypeCombo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel loginLabel;
+    private javax.swing.JLabel minLabel;
+    private javax.swing.JButton updateEncButton;
+    private javax.swing.JTextField updateEncCityField;
+    private javax.swing.JLabel updateEncCityLabel;
+    private javax.swing.JTextField updateEncCommField;
+    private javax.swing.JLabel updateEncCommLabel;
+    private javax.swing.JComboBox<String> updateEncDBPCombo;
+    private javax.swing.JLabel updateEncDBPLabel;
+    private javax.swing.JTextField updateEncDTField;
+    private javax.swing.JLabel updateEncDTLabel;
+    private javax.swing.JTextField updateEncDocField;
+    private javax.swing.JLabel updateEncDocLabel;
+    private javax.swing.JTextField updateEncHosField;
+    private javax.swing.JLabel updateEncHosLabel;
+    private javax.swing.JTextField updateEncIdField;
+    private javax.swing.JTextField updateEncPRField;
+    private javax.swing.JLabel updateEncPRLabel;
+    private javax.swing.JComboBox<String> updateEncPatCombo;
+    private javax.swing.JLabel updateEncPatLabel;
+    private javax.swing.JTextField updateEncPositionField;
+    private javax.swing.JTextField updateEncRRField;
+    private javax.swing.JLabel updateEncRRLabel;
+    private javax.swing.JComboBox<String> updateEncSBPCombo;
+    private javax.swing.JLabel updateEncSBPLabel;
+    private javax.swing.JButton updateEncSearch;
+    private javax.swing.JTextField updateEncTempField;
+    private javax.swing.JLabel updateEncTempLabel;
+    private javax.swing.JComboBox<String> updateEncTypeCombo;
+    private javax.swing.JLabel updateEncTypeLabel;
     // End of variables declaration//GEN-END:variables
 }

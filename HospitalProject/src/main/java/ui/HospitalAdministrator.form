@@ -13,6 +13,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[814, 768]"/>
+    </Property>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
     </Property>
@@ -1454,7 +1457,6 @@
                                                   <Component id="updatePatGenderMale" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="updatePatPassField" alignment="0" max="32767" attributes="0"/>
                                                           <Component id="updatePatDOBField" alignment="0" max="32767" attributes="0"/>
                                                           <Component id="updatePatIsInsCombo" alignment="0" pref="120" max="32767" attributes="0"/>
                                                           <Component id="updatePatCommField" alignment="0" max="32767" attributes="0"/>
@@ -1480,6 +1482,7 @@
                                                       <Component id="updatePatNameSearch" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="updatePatPositionField" min="-2" pref="121" max="-2" attributes="0"/>
+                                                  <Component id="updatePatPassField" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
@@ -1736,11 +1739,6 @@
                         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="updatePatDOBField.setVisible(false);"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="updatePatPassField">
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="updatePatPassField.setVisible(false);"/>
-                      </AuxValues>
-                    </Component>
                     <Component class="javax.swing.JButton" name="updatePatientButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Update"/>
@@ -1751,6 +1749,8 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="updatePatientButton.setVisible(false);"/>
                       </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="updatePatPassField">
                     </Component>
                   </SubComponents>
                 </Container>

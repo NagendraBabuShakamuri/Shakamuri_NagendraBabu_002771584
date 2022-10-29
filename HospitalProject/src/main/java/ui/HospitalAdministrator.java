@@ -24,9 +24,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     /**
      * Creates new form HospitalAdministrator
      */
-    public HospitalAdministrator(String pass) {
+    public HospitalAdministrator(String user) {
         initComponents();
-        if(pass.equals("Hospital Admin"))
+        if(user.equals("Hospital Admin"))
         {
             System.out.println("got it..");
             jTabbedPane1.setEnabledAt(2, false);
@@ -181,8 +181,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         updatePatCommField = new javax.swing.JTextField();
         updatePatIsInsCombo = new javax.swing.JComboBox<>();
         updatePatDOBField = new javax.swing.JTextField();
-        updatePatPassField = new javax.swing.JTextField();
         updatePatientButton = new javax.swing.JButton();
+        updatePatPassField = new javax.swing.JPasswordField();
         jPanel9 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         updateDocPositionField = new javax.swing.JTextField();
@@ -252,6 +252,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         deleteHosButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(814, 768));
         setSize(new java.awt.Dimension(1000, 1000));
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -1141,8 +1142,6 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         updatePatDOBField.setVisible(false);
 
-        updatePatPassField.setVisible(false);
-
         updatePatientButton.setText("Update");
         updatePatientButton.setVisible(false);
         updatePatientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1182,7 +1181,6 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                                     .addComponent(updatePatGenderMale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(updatePatPassField, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(updatePatDOBField, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(updatePatIsInsCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 120, Short.MAX_VALUE)
                                             .addComponent(updatePatCommField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1201,7 +1199,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                                         .addComponent(updatePatNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(updatePatNameSearch))
-                                    .addComponent(updatePatPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(updatePatPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(updatePatPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel8Layout.setVerticalGroup(
@@ -2338,7 +2337,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_createEncHosComboItemStateChanged
 
-    private boolean clientSideValidation4(JFrame frame, String encounterId, String dateTime)
+    public static boolean clientSideValidation4(JFrame frame, String encounterId, String dateTime)
     {
       if(Pattern.compile("^[1-9]\\d*$").matcher(encounterId).matches()){
         System.out.println("Encounter Id is valid.");
@@ -3184,7 +3183,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         }
         String isInsured = updatePatIsInsCombo.getSelectedItem().toString();
         String patientDOB = updatePatDOBField.getText().trim();
-        String patientPassword = updatePatPassField.getText().trim();
+        String patientPassword = new String(updatePatPassField.getPassword());
         boolean passed = clientSideValidation3(this, patientPersonId, patientName, patientMobile, patientEmail, patientDOB, patientPassword);
         boolean exists = false;
         if(passed)
@@ -3757,7 +3756,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
     private javax.swing.JLabel updatePatMobileLabel;
     private javax.swing.JTextField updatePatNameField;
     private javax.swing.JButton updatePatNameSearch;
-    private javax.swing.JTextField updatePatPassField;
+    private javax.swing.JPasswordField updatePatPassField;
     private javax.swing.JLabel updatePatPasswordLabel;
     private javax.swing.JButton updatePatPersonIdSearch;
     private javax.swing.JTextField updatePatPositionField;
