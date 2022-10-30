@@ -9,6 +9,7 @@ package ui;
  * @author nbabu
  */
 import backend.*;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class PatientRole extends javax.swing.JFrame {
           }          
         }
         createEncPatField.setText(patName);
+        this.getContentPane().setBackground(new Color(0, 153, 255));
     }
 
     /**
@@ -149,9 +151,17 @@ public class PatientRole extends javax.swing.JFrame {
         checkButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(814, 768));
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
+        jTabbedPane1.setBackground(new java.awt.Color(51, 153, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(814, 768));
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setText("Encounter Id:");
 
@@ -271,6 +281,8 @@ public class PatientRole extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Book Appointment", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel9.setText("Encounter Id:");
 
@@ -430,6 +442,8 @@ public class PatientRole extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("View Encounters", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel17.setText("Person Id:");
 
@@ -612,11 +626,11 @@ public class PatientRole extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

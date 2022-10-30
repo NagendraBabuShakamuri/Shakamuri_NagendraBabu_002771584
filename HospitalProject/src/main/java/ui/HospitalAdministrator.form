@@ -13,6 +13,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[814, 768]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
     </Property>
@@ -47,10 +51,20 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Create">
@@ -74,12 +88,23 @@
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="tabPlacement" type="int" value="2"/>
               </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Encounter">
@@ -234,7 +259,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createEncCityComboActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="createEncCityCombo.removeAllItems();&#xa;for(City c: City.getCityList())&#xa;    createEncCityCombo.addItem(c.getName());"/>
+                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="createEncCityCombo.removeAllItems();&#xa;for(City c: City.getCityList())&#xa;    createEncCityCombo.addItem(c.getName());&#xa;createEncCityCombo.setSelectedItem(null);"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
@@ -330,6 +355,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel4">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Patient">
@@ -568,6 +598,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel5">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Doctor">
@@ -935,6 +970,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel6">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Hospital">
@@ -1103,6 +1143,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Search/Update">
@@ -1126,12 +1171,23 @@
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="tabPlacement" type="int" value="2"/>
               </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel7">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Encounter">
@@ -1414,6 +1470,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel8">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Patient">
@@ -1755,6 +1816,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel9">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Doctor">
@@ -2195,6 +2261,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel10">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Hospital">
@@ -2394,6 +2465,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel11">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
@@ -2420,12 +2496,23 @@
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="tabPlacement" type="int" value="2"/>
               </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel12">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Encounter">
@@ -2485,6 +2572,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel13">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Patient">
@@ -2544,6 +2636,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel14">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Doctor">
@@ -2603,6 +2700,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel15">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Hospital">

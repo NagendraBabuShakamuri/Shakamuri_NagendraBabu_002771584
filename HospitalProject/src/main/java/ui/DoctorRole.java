@@ -9,6 +9,7 @@ package ui;
  * @author nbabu
  */
 import backend.*;
+import java.awt.Color;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class DoctorRole extends javax.swing.JFrame {
             break;
           }
         }
+        this.getContentPane().setBackground(new Color(0, 153, 255));
     }
 
     /**
@@ -118,9 +120,14 @@ public class DoctorRole extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(814, 768));
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
+        jTabbedPane1.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setText("Encounter Id:");
 
@@ -256,6 +263,8 @@ public class DoctorRole extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Create Encounter", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel9.setText("Encounter Id:");
 

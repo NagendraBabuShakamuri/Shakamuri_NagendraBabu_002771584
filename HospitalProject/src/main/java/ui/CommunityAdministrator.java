@@ -120,9 +120,16 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
+        tabPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        createPanel.setBackground(new java.awt.Color(0, 153, 255));
         createPanel.setPreferredSize(new java.awt.Dimension(843, 737));
 
+        jTabbedPane1.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        createHousePanel.setBackground(new java.awt.Color(0, 204, 255));
 
         houseId.setText("House Id:");
 
@@ -219,6 +226,8 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("House", createHousePanel);
 
+        createCommPanel.setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel1.setText("Community Id:");
 
         jLabel2.setText("Community Name:");
@@ -310,6 +319,8 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Community", createCommPanel);
 
+        createCityPanel.setBackground(new java.awt.Color(0, 204, 255));
+
         cityIdLabel.setText("City Id:");
 
         cityNameLabel.setText("City Name:");
@@ -394,7 +405,13 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         tabPane.addTab("Create", createPanel);
 
+        searchPanel.setBackground(new java.awt.Color(0, 153, 255));
+
+        jTabbedPane2.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
         updateHouseIdSearch.setText("Search");
         updateHouseIdSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -517,6 +534,8 @@ public class CommunityAdministrator extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("House", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+
         updateCommIdSearch.setText("Search");
         updateCommIdSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -636,6 +655,8 @@ public class CommunityAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Community", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         updateCityIdSearch.setText("Search");
         updateCityIdSearch.addActionListener(new java.awt.event.ActionListener() {

@@ -16,6 +16,7 @@ import backend.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -252,9 +253,19 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         deleteHosButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(814, 768));
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+
+        jTabbedPane2.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel22.setText("Encounter Id:");
 
@@ -282,6 +293,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         createEncCityCombo.removeAllItems();
         for(City c: City.getCityList())
         createEncCityCombo.addItem(c.getName());
+        createEncCityCombo.setSelectedItem(null);
 
         jLabel25.setText("Patient:");
 
@@ -425,6 +437,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Encounter", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel15.setText("Person Id:");
 
@@ -572,6 +586,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Patient", jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel6.setText("Person Id:");
 
@@ -786,6 +802,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Doctor", jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel1.setText("Hospital Id:");
 
         jLabel2.setText("Hospital Name:");
@@ -913,7 +931,13 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Create", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+
+        jTabbedPane3.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane3.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel7.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel68.setText("Position:");
 
@@ -1067,6 +1091,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Encounter", jPanel7);
+
+        jPanel8.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel57.setText("Position:");
 
@@ -1261,6 +1287,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Patient", jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel43.setText("Position:");
 
@@ -1486,6 +1514,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Doctor", jPanel9);
 
+        jPanel10.setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel33.setText("Hospital Id:");
 
         updateHosIdSearch.setText("Search");
@@ -1617,7 +1647,13 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Search/Update", jPanel2);
 
+        jPanel11.setBackground(new java.awt.Color(0, 153, 255));
+
+        jTabbedPane4.setBackground(new java.awt.Color(0, 153, 255));
+        jTabbedPane4.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel12.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel39.setText("Encounter Id:");
 
@@ -1656,6 +1692,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Encounter", jPanel12);
 
+        jPanel13.setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel40.setText("Patient Id:");
 
         deletePatButton.setText("Delete");
@@ -1693,6 +1731,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Patient", jPanel13);
 
+        jPanel14.setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel41.setText("Doctor Id:");
 
         deleteDocButton.setText("Delete");
@@ -1729,6 +1769,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         );
 
         jTabbedPane4.addTab("Doctor", jPanel14);
+
+        jPanel15.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel46.setText("Hospital Id:");
 
@@ -2418,11 +2460,18 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 String[] dateTimeSplit = dateTime.split(" ");
                 String[] dateSplit = dateTimeSplit[0].split("-");
                 String[] timeSplit = dateTimeSplit[1].split(":");
-                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
-                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
-                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
-                EncounterHistory.addEncounter(encounter);
-                JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+                try
+                {
+                  LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                  VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
+                  Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                  EncounterHistory.addEncounter(encounter);
+                  JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+                }
+                catch(DateTimeException e)
+                {
+                  JOptionPane.showMessageDialog(this, "DateTime is not valid.\nShould be in the format YYYY-MM-DD HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
             }
             else
             {
@@ -2738,7 +2787,12 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                         updatePatHouseCombo.addItem(h.getName());
                     updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
                     updatePatCommField.setText(p.getHouse().getCommunity().getName());
-                    updatePatIsInsCombo.setSelectedItem(p.getIsInsured());
+                    String insured = "";
+                    if(p.getIsInsured() == true)
+                        insured = "Yes";
+                    else
+                        insured = "No";
+                    updatePatIsInsCombo.setSelectedItem(insured);
                     updatePatDOBField.setText(p.getDateOfBirth().toString());
                     updatePatPassField.setText(p.getPassword());
                     break;
@@ -2753,9 +2807,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 updatePatMobileLabel.setVisible(false);
                 updatePatEmailLabel.setVisible(false);
                 updatePatHouseLabel.setVisible(false);
-                updatePatCommField.setVisible(false);
-                updatePatIsInsCombo.setVisible(false);
-                updatePatDOBField.setVisible(false);
+                updatePatCommLabel.setVisible(false);
+                updatePatIsInsLabel.setVisible(false);
+                updatePatDOBLabel.setVisible(false);
                 updatePatPasswordLabel.setVisible(false);
                 updatePatGenderMale.setVisible(false);
                 updatePatGenderFemale.setVisible(false);
@@ -2777,9 +2831,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                     updatePatMobileLabel.setVisible(true);
                     updatePatEmailLabel.setVisible(true);
                     updatePatHouseLabel.setVisible(true);
-                    updatePatCommField.setVisible(true);
-                    updatePatIsInsCombo.setVisible(true);
-                    updatePatDOBField.setVisible(true);
+                    updatePatCommLabel.setVisible(true);
+                    updatePatIsInsLabel.setVisible(true);
+                    updatePatDOBLabel.setVisible(true);
                     updatePatPasswordLabel.setVisible(true);
                     updatePatGenderMale.setVisible(true);
                     updatePatGenderFemale.setVisible(true);
@@ -2805,7 +2859,12 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                         updatePatHouseCombo.addItem(h.getName());
                     updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
                     updatePatCommField.setText(p.getHouse().getCommunity().getName());
-                    updatePatIsInsCombo.setSelectedItem(p.getIsInsured());
+                    String insured = "";
+                    if(p.getIsInsured() == true)
+                        insured = "Yes";
+                    else
+                        insured = "No";
+                    updatePatIsInsCombo.setSelectedItem(insured);
                     updatePatDOBField.setText(p.getDateOfBirth().toString());
                     updatePatPassField.setText(p.getPassword());
                     break;
@@ -3122,7 +3181,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             House house = null;
             for(House h: House.getHouseList())
             {
-              if(h.getName().equals(createDocHouseCombo.getSelectedItem().toString()))
+              if(h.getName().equals(updateDocHouseCombo.getSelectedItem().toString()))
               {
                 house = h;
                 break;
@@ -3131,7 +3190,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             Hospital hospital = null;
             for(Hospital h: HospitalDirectory.getHospitalList())
             {               
-              if(h.getName().equals(createDocHospitalCombo.getSelectedItem().toString()))
+              if(h.getName().equals(updateDocHosCombo.getSelectedItem().toString()))
               {
                 hospital = h;
                 break;
@@ -3330,13 +3389,20 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 String[] dateTimeSplit = dateTime.split(" ");
                 String[] dateSplit = dateTimeSplit[0].split("-");
                 String[] timeSplit = dateTimeSplit[1].split(":");
-                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
-                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);                                
-                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
-                ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
-                encounterList.set(position, encounter);
-                EncounterHistory.setEncounterList(encounterList);
-                JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+                try
+                {
+                  LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                  VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);                                
+                  Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                  ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
+                  encounterList.set(position, encounter);
+                  EncounterHistory.setEncounterList(encounterList);
+                  JOptionPane.showMessageDialog(this, "Encounter record updated successfully..", null, JOptionPane.OK_OPTION);
+                }
+                catch(DateTimeException e)
+                {
+                  JOptionPane.showMessageDialog(this, "DateTime is not valid.\nShould be in the format YYYY-MM-DD HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+                } 
             }
             else
             {
@@ -3481,6 +3547,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
               patientList.remove(p);                 
               PatientDirectory.setPatientList(patientList);
               JOptionPane.showMessageDialog(this, "Successfully deleted the patient from the records..", null, JOptionPane.OK_OPTION);
+              createEncPatientField.removeAllItems();
+              for(Patient p1: PatientDirectory.getPatientList())
+                  createEncPatientField.addItem(p1.getName());
               break;
             }
           }
@@ -3532,10 +3601,14 @@ public class HospitalAdministrator extends javax.swing.JFrame {
           {
             if(Integer.parseInt(deleteText) == h.getId())
             {
+              found = true;
               ArrayList<Hospital> hospitalList = HospitalDirectory.getHospitalList();
               hospitalList.remove(h);        
               HospitalDirectory.setHospitalList(hospitalList);
               JOptionPane.showMessageDialog(this, "Successfully deleted the hospital from the records..", null, JOptionPane.OK_OPTION);
+              createDocHospitalCombo.removeAllItems();
+              for(Hospital h1: HospitalDirectory.getHospitalList())
+                  createDocHospitalCombo.addItem(h1.getName());
               break;
             }            
           }

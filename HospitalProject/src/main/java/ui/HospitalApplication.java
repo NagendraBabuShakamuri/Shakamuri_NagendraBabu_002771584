@@ -5,6 +5,7 @@
 package ui;
 
 import backend.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,7 @@ public class HospitalApplication extends javax.swing.JFrame {
      */
     public HospitalApplication() {
         initComponents();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -41,6 +43,8 @@ public class HospitalApplication extends javax.swing.JFrame {
         loginLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 204, 255));
+        setPreferredSize(new java.awt.Dimension(814, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
@@ -99,7 +103,7 @@ public class HospitalApplication extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 2, Short.MAX_VALUE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(userNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                                             .addComponent(loginAsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
