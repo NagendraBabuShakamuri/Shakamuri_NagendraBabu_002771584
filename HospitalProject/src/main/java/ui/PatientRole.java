@@ -8,13 +8,57 @@ package ui;
  *
  * @author nbabu
  */
+import backend.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import static ui.HospitalAdministrator.clientSideValidation3;
+import static ui.HospitalAdministrator.clientSideValidation4;
 public class PatientRole extends javax.swing.JFrame {
 
     /**
      * Creates new form Patient
      */
-    public PatientRole() {
+    public PatientRole(String patName) {
         initComponents();
+        loginLabel.setText(patName);
+        for(Encounter e: EncounterHistory.getEncounterList())
+        {
+          if(e.getPatient().getName().equals(patName))
+          {
+            viewEncIdCombo.addItem(Integer.valueOf(e.getId()).toString());
+          }
+        }
+        for(Patient p: PatientDirectory.getPatientList())
+        {
+          if(p.getName().equals(patName))
+          {
+            updatePatPositionField.setText(Integer.valueOf(PatientDirectory.getPatientList().indexOf(p)).toString());
+            updatePatIdField.setText(Integer.valueOf(p.getId()).toString());
+            updatePatNameField.setText(p.getName());
+            if(p.getGender().equals("Male"))
+                updatePatMale.setSelected(true);
+            else
+                updatePatMale.setSelected(true);
+            updatePatMobileField.setText(Long.valueOf(p.getMobileNumber()).toString());
+            updatePatEmailField.setText(p.getEmail());
+            updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
+            updatePatCommField.setText(p.getHouse().getCommunity().getName());
+            updatePatCityField.setText(p.getHouse().getCommunity().getCity().getName());
+            String insured = "";
+            if(p.getIsInsured())
+                insured = "Yes";
+            else
+                insured = "No";
+            updatePatIsInsCombo.setSelectedItem(insured);
+            updatePatDOBField.setText(p.getDateOfBirth().toString());
+            updatePatPassField.setText(p.getPassword());
+            break;
+          }          
+        }
+        createEncPatField.setText(patName);
     }
 
     /**
@@ -37,33 +81,43 @@ public class PatientRole extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        createEncIdField = new javax.swing.JTextField();
+        createEncTypeCombo = new javax.swing.JComboBox<>();
+        createEncPatField = new javax.swing.JTextField();
+        createEncCityCombo = new javax.swing.JComboBox<>();
+        createEncCommCombo = new javax.swing.JComboBox<>();
+        createEncHosCombo = new javax.swing.JComboBox<>();
+        createEncDocCombo = new javax.swing.JComboBox<>();
+        createEncDTField = new javax.swing.JTextField();
+        createEncButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        viewEncIdCombo = new javax.swing.JComboBox<>();
+        viewEncSearchButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        viewEncTypeField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        viewEncPatField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        viewEncDocField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        viewEncHosField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        viewEncCommField = new javax.swing.JTextField();
+        viewEncCityField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        viewEncDTField = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        viewEncTempField = new javax.swing.JTextField();
+        viewEncPRField = new javax.swing.JTextField();
+        viewEncRRField = new javax.swing.JTextField();
+        viewEncSBPField = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        viewEncDBPField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -76,22 +130,25 @@ public class PatientRole extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        updatePatIdField = new javax.swing.JTextField();
+        updatePatNameField = new javax.swing.JTextField();
+        updatePatMale = new javax.swing.JRadioButton();
+        updatePatFemale = new javax.swing.JRadioButton();
+        updatePatMobileField = new javax.swing.JTextField();
+        updatePatEmailField = new javax.swing.JTextField();
+        updatePatHouseCombo = new javax.swing.JComboBox<>();
+        updatePatCommField = new javax.swing.JTextField();
+        updatePatCityField = new javax.swing.JTextField();
+        updatePatIsInsCombo = new javax.swing.JComboBox<>();
+        updatePatDOBField = new javax.swing.JTextField();
+        updatePatButton = new javax.swing.JButton();
+        loginLabel = new javax.swing.JLabel();
+        updatePatPassField = new javax.swing.JPasswordField();
+        jLabel28 = new javax.swing.JLabel();
+        updatePatPositionField = new javax.swing.JTextField();
+        checkButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(814, 768));
         setSize(new java.awt.Dimension(1000, 1000));
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -112,11 +169,36 @@ public class PatientRole extends javax.swing.JFrame {
 
         jLabel8.setText("Date and Time:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inpatient", "Outpatient" }));
+        createEncTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inpatient", "Outpatient" }));
 
-        jTextField2.setEnabled(false);
+        createEncPatField.setEnabled(false);
 
-        jButton1.setText("Submit");
+        for(City c: City.getCityList())
+        createEncCityCombo.addItem(c.getName());
+        createEncCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                createEncCityComboItemStateChanged(evt);
+            }
+        });
+
+        createEncCommCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                createEncCommComboItemStateChanged(evt);
+            }
+        });
+
+        createEncHosCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                createEncHosComboItemStateChanged(evt);
+            }
+        });
+
+        createEncButton.setText("Submit");
+        createEncButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createEncButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,7 +207,7 @@ public class PatientRole extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createEncButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,15 +220,15 @@ public class PatientRole extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox1, 0, 116, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                            .addComponent(createEncIdField)
+                            .addComponent(createEncTypeCombo, 0, 116, Short.MAX_VALUE)
+                            .addComponent(createEncPatField)
+                            .addComponent(createEncCityCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(createEncCommCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(createEncHosCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(createEncDocCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(createEncDTField))))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,37 +236,37 @@ public class PatientRole extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncPatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncCommCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncHosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncDocCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(createEncButton)
                 .addContainerGap(287, Short.MAX_VALUE))
         );
 
@@ -192,55 +274,101 @@ public class PatientRole extends javax.swing.JFrame {
 
         jLabel9.setText("Encounter Id:");
 
-        jButton2.setText("Search");
+        viewEncSearchButton.setText("Search");
+        viewEncSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewEncSearchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Encounter type:");
 
+        viewEncTypeField.setEnabled(false);
+
         jLabel11.setText("Patient:");
+
+        viewEncPatField.setEnabled(false);
 
         jLabel12.setText("Doctor:");
 
+        viewEncDocField.setEnabled(false);
+
         jLabel13.setText("Hospital:");
+
+        viewEncHosField.setEnabled(false);
 
         jLabel14.setText("Community:");
 
         jLabel15.setText("City:");
 
+        viewEncCommField.setEnabled(false);
+
+        viewEncCityField.setEnabled(false);
+
         jLabel16.setText("Date and Time:");
+
+        viewEncDTField.setEnabled(false);
+
+        jLabel29.setText("Temperature:");
+
+        jLabel30.setText("Pulse rate:");
+
+        jLabel31.setText("Respiration rate:");
+
+        jLabel32.setText("Systolic Blood Pressure:");
+
+        viewEncTempField.setEnabled(false);
+
+        viewEncPRField.setEnabled(false);
+
+        viewEncRRField.setEnabled(false);
+
+        viewEncSBPField.setEnabled(false);
+
+        jLabel33.setText("Diastolic Blood Pressure:");
+
+        viewEncDBPField.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField10))
+                .addGap(155, 155, 155)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12))
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
+                            .addComponent(viewEncTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncIdCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncPatField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncDocField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncTempField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncPRField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncRRField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewEncSBPField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox6, 0, 108, Short.MAX_VALUE)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8)
-                            .addComponent(jTextField9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(viewEncSearchButton))
+                    .addComponent(viewEncDBPField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,37 +376,57 @@ public class PatientRole extends javax.swing.JFrame {
                 .addGap(69, 69, 69)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(viewEncIdCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewEncSearchButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewEncTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEncPatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewEncDocField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewEncHosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEncCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewEncCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(321, Short.MAX_VALUE))
+                    .addComponent(viewEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(viewEncTempField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(viewEncPRField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(viewEncRRField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(viewEncSBPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(viewEncDBPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Encounters", jPanel2);
@@ -305,109 +453,157 @@ public class PatientRole extends javax.swing.JFrame {
 
         jLabel27.setText("Password:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Male");
+        buttonGroup1.add(updatePatMale);
+        updatePatMale.setText("Male");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Female");
+        buttonGroup1.add(updatePatFemale);
+        updatePatFemale.setText("Female");
 
-        jTextField15.setEnabled(false);
+        for(House h: House.getHouseList())
+        updatePatHouseCombo.addItem(h.getName());
 
-        jTextField16.setEnabled(false);
+        updatePatCommField.setEnabled(false);
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        updatePatCityField.setEnabled(false);
 
-        jButton3.setText("Update");
+        updatePatIsInsCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+
+        updatePatButton.setText("Update");
+        updatePatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("Position:");
+
+        updatePatPositionField.setEnabled(false);
+
+        checkButton.setText("Check");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatMobileField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatHouseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatCommField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatIsInsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(updatePatDOBField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePatPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel27))
-                        .addGap(26, 26, 26)
+                            .addComponent(jLabel28))
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField12)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField13)
-                            .addComponent(jTextField14)
-                            .addComponent(jComboBox7, 0, 98, Short.MAX_VALUE)
-                            .addComponent(jTextField15)
-                            .addComponent(jTextField16)
-                            .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField17)
-                            .addComponent(jTextField18))))
-                .addContainerGap(113, Short.MAX_VALUE))
+                            .addComponent(updatePatFemale, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatIdField, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(updatePatNameField)
+                            .addComponent(updatePatMale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(updatePatPositionField))))
+                .addGap(18, 18, 18)
+                .addComponent(checkButton)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addComponent(loginLabel)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel28)
+                    .addComponent(updatePatPositionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatIdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jRadioButton1))
+                    .addComponent(updatePatNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePatMale)
+                    .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addGap(14, 14, 14)
+                .addComponent(updatePatFemale)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatMobileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(updatePatEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatHouseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatCommField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatIsInsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePatDOBField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(155, Short.MAX_VALUE))
+                    .addComponent(updatePatPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(updatePatButton)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Read/Update Profile", jPanel3);
@@ -425,6 +621,276 @@ public class PatientRole extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updatePatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatButtonActionPerformed
+        // TODO add your handling code here:
+        int position = Integer.valueOf(updatePatPositionField.getText());
+        String patientPersonId = updatePatIdField.getText().trim();
+        String patientName = updatePatNameField.getText().trim();
+        String oldPatientName = PatientDirectory.getPatientList().get(position).getName();
+        String patientGender = "";
+        if(updatePatMale.isSelected())
+            patientGender = "Male";
+        else
+            patientGender = "Female";     
+        String patientMobile = updatePatMobileField.getText().trim();
+        String patientEmail = updatePatEmailField.getText().trim();
+        try
+        {
+          String doctorHouse = updatePatHouseCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        { 
+          JOptionPane.showMessageDialog(this, "Please choose the house for the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String isInsured = updatePatIsInsCombo.getSelectedItem().toString();
+        String patientDOB = updatePatDOBField.getText().trim();
+        String patientPassword = new String(updatePatPassField.getPassword());
+        boolean passed = clientSideValidation3(this, patientPersonId, patientName, patientMobile, patientEmail, patientDOB, patientPassword);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Patient p: PatientDirectory.getPatientList())
+          {
+            if(Integer.parseInt(patientPersonId) == p.getId() && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given Id already exists\nPlease give another Id to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(patientName.equals(p.getName()) && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given name already exists\nPlease give another name to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(Long.parseLong(patientMobile) == p.getMobileNumber() && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the mobile number already exists\nPlease give another mobile number to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+            else if(patientEmail.equals(p.getEmail()) && PatientDirectory.getPatientList().indexOf(p) != position)
+            {
+              JOptionPane.showMessageDialog(this, "Patient with the given email already exists\nPlease give another email to the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }
+          }
+          if(!exists)
+          {
+            House house = null;
+            for(House h: House.getHouseList())
+            {
+              if(h.getName().equals(updatePatHouseCombo.getSelectedItem().toString()))
+              {
+                  house = h;
+                  break;
+              }
+            }
+            if(house != null)
+            {
+                int id = Integer.parseInt(patientPersonId);
+                long mobile = Long.parseLong(patientMobile, 10);                
+                if(isInsured.equals("Yes"))
+                    isInsured = "true";
+                else
+                    isInsured = "false";
+                boolean insured = Boolean.parseBoolean(isInsured);
+                String[] dateSplit = patientDOB.split("-");
+                LocalDate dateOfBirth = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
+//                Person p = new Person(Integer.parseInt(patientPersonId), patientName, patientGender, Long.parseLong(patientMobile, 10), patientEmail, house, "Patient", patientPassword);
+                ArrayList<Patient> patientList = PatientDirectory.getPatientList();
+                Patient p1 = new Patient(id, patientName, patientGender, mobile, patientEmail, house, "Patient", patientPassword, insured, dateOfBirth);
+                patientList.set(position, p1);
+                PatientDirectory.setPatientList(patientList);
+                for(Encounter encounter: EncounterHistory.getEncounterList())
+                {
+                    if(encounter.getPatient().getName().equals(oldPatientName))
+                    {
+                      encounter.setPatient(p1);
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Updated the patient record successfully..", null, JOptionPane.OK_OPTION);
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a house for the patient..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }           
+        }
+    }//GEN-LAST:event_updatePatButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Patient> pd = PatientDirectory.getPatientList();
+        int position = Integer.parseInt(updatePatPositionField.getText());
+        updatePatIdField.setText(Integer.valueOf(pd.get(position).getId()).toString());
+        updatePatNameField.setText(pd.get(position).getName());
+        if(pd.get(position).getGender().equals("Male"))
+            updatePatMale.setSelected(true);
+        else
+            updatePatMale.setSelected(true);
+        updatePatMobileField.setText(Long.valueOf(pd.get(position).getMobileNumber()).toString());
+        updatePatEmailField.setText(pd.get(position).getEmail());
+        updatePatHouseCombo.setSelectedItem(pd.get(position).getHouse().getName());
+        updatePatCommField.setText(pd.get(position).getHouse().getCommunity().getName());
+        updatePatCityField.setText(pd.get(position).getHouse().getCommunity().getCity().getName());
+        String insured = "";
+            if(pd.get(position).getIsInsured())
+                insured = "Yes";
+            else
+                insured = "No";
+        updatePatIsInsCombo.setSelectedItem(insured);
+        updatePatDOBField.setText(pd.get(position).getDateOfBirth().toString());
+        updatePatPassField.setText(pd.get(position).getPassword());
+    }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void viewEncSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewEncSearchButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {                                
+            String encId = viewEncIdCombo.getSelectedItem().toString();
+            for(Encounter e: EncounterHistory.getEncounterList())
+            {
+              if(Integer.valueOf(e.getId()).toString().equals(encId))
+              {
+                viewEncTypeField.setText(e.getType());
+                viewEncPatField.setText(e.getPatient().getName());
+                viewEncDocField.setText(e.getDoctor().getName());
+                viewEncHosField.setText(e.getDoctor().getHospital().getName());
+                viewEncCommField.setText(e.getDoctor().getHospital().getCommunity().getName());
+                viewEncCityField.setText(e.getDoctor().getHospital().getCommunity().getCity().getName());
+                viewEncDTField.setText(e.getDateTime().toString());
+                viewEncTempField.setText(Double.valueOf(e.getVitalSigns().getTemperature()).toString());
+                viewEncPRField.setText(Integer.valueOf(e.getVitalSigns().getPulseRatePerMinute()).toString());
+                viewEncRRField.setText(Integer.valueOf(e.getVitalSigns().getRespirationRate()).toString());
+                viewEncSBPField.setText(Integer.valueOf(e.getVitalSigns().getSystolicBloodPressure()).toString());
+                viewEncDBPField.setText(Integer.valueOf(e.getVitalSigns().getDiastolicBloodPressure()).toString());
+                break;
+              }
+            }
+        } 
+        catch(NullPointerException n)
+        {
+          JOptionPane.showMessageDialog(this, "Encounter Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE); 
+        }
+    }//GEN-LAST:event_viewEncSearchButtonActionPerformed
+
+    private void createEncButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEncButtonActionPerformed
+        // TODO add your handling code here:
+        String encounterId = createEncIdField.getText();
+        String encounterType = createEncTypeCombo.getSelectedItem().toString();      
+        String patient = createEncPatField.getText();
+        try
+        {          
+          String city = createEncCityCombo.getSelectedItem().toString();
+          String community = createEncCommCombo.getSelectedItem().toString();
+          String hospital = createEncHosCombo.getSelectedItem().toString();
+          String doctor = createEncDocCombo.getSelectedItem().toString();
+        }
+        catch(Exception e)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a valid patient, city, community, hospital \nand doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        String dateTime = createEncDTField.getText();
+        boolean passed = clientSideValidation4(this, encounterId, dateTime);
+        boolean exists = false;
+        if(passed)
+        {
+          for(Encounter e: EncounterHistory.getEncounterList())
+          {
+            if(Integer.parseInt(encounterId) == e.getId())
+            {
+              JOptionPane.showMessageDialog(this, "Encounter with the given Id already exists\nPlease give another Id to the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+              exists = true;
+              break;
+            }            
+          }
+          if(!exists)
+          {
+            Patient p = null;
+            for(Patient pat: PatientDirectory.getPatientList())
+            {
+              if(pat.getName().equals(patient))
+              {
+                p = pat;
+                break;
+              }
+            }
+            Doctor d = null;
+            for(Doctor doc: DoctorDirectory.getDoctorList())
+            {
+              if(doc.getName().equals(createEncDocCombo.getSelectedItem().toString()))
+              {
+                d = doc;
+                break;
+              }
+            }
+            if(p != null && d != null)
+            {
+                String[] dateTimeSplit = dateTime.split(" ");
+                String[] dateSplit = dateTimeSplit[0].split("-");
+                String[] timeSplit = dateTimeSplit[1].split(":");
+                LocalDateTime ldt = LocalDateTime.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]));
+                VitalSigns vs = new VitalSigns(0.00, 0, 0, 0, 0);            
+                Encounter encounter = new Encounter(Integer.parseInt(encounterId), encounterType, p, d, ldt, vs);
+                EncounterHistory.addEncounter(encounter);
+                JOptionPane.showMessageDialog(this, "New encounter created successfully..", null, JOptionPane.OK_OPTION);
+                viewEncIdCombo.addItem(encounterId);
+            }
+            else
+            {
+              JOptionPane.showMessageDialog(this, "Please choose a valid patient and doctor for the encounter..", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+        }
+    }//GEN-LAST:event_createEncButtonActionPerformed
+
+    private void createEncCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncCityComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            createEncCommCombo.removeAllItems();
+            for(Community community: Community.getCommunityList())
+            {
+              if(community.getCity().getName().equals(createEncCityCombo.getSelectedItem().toString()))
+              {
+                createEncCommCombo.addItem(community.getName());            
+              }
+            }
+        }
+    }//GEN-LAST:event_createEncCityComboItemStateChanged
+
+    private void createEncCommComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncCommComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+        createEncHosCombo.removeAllItems();
+        for(Hospital hospital: HospitalDirectory.getHospitalList())
+        {
+          if(hospital.getCommunity().getName().equals(createEncCommCombo.getSelectedItem().toString()))
+          {
+            createEncHosCombo.addItem(hospital.getName());            
+          }
+        }
+      }
+    }//GEN-LAST:event_createEncCommComboItemStateChanged
+
+    private void createEncHosComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createEncHosComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
+            createEncDocCombo.removeAllItems();
+            for(Doctor d: DoctorDirectory.getDoctorList())
+            {
+              System.out.println(d.getName());
+              if(d.getHospital().getName().equals(createEncHosCombo.getSelectedItem().toString()))
+              {
+                createEncDocCombo.addItem(d.getName());       
+              }
+            }
+        }
+    }//GEN-LAST:event_createEncHosComboItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -457,24 +923,23 @@ public class PatientRole extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PatientRole().setVisible(true);
+                new PatientRole("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JButton createEncButton;
+    private javax.swing.JComboBox<String> createEncCityCombo;
+    private javax.swing.JComboBox<String> createEncCommCombo;
+    private javax.swing.JTextField createEncDTField;
+    private javax.swing.JComboBox<String> createEncDocCombo;
+    private javax.swing.JComboBox<String> createEncHosCombo;
+    private javax.swing.JTextField createEncIdField;
+    private javax.swing.JTextField createEncPatField;
+    private javax.swing.JComboBox<String> createEncTypeCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -495,7 +960,13 @@ public class PatientRole extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -505,26 +976,35 @@ public class PatientRole extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel loginLabel;
+    private javax.swing.JButton updatePatButton;
+    private javax.swing.JTextField updatePatCityField;
+    private javax.swing.JTextField updatePatCommField;
+    private javax.swing.JTextField updatePatDOBField;
+    private javax.swing.JTextField updatePatEmailField;
+    private javax.swing.JRadioButton updatePatFemale;
+    private javax.swing.JComboBox<String> updatePatHouseCombo;
+    private javax.swing.JTextField updatePatIdField;
+    private javax.swing.JComboBox<String> updatePatIsInsCombo;
+    private javax.swing.JRadioButton updatePatMale;
+    private javax.swing.JTextField updatePatMobileField;
+    private javax.swing.JTextField updatePatNameField;
+    private javax.swing.JPasswordField updatePatPassField;
+    private javax.swing.JTextField updatePatPositionField;
+    private javax.swing.JTextField viewEncCityField;
+    private javax.swing.JTextField viewEncCommField;
+    private javax.swing.JTextField viewEncDBPField;
+    private javax.swing.JTextField viewEncDTField;
+    private javax.swing.JTextField viewEncDocField;
+    private javax.swing.JTextField viewEncHosField;
+    private javax.swing.JComboBox<String> viewEncIdCombo;
+    private javax.swing.JTextField viewEncPRField;
+    private javax.swing.JTextField viewEncPatField;
+    private javax.swing.JTextField viewEncRRField;
+    private javax.swing.JTextField viewEncSBPField;
+    private javax.swing.JButton viewEncSearchButton;
+    private javax.swing.JTextField viewEncTempField;
+    private javax.swing.JTextField viewEncTypeField;
     // End of variables declaration//GEN-END:variables
 }

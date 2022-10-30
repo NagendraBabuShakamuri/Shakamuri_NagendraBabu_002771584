@@ -223,6 +223,21 @@ public class HospitalApplication extends javax.swing.JFrame {
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
              break;
+             case "Patient":
+                for(Patient p: PatientDirectory.getPatientList())
+                {
+                  if(p.getRole().equals("Patient") && p.getName().equals(userName) && p.getPassword().equals(password))
+                  {
+                    found = true;
+                    PatientRole pr = new PatientRole(userName);
+                    pr.show();
+                    dispose();
+                    break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
         }        
     }//GEN-LAST:event_loginButtonActionPerformed
 

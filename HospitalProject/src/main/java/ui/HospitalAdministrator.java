@@ -252,7 +252,6 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         deleteHosButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(814, 768));
         setSize(new java.awt.Dimension(1000, 1000));
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -1149,6 +1148,8 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                 updatePatientButtonActionPerformed(evt);
             }
         });
+
+        updatePatPassField.setVisible(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2114,7 +2115,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_createPatientHouseComboItemStateChanged
-    private boolean clientSideValidation3(JFrame frame, String patientPersonId, String patientName, String patientMobile, String patientEmail, String patientDOB, String password)
+    public static boolean clientSideValidation3(JFrame frame, String patientPersonId, String patientName, String patientMobile, String patientEmail, String patientDOB, String password)
     {
       if(Pattern.compile("^[1-9]\\d*$").matcher(patientPersonId).matches()){
         System.out.println("Doctor Id is valid.");
@@ -2155,12 +2156,12 @@ public class HospitalAdministrator extends javax.swing.JFrame {
          }
          else
          {
-            JOptionPane.showMessageDialog(frame, "Doctor Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Patient Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
          }
       }
       else
       {
-        JOptionPane.showMessageDialog(frame, "Doctor Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(frame, "Patient Id is not valid.\nOnly Numbers are allowed..", "Alert", JOptionPane.WARNING_MESSAGE);
       }
       return false;
     }
@@ -2233,7 +2234,12 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             {
                 int id = Integer.parseInt(patientPersonId);
                 long mobile = Long.parseLong(patientMobile, 10);
+                if(isInsured.equals("Yes"))
+                    isInsured = "true";
+                else
+                    isInsured = "false";
                 boolean insured = Boolean.parseBoolean(isInsured);
+                System.out.println(insured);
                 String[] dateSplit = patientDOB.split("-");
                 LocalDate dateOfBirth = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
 //                Person p = new Person(Integer.parseInt(patientPersonId), patientName, patientGender, Long.parseLong(patientMobile, 10), patientEmail, house, "Patient", patientPassword);
@@ -2885,7 +2891,9 @@ public class HospitalAdministrator extends javax.swing.JFrame {
                       }
                     }                   
                     updateEncDocCombo.setSelectedItem(e.getDoctor().getName());
-                    updateEncDTField.setText(e.getDateTime().toString());
+                    String[] dTSplit = e.getDateTime().toString().split("T");
+                    String dT = dTSplit[0] + " " + dTSplit[1];
+                    updateEncDTField.setText(dT);
                     break;
                   }
                 }
@@ -3220,7 +3228,7 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             House house = null;
             for(House h: House.getHouseList())
             {
-              if(h.getName().equals(createPatientHouseCombo.getSelectedItem().toString()))
+              if(h.getName().equals(updatePatHouseCombo.getSelectedItem().toString()))
               {
                   house = h;
                   break;
@@ -3230,6 +3238,10 @@ public class HospitalAdministrator extends javax.swing.JFrame {
             {
                 int id = Integer.parseInt(patientPersonId);
                 long mobile = Long.parseLong(patientMobile, 10);
+                if(isInsured.equals("Yes"))
+                    isInsured = "true";
+                else
+                    isInsured = "false";
                 boolean insured = Boolean.parseBoolean(isInsured);
                 String[] dateSplit = patientDOB.split("-");
                 LocalDate dateOfBirth = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
@@ -3425,23 +3437,27 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String deleteText = deleteEncIdField.getText().trim();
         boolean flag = false;
+        boolean found = false;
         if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
             flag = true;
         else
             JOptionPane.showMessageDialog(this, "Encounter Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
         if(flag)
         {
-          int id = Integer.parseInt(deleteEncIdField.getText());
-          ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();
-          for(Encounter e : encounterList)
+          for(Encounter e: EncounterHistory.getEncounterList())
           {
-            if(e.getId() == id)
+            if(Integer.parseInt(deleteText) == e.getId())
             {
+              found = true;
+              ArrayList<Encounter> encounterList = EncounterHistory.getEncounterList();        
               encounterList.remove(e);
+              EncounterHistory.setEncounterList(encounterList);
+              JOptionPane.showMessageDialog(this, "Successfully deleted the encounter from the records..", null, JOptionPane.OK_OPTION);              
               break;
-            }
+            }            
           }
-          EncounterHistory.setEncounterList(encounterList);
+         if(!found)
+             JOptionPane.showMessageDialog(this, "Encounter with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_deleteEncButtonActionPerformed
 
@@ -3449,23 +3465,27 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String deleteText = deletePatIdField.getText();
         boolean flag = false;
+        boolean found = false;
         if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
             flag = true;
         else
             JOptionPane.showMessageDialog(this, "Patient Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
         if(flag)
         {
-          int id = Integer.parseInt(deletePatIdField.getText());
-          ArrayList<Patient> patientList = PatientDirectory.getPatientList();
-          for(Patient p : patientList)
+          for(Patient p : PatientDirectory.getPatientList())
           {
-            if(p.getId() == id)
+            if(Integer.parseInt(deleteText) == p.getId())
             {
-              patientList.remove(p);
+              found = true;
+              ArrayList<Patient> patientList = PatientDirectory.getPatientList();
+              patientList.remove(p);                 
+              PatientDirectory.setPatientList(patientList);
+              JOptionPane.showMessageDialog(this, "Successfully deleted the patient from the records..", null, JOptionPane.OK_OPTION);
               break;
             }
           }
-          PatientDirectory.setPatientList(patientList);
+          if(!found)
+             JOptionPane.showMessageDialog(this, "Patient with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);        
         }
     }//GEN-LAST:event_deletePatButtonActionPerformed
 
@@ -3473,23 +3493,27 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String deleteText = deleteDocIdField.getText();
         boolean flag = false;
+        boolean found = false;
         if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
             flag = true;
         else
             JOptionPane.showMessageDialog(this, "Doctor Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
         if(flag)
         {
-          int id = Integer.parseInt(deleteDocIdField.getText());
-          ArrayList<Doctor> doctorList = DoctorDirectory.getDoctorList();
-          for(Doctor d : doctorList)
+          for(Doctor d: DoctorDirectory.getDoctorList())
           {
-            if(d.getId() == id)
+            if(Integer.parseInt(deleteText) == d.getId())
             {
+              found = true;
+              ArrayList<Doctor> doctorList = DoctorDirectory.getDoctorList();
               doctorList.remove(d);
+              DoctorDirectory.setDoctorList(doctorList);
+              JOptionPane.showMessageDialog(this, "Successfully deleted the doctor from the records..", null, JOptionPane.OK_OPTION);
               break;
             }
           }
-          DoctorDirectory.setDoctorList(doctorList);
+          if(!found)
+             JOptionPane.showMessageDialog(this, "Doctor with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_deleteDocButtonActionPerformed
 
@@ -3497,23 +3521,26 @@ public class HospitalAdministrator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String deleteText = deleteHosIdField.getText();
         boolean flag = false;
+        boolean found = false;
         if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
             flag = true;
         else
             JOptionPane.showMessageDialog(this, "Hospital Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
         if(flag)
         {
-          int id = Integer.parseInt(deleteHosIdField.getText());
-          ArrayList<Hospital> hospitalList = HospitalDirectory.getHospitalList();
-          for(Hospital h : hospitalList)
+          for(Hospital h: HospitalDirectory.getHospitalList())
           {
-            if(h.getId() == id)
+            if(Integer.parseInt(deleteText) == h.getId())
             {
-              hospitalList.remove(h);
+              ArrayList<Hospital> hospitalList = HospitalDirectory.getHospitalList();
+              hospitalList.remove(h);        
+              HospitalDirectory.setHospitalList(hospitalList);
+              JOptionPane.showMessageDialog(this, "Successfully deleted the hospital from the records..", null, JOptionPane.OK_OPTION);
               break;
-            }
+            }            
           }
-          HospitalDirectory.setHospitalList(hospitalList);
+          if(!found)
+             JOptionPane.showMessageDialog(this, "Hospital with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_deleteHosButtonActionPerformed
     

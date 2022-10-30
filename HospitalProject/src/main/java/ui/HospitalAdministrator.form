@@ -13,9 +13,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[814, 768]"/>
-    </Property>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
     </Property>
@@ -1751,6 +1748,9 @@
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="updatePatPassField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="updatePatPassField.setVisible(false);"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
