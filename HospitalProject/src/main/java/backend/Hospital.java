@@ -11,6 +11,7 @@ package backend;
 public class Hospital {    
     private int id;
     private String name;
+    private long mobileNumber;
     private Community community;
     public Hospital(int id, String name, Community community)
     {
