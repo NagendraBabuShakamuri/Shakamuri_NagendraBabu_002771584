@@ -42,7 +42,7 @@ public class PatientRole extends javax.swing.JFrame {
             if(p.getGender().equals("Male"))
                 updatePatMale.setSelected(true);
             else
-                updatePatMale.setSelected(true);
+                updatePatFemale.setSelected(true);
             updatePatMobileField.setText(Long.valueOf(p.getMobileNumber()).toString());
             updatePatEmailField.setText(p.getEmail());
             updatePatHouseCombo.setSelectedItem(p.getHouse().getName());
@@ -92,6 +92,7 @@ public class PatientRole extends javax.swing.JFrame {
         createEncDocCombo = new javax.swing.JComboBox<>();
         createEncDTField = new javax.swing.JTextField();
         createEncButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         viewEncIdCombo = new javax.swing.JComboBox<>();
@@ -185,6 +186,7 @@ public class PatientRole extends javax.swing.JFrame {
 
         for(City c: City.getCityList())
         createEncCityCombo.addItem(c.getName());
+        createEncCityCombo.setSelectedItem(null);
         createEncCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 createEncCityComboItemStateChanged(evt);
@@ -207,6 +209,13 @@ public class PatientRole extends javax.swing.JFrame {
         createEncButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createEncButtonActionPerformed(evt);
+            }
+        });
+
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -237,7 +246,8 @@ public class PatientRole extends javax.swing.JFrame {
                             .addComponent(createEncCommCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createEncHosCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createEncDocCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(createEncDTField))))
+                            .addComponent(createEncDTField)))
+                    .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -277,7 +287,9 @@ public class PatientRole extends javax.swing.JFrame {
                     .addComponent(createEncDTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createEncButton)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(logoutButton)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Book Appointment", jPanel1);
@@ -475,6 +487,11 @@ public class PatientRole extends javax.swing.JFrame {
 
         for(House h: House.getHouseList())
         updatePatHouseCombo.addItem(h.getName());
+        updatePatHouseCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updatePatHouseComboItemStateChanged(evt);
+            }
+        });
 
         updatePatCommField.setEnabled(false);
 
@@ -745,7 +762,7 @@ public class PatientRole extends javax.swing.JFrame {
         if(pd.get(position).getGender().equals("Male"))
             updatePatMale.setSelected(true);
         else
-            updatePatMale.setSelected(true);
+            updatePatFemale.setSelected(true);
         updatePatMobileField.setText(Long.valueOf(pd.get(position).getMobileNumber()).toString());
         updatePatEmailField.setText(pd.get(position).getEmail());
         updatePatHouseCombo.setSelectedItem(pd.get(position).getHouse().getName());
@@ -906,6 +923,28 @@ public class PatientRole extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_createEncHosComboItemStateChanged
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        HospitalApplication ha = new HospitalApplication();
+        ha.show();
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void updatePatHouseComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updatePatHouseComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            String selectedItem = updatePatHouseCombo.getSelectedItem().toString();
+            for(House h: House.getHouseList()){
+              if(h.getName().equals(selectedItem)){
+                updatePatCommField.setText(h.getCommunity().getName());
+                updatePatCityField.setText(h.getCommunity().getCity().getName());
+                break;
+              }
+            }
+        }
+    }//GEN-LAST:event_updatePatHouseComboItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -992,6 +1031,7 @@ public class PatientRole extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel loginLabel;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton updatePatButton;
     private javax.swing.JTextField updatePatCityField;
     private javax.swing.JTextField updatePatCommField;
